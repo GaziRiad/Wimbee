@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import LanguageChanger from "@/components/LanguageChanger";
 
 import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
@@ -31,7 +30,6 @@ export default function RootLayout({ children, params: { locale } }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LanguageChanger />
         {children}
       </body>
     </html>
