@@ -11,7 +11,7 @@ export const client = createClient({
 
 export async function sanityFetch({ query, qParams = {}, tags }) {
   return client.fetch(query, qParams, {
-    cache: "no-store",
+    cache: "force-cache",
     next: { tags },
   });
 }
