@@ -5,10 +5,14 @@ export const structure = (S) =>
     .id('root')
     .title('Content')
     .items([
-      // S.listItem()
-      //   .title('Home')
-      //   .id('home')
-      //   .child(S.document().schemaType('home').documentId('home')),
+      S.listItem()
+        .title('Home')
+        .id('home')
+        .child(S.document().schemaType('home').documentId('home')),
+      S.listItem()
+        .title('Boosters')
+        .id('boosters')
+        .child(S.document().schemaType('boosters').documentId('boosters')),
 
       S.listItem()
         .title('Reused sections')

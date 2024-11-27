@@ -6,8 +6,12 @@ import footer from './footer'
 import contact from './contact'
 import newsletter from './newsletter'
 import spotlight from './spotlight'
+import home from './home'
+import boosters from './boosters'
 
 export const schemaTypes = [
+  home,
+  boosters,
   spotlight,
   contact,
   newsletter,
