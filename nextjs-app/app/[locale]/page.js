@@ -41,13 +41,13 @@ export default async function Home({ params: { locale } }) {
         <LogoCarousel />
         <IntroductionSection />
         <SectorsSection />
-        <ServicesSection />
+        {/* <ServicesSection />
         <CasestudiesSection />
         <SpotlightSection />
         <BlogSection />
         <Newsletter />
         <InfoSection />
-        <Footer />
+        <Footer /> */}
       </main>
     </TranslationsProvider>
   );

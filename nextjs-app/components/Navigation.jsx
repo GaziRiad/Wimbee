@@ -12,10 +12,10 @@ const Menu = [
 
 function Navigation() {
   return (
-    <header className="mx-auto flex max-w-[1568px] items-center justify-between py-6">
+    <header className="mx-auto flex max-w-[1568px] items-center justify-between p-4 lg:py-6">
       <nav className="flex items-center gap-20">
         <Logo />
-        <ul className="flex h-[34px] items-center rounded-[4px] bg-white">
+        <ul className="hidden h-[34px] items-center rounded-[4px] bg-white lg:flex">
           {Menu.map((item, index) => (
             <li key={index}>
               <Link
@@ -29,7 +29,7 @@ function Navigation() {
         </ul>
       </nav>
 
-      <nav className="flex items-center gap-2">
+      <nav className="hidden items-center gap-2 lg:flex">
         <LanguageChanger />
         <ContactBtn />
       </nav>

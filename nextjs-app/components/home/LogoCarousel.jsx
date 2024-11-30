@@ -16,7 +16,7 @@ export default function LogoCarousel() {
 
   return (
     <section className="w-full overflow-hidden">
-      <div className="relative py-12">
+      <div className="relative py-6 lg:py-12">
         <div className="flex animate-scroll">
           {/* First set of logos */}
           <div className="flex min-w-full shrink-0 items-center justify-around gap-8 px-4">
