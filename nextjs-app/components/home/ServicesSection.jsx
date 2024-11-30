@@ -24,16 +24,16 @@ const SERVICES = [
 
 function ServicesSection() {
   return (
-    <section className="mx-auto max-w-[1568px] pb-20 pt-12">
-      <div className="mb-28 flex items-start justify-between">
+    <section className="mx-auto max-w-[1568px] px-4 pb-20 pt-12">
+      <div className="mb-12 flex flex-col items-start justify-between lg:mb-28 lg:flex-row">
         <Tag>Key Services Across Sectors</Tag>
-        <h2 className="text-primary-600 max-w-5xl text-[40px]">
+        <h2 className="mt-8 max-w-5xl text-2xl text-primary-600 lg:mt-0 lg:w-2/3 lg:text-3xl 2xl:text-[40px] 2xl:leading-[117.647%]">
           We offer tailored solutions to help businesses and individuals thrive
           with AI, talent development, and digital transformation.
         </h2>
       </div>
 
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col items-start gap-6 xl:flex-row">
         {SERVICES.map((service, index) => (
           <div key={index}>
             <Image
@@ -44,10 +44,10 @@ function ServicesSection() {
               unoptimized
               className="mb-4 w-full"
             />
-            <p className="text-primary-800 text-lg font-medium uppercase">
+            <p className="text-lg font-medium uppercase text-primary-800">
               {service.title}
             </p>
-            <p className="text-primary-500 text-xl">{service.description}</p>
+            <p className="text-lg text-primary-500">{service.description}</p>
           </div>
         ))}
       </div>
