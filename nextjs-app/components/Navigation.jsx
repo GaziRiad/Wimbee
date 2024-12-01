@@ -2,10 +2,25 @@ import Link from "next/link";
 import LanguageChanger from "./LanguageChanger";
 import Logo from "./Logo";
 import ContactBtn from "./ContactBtn";
+import { NavItemWithDropdown } from "./NavItemWithDropdown";
 
 const Menu = [
-  { title: "Experties", href: "/" },
-  { title: "Sectors", href: "/" },
+  {
+    title: "Expertises",
+    items: [
+      { label: "Web Development", href: "/" },
+      { label: "Mobile Development", href: "/" },
+      { label: "UI/UX Design", href: "/" },
+    ],
+  },
+  {
+    title: "Sectors",
+    items: [
+      { label: "Web Development", href: "/" },
+      { label: "Mobile Development", href: "/" },
+      { label: "UI/UX Design", href: "/" },
+    ],
+  },
   { title: "Boosters", href: "/" },
   { title: "About", href: "/" },
 ];
@@ -18,12 +33,16 @@ function Navigation() {
         <ul className="hidden h-[34px] items-center rounded-[4px] bg-white lg:flex">
           {Menu.map((item, index) => (
             <li key={index}>
-              <Link
-                href={item.href}
-                className="text-primary-800 hover:bg-primary-800 hover:text-primary-400 m-1 rounded-[4px] px-2 text-lg font-medium transition-all"
-              >
-                {item.title}
-              </Link>
+              {!item.items ? (
+                <Link
+                  href={item.href}
+                  className="m-1 rounded-[4px] px-2 text-lg font-medium text-primary-800 transition-all hover:bg-primary-800 hover:text-primary-400"
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <NavItemWithDropdown label={item.title} items={item.items} />
+              )}
             </li>
           ))}
         </ul>

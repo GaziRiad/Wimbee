@@ -33,7 +33,7 @@ function ServicesSection() {
         </h2>
       </div>
 
-      <div className="flex flex-col items-start gap-6 xl:flex-row">
+      <div className="flex flex-col items-start gap-6 lg:flex-row">
         {SERVICES.map((service, index) => (
           <div key={index}>
             <Image
@@ -41,7 +41,6 @@ function ServicesSection() {
               alt={`Gif image of ${service.title} from wimbee`}
               width={300}
               height={300}
-              unoptimized
               className="mb-4 w-full"
             />
             <p className="text-lg font-medium uppercase text-primary-800">
