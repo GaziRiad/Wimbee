@@ -45,9 +45,9 @@ export default async function Home({ params: { locale } }) {
         <CasestudiesSection />
         <SpotlightSection />
         <BlogSection />
-        {/* <Newsletter />
+        <Newsletter />
         <InfoSection />
-        <Footer /> */}
+        <Footer />
       </main>
     </TranslationsProvider>
   );

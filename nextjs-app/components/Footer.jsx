@@ -47,14 +47,14 @@ const FooterMenu = [
 
 function Footer() {
   return (
-    <section className="bg-primary-700 py-20 text-light-200">
-      <div className="mx-auto grid max-w-[1568px] grid-cols-6">
-        <Link href="/">
+    <section className="bg-primary-700 px-4 py-20 text-light-200">
+      <div className="mx-auto grid max-w-[1568px] grid-cols-2 gap-y-8 lg:grid-cols-4 2xl:grid-cols-6">
+        <Link href="/" className="col-span-2 row-span-2 lg:col-span-1">
           <Image src={footerLogo} alt="Wimbee Footer logo" className="" />
         </Link>
         {FooterMenu.map((menu, index) => (
           <div key={index}>
-            <p className="text-primary-500 mb-10 font-medium uppercase">
+            <p className="mb-4 font-medium uppercase text-primary-500 2xl:mb-10">
               {menu.title}
             </p>
             <ul className="flex flex-col gap-2">
@@ -62,7 +62,7 @@ function Footer() {
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="hover:text-primary-500 text-light-300 transition-all"
+                    className="text-light-300 transition-all hover:text-primary-500"
                   >
                     {item.name}
                   </Link>

@@ -27,22 +27,22 @@ const locations = [
 
 function InfoSection() {
   return (
-    <section className="bg-primary-800 py-20 text-light-200">
-      <div className="mx-auto flex max-w-[1568px] items-start justify-between gap-40">
+    <section className="bg-primary-800 px-4 py-20 text-light-200">
+      <div className="mx-auto flex max-w-[1568px] flex-col items-start justify-between gap-4 lg:flex-row lg:gap-40">
         <Image
           src={infoImg}
           alt="Introduction section of wimbee GIF"
-          className="rounded-custom h-[808px] flex-1"
+          className="h-[808px] flex-1 rounded-custom"
         />
 
         <div className="flex-1">
-          <h2 className="mb-6 text-[40px] text-light-300">
+          <h2 className="mb-3 text-2xl text-light-300 lg:mb-4 lg:text-3xl 2xl:mb-6 2xl:text-[40px]">
             Find the space to drive innovation and bring ideas to life with us.
           </h2>
-          <p className="mb-20 text-xl text-[#93989C]">
+          <p className="mb-8 text-lg text-[#93989C] lg:mb-10 lg:text-xl 2xl:mb-20">
             Fill out the form and contact <br /> wimbee as soon as possible!
           </p>
-          <div className="mb-28 w-fit">
+          <div className="mb-16 w-fit lg:mb-20 2xl:mb-28">
             <ContactBtn />
           </div>
 
