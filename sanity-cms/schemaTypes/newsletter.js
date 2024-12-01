@@ -37,6 +37,13 @@ export default defineType({
       initialValue: 'Sign up for our newsletter To receive daily news and updates.',
     }),
     defineField({
+      name: 'labelText',
+      title: 'Email Input Label',
+      type: 'string',
+      description: 'Label text for the email input field.',
+      initialValue: 'Your email',
+    }),
+    defineField({
       name: 'placeholderText',
       title: 'Email Input Placeholder',
       type: 'string',

@@ -32,6 +32,10 @@ export const structure = (S) =>
                 .title('Newsletter')
                 .id('newsletter')
                 .child(S.document().schemaType('newsletter').documentId('newsletter')),
+              S.listItem()
+                .title('Spotlight')
+                .id('spotlight')
+                .child(S.document().schemaType('spotlight').documentId('spotlight')),
             ]),
         ),
 

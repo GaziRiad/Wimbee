@@ -1,70 +1,55 @@
 import Image from "next/image";
-import footerLogo from "../public/images/footerLogo.svg";
 import Link from "next/link";
+import { sanityFetch } from "@/sanity/client";
+import { footerquery } from "@/sanity/groq";
 
-const FooterMenu = [
-  {
-    title: "Services",
-    items: [
-      { name: "Expertises", href: "#" },
-      { name: "Sectors", href: "#" },
-      { name: "Boosters", href: "#" },
-      { name: "Ecosystems", href: "#" },
-    ],
-  },
-  {
-    title: "Customers",
-    items: [
-      { name: "Customer cases", href: "#" },
-      { name: "Case studies", href: "#" },
-    ],
-  },
-  {
-    title: "news",
-    items: [
-      { name: "News", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Events", href: "#" },
-    ],
-  },
-  {
-    title: "company",
-    items: [
-      { name: "About", href: "#" },
-      { name: "Careers", href: "#" },
-    ],
-  },
-  {
-    title: "socials",
-    items: [
-      { name: "Instagram", href: "#" },
-      { name: "X", href: "#" },
-      { name: "Facebook", href: "#" },
-      { name: "hrefedIn", href: "#" },
-    ],
-  },
-];
+const transformFooterData = (data) => {
+  // Extract all keys except 'logoUrl'
+  const { logoUrl, ...sections } = data;
 
-function Footer() {
+  // Convert the remaining sections into an array
+  const sectionsArray = Object.keys(sections).map((key) => ({
+    section: key,
+    ...sections[key],
+  }));
+
+  return sectionsArray;
+};
+
+async function Footer() {
+  const data = await sanityFetch({
+    query: footerquery,
+    tags: ["footer"],
+  });
+
+  if (!data) return <p>Loading...</p>;
+  const transformedData = transformFooterData(data);
+
   return (
     <section className="bg-primary-700 px-4 py-20 text-light-200">
       <div className="mx-auto grid max-w-[1568px] grid-cols-2 gap-y-8 lg:grid-cols-4 2xl:grid-cols-6">
         <Link href="/" className="col-span-2 row-span-2 lg:col-span-1">
-          <Image src={footerLogo} alt="Wimbee Footer logo" className="" />
+          <Image
+            src={data.logoUrl}
+            width={300}
+            height={300}
+            alt="Wimbee Footer logo"
+            className="max-w-40"
+          />
         </Link>
-        {FooterMenu.map((menu, index) => (
+        {transformedData.map((menu, index) => (
           <div key={index}>
             <p className="mb-4 font-medium uppercase text-primary-500 2xl:mb-10">
               {menu.title}
             </p>
             <ul className="flex flex-col gap-2">
-              {menu.items.map((item, index) => (
+              {menu.links.map((item, index) => (
                 <li key={index}>
                   <Link
-                    href={item.href}
+                    href={item.url}
                     className="text-light-300 transition-all hover:text-primary-500"
                   >
-                    {item.name}
+                    {item.title}
                   </Link>
                 </li>
               ))}

@@ -21,10 +21,6 @@ const i18nNamespaces = ["home"];
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
-  const data = await sanityFetch({ query: homequery, tags: ["home"] });
-
-  if (!data) return <p>Loading...</p>;
-
   // console.log(data);
 
   return (
