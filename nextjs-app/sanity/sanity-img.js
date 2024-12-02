@@ -2,7 +2,7 @@ import createImageUrlBuilder from "@sanity/image-url";
 
 // https://www.sanity.io/docs/image-url
 const builder = createImageUrlBuilder({
-  projectId: "eh9ib995",
+  projectId: "j5a0ndtr",
   dataset: "production",
 });
 
