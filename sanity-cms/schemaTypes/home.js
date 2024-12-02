@@ -52,11 +52,6 @@ export default defineType({
                     hotspot: true,
                   },
                 }),
-                defineField({
-                  name: 'url',
-                  title: 'URL',
-                  type: 'url',
-                }),
               ],
             },
           ],
@@ -89,13 +84,6 @@ export default defineType({
             hotspot: true,
           },
         }),
-      ],
-    }),
-    defineField({
-      name: 'navigation',
-      title: 'Navigation Links',
-      type: 'object',
-      fields: [
         defineField({
           name: 'links',
           title: 'Links',
@@ -203,6 +191,48 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'caseStudies',
+      title: 'case studies Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'tag',
+          title: 'Tag',
+          type: 'string',
+          initialValue: 'CASE STUDIES',
+        }),
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'blog',
+      title: 'Blog Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'tag',
+          title: 'Tag',
+          type: 'string',
+          initialValue: "WHAT'S NEW",
+        }),
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO Settings',
       type: 'object',
@@ -217,12 +247,6 @@ export default defineType({
           title: 'Description',
           type: 'text',
         }),
-        // defineField({
-        //   name: 'keywords',
-        //   title: 'Keywords',
-        //   type: 'array',
-        //   of: [{type: 'string'}],
-        // }),
       ],
     }),
   ],

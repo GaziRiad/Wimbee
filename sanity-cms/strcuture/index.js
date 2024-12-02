@@ -13,6 +13,10 @@ export const structure = (S) =>
         .title('Boosters')
         .id('boosters')
         .child(S.document().schemaType('boosters').documentId('boosters')),
+      S.listItem()
+        .title('Blog')
+        .id('blog')
+        .child(S.document().schemaType('blog').documentId('blog')),
 
       S.listItem()
         .title('Reused sections')

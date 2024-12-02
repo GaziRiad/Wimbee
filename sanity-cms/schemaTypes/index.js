@@ -8,10 +8,12 @@ import newsletter from './newsletter'
 import spotlight from './spotlight'
 import home from './home'
 import boosters from './boosters'
+import blog from './blog'
 
 export const schemaTypes = [
   home,
   boosters,
+  blog,
   spotlight,
   contact,
   newsletter,

@@ -1,6 +1,7 @@
 import { sanityFetch } from "@/sanity/client";
 import { newsletterquery } from "@/sanity/groq";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 async function Newsletter() {
   const data = await sanityFetch({
@@ -38,9 +39,10 @@ async function Newsletter() {
               placeholder={data.placeholderText}
               className="flex-1 bg-inherit text-lg font-medium lg:text-3xl"
             />
-            <button className="w-fit rounded-custom bg-[#97CAFE] p-1 text-sm text-primary-700 lg:text-xl">
+
+            <Button className="rounded-custom bg-[#97CAFE] p-1 text-sm text-primary-700 hover:bg-[#97CAFE]/70 lg:text-lg">
               {data.buttonText}
-            </button>
+            </Button>
           </div>
         </div>
       </form>

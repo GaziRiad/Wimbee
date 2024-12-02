@@ -22,22 +22,21 @@ const SERVICES = [
   },
 ];
 
-function ServicesSection() {
+function ServicesSection({ content }) {
   return (
     <section className="mx-auto max-w-[1568px] px-4 pb-20 pt-12">
       <div className="mb-12 flex flex-col items-start justify-between lg:mb-28 lg:flex-row">
-        <Tag>Key Services Across Sectors</Tag>
+        <Tag>{content.tag}</Tag>
         <h2 className="mt-8 max-w-5xl text-2xl text-primary-600 lg:mt-0 lg:w-2/3 lg:text-3xl 2xl:text-[40px] 2xl:leading-[117.647%]">
-          We offer tailored solutions to help businesses and individuals thrive
-          with AI, talent development, and digital transformation.
+          {content.description}
         </h2>
       </div>
 
       <div className="flex flex-col items-start gap-6 lg:flex-row">
-        {SERVICES.map((service, index) => (
+        {content.hubs.map((service, index) => (
           <div key={index}>
             <Image
-              src={service.image}
+              src={service.imageUrl}
               alt={`Gif image of ${service.title} from wimbee`}
               width={300}
               height={300}

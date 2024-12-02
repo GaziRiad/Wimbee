@@ -2,18 +2,7 @@
 
 import Image from "next/image";
 
-export default function LogoCarousel() {
-  const logos = [
-    { src: "/partners/first.png", alt: "Company 1" },
-    { src: "/partners/second.png", alt: "Company 1" },
-    { src: "/partners/second.png", alt: "Company 1" },
-    { src: "/partners/third.png", alt: "Company 1" },
-    { src: "/partners/third.png", alt: "Company 1" },
-    { src: "/partners/forth.png", alt: "Company 1" },
-    { src: "/partners/forth.png", alt: "Company 1" },
-    { src: "/partners/first.png", alt: "Company 1" },
-  ];
-
+export default function LogoCarousel({ logos }) {
   return (
     <section className="w-full overflow-hidden">
       <div className="relative py-6 lg:py-12">
@@ -26,8 +15,8 @@ export default function LogoCarousel() {
                 className="relative h-12 w-24 shrink-0 grayscale transition-all hover:grayscale-0"
               >
                 <Image
-                  src={logo.src}
-                  alt={logo.alt}
+                  src={logo.logoUrl}
+                  alt={`${logo.name} logo`}
                   fill
                   className="object-contain"
                 />
@@ -42,8 +31,8 @@ export default function LogoCarousel() {
                 className="relative h-12 w-24 shrink-0 grayscale transition-all hover:grayscale-0"
               >
                 <Image
-                  src={logo.src}
-                  alt={logo.alt}
+                  src={logo.logoUrl}
+                  alt={`${logo.name} logo`}
                   fill
                   className="object-contain"
                 />

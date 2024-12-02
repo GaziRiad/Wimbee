@@ -1,8 +1,52 @@
 import { groq } from "next-sanity";
 
-export const homequery = groq`*[_type == "home"] {
-  navigation, services, introduction,
-  sectors, hero, seo
+export const homequery = groq`*[_type == "home"][0]{
+  seo {
+    title,
+    description
+  },  
+hero {
+    title,
+    "backgroundImageUrl": backgroundImage.asset->url
+  },
+  partners {
+    logos[] {
+      name,
+      "logoUrl": logo.asset->url,
+      url
+    }
+  },
+  introduction {
+    tag,
+    description,
+    "imageUrl": image.asset->url,
+    links[] {
+      title,
+      url
+    }
+  },
+  sectors {
+    tag,
+    title,
+    "imageUrl": image.asset->url
+  },
+  services {
+    tag,
+    description,
+    hubs[] {
+      title,
+      description,
+      "imageUrl": image.asset->url
+    }
+  },
+  caseStudies {
+    tag,
+    "imageUrl": image.asset->url
+  },
+  blog {
+    tag,
+    "imageUrl": image.asset->url
+  },
 }`;
 
 export const contactquery = groq`*[_type == "contact"][0] {
@@ -74,30 +118,38 @@ export const spotlightquery = groq`*[_type == "spotlight"][0]{
   "imageUrl": image.asset->url
 }`;
 
-// Get all posts
-export const postquery = groq`
+// Get all posts (FULL DATA)
+export const postsquery = groq`
 *[_type == "post"] | order(publishedAt desc, _createdAt desc) {
-  _id,
-  _createdAt,
-  publishedAt,
-  mainImage {
-    ...,
-    "blurDataURL":asset->metadata.lqip,
-    "ImageColor": asset->metadata.palette.dominant.background,
-  },
-  featured,
-  excerpt,
   slug,
   title,
-  author-> {
-    _id,
-    image,
-    slug,
-    name
-  },
   categories[]->,
 }
 `;
+// Get all posts (FULL DATA)
+// export const postsquery = groq`
+// *[_type == "post"] | order(publishedAt desc, _createdAt desc) {
+//   _id,
+//   _createdAt,
+//   publishedAt,
+//   mainImage {
+//     ...,
+//     "blurDataURL":asset->metadata.lqip,
+//     "ImageColor": asset->metadata.palette.dominant.background,
+//   },
+//   featured,
+//   excerpt,
+//   slug,
+//   title,
+//   author-> {
+//     _id,
+//     image,
+//     slug,
+//     name
+//   },
+//   categories[]->,
+// }
+// `;
 
 // Single Post
 export const singlequery = groq`
@@ -123,3 +175,22 @@ export const singlequery = groq`
   },
 }
 `;
+
+// Blog page query
+
+export const blogPageQuery = groq`*[_type == "blog"][0]{
+  blog {
+    tag,
+    "imageUrl": image.asset->url
+  },
+  seo {
+    title
+  },
+  "posts": *[_type == "post"] | order(publishedAt desc) {
+    title,
+    slug,
+    "imageUrl": mainImage.asset->url,
+    excerpt,
+    publishedAt
+  }
+}`;
