@@ -124,6 +124,7 @@ export const postsquery = groq`
   slug,
   title,
   categories[]->,
+  summary
 }
 `;
 // Get all posts (FULL DATA)
@@ -190,7 +191,7 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
     title,
     slug,
     "imageUrl": mainImage.asset->url,
-    excerpt,
-    publishedAt
+    categories[]->,
+    summary
   }
 }`;

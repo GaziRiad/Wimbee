@@ -32,7 +32,9 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		animation: {
-  			scroll: 'scroll 40s linear infinite'
+  			scroll: 'scroll 40s linear infinite',
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
   		keyframes: {
   			scroll: {
@@ -41,6 +43,22 @@ module.exports = {
   				},
   				'100%': {
   					transform: 'translateX(-100%)'
+  				}
+  			},
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
   				}
   			}
   		}

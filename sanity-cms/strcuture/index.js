@@ -1,4 +1,4 @@
-import {CalendarIcon, UsersIcon, PinIcon} from '@sanity/icons'
+import {DocumentIcon, UserIcon, ListIcon} from '@sanity/icons'
 
 export const structure = (S) =>
   S.list()
@@ -17,6 +17,8 @@ export const structure = (S) =>
         .title('Blog')
         .id('blog')
         .child(S.document().schemaType('blog').documentId('blog')),
+
+      S.divider(),
 
       S.listItem()
         .title('Reused sections')
@@ -43,7 +45,9 @@ export const structure = (S) =>
             ]),
         ),
 
-      S.documentTypeListItem('post').title('Posts').icon(CalendarIcon),
-      S.documentTypeListItem('author').title('Authors').icon(UsersIcon),
-      S.documentTypeListItem('category').title('Categories').icon(PinIcon),
+      S.divider(),
+
+      S.documentTypeListItem('post').title('Posts').icon(DocumentIcon),
+      S.documentTypeListItem('author').title('Authors').icon(UserIcon),
+      S.documentTypeListItem('category').title('Categories').icon(ListIcon),
     ])

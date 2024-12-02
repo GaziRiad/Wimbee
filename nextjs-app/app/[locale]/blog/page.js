@@ -8,6 +8,7 @@ import { blogPageQuery } from "@/sanity/groq";
 
 async function page({ params: { locale } }) {
   const data = await sanityFetch({ query: blogPageQuery, tags: ["blog"] });
+
   const content = {
     tag: data.blog.tag,
     image: data.blog.imageUrl,

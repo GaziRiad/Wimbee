@@ -44,6 +44,16 @@ export default defineType({
       title: 'Published at',
       type: 'datetime',
     }),
+
+    // New Summary Field
+    defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'string',
+      description: 'A short summary of the post (e.g., for previews or meta descriptions)',
+      validation: (Rule) => Rule.max(200).warning('Keep summaries concise!'),
+    }),
+
     defineField({
       name: 'body',
       title: 'Body',
