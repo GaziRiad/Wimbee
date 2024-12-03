@@ -23,7 +23,7 @@ export default async function Home({ params: { locale } }) {
   const data = await sanityFetch({ query: homequery, tags: ["home"] });
   const posts = await sanityFetch({
     query: postsquery,
-    tags: ["posts"],
+    tags: ["post"],
   });
 
   const blogContent = {
