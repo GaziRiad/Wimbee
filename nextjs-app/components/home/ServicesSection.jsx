@@ -40,7 +40,7 @@ function ServicesSection({ content }) {
               alt={`Gif image of ${service.title} from wimbee`}
               width={300}
               height={300}
-              className="mb-4 w-full"
+              className="mb-4 h-full w-full"
             />
             <p className="text-lg font-medium uppercase text-primary-800">
               {service.title}
