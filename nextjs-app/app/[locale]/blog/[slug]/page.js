@@ -10,7 +10,7 @@ async function page({ params: { locale, slug } }) {
   const post = await sanityFetch({
     query: singlearticlequery,
     qParams: { slug },
-    tags: ["blog"],
+    tags: ["posts"],
   });
 
   return (
