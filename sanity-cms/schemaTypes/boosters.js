@@ -69,11 +69,6 @@ export default defineType({
           title: 'SEO Title',
           type: 'string',
         }),
-        defineField({
-          name: 'description',
-          title: 'SEO Description',
-          type: 'text',
-        }),
       ],
     }),
   ],

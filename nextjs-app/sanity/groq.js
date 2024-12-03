@@ -49,6 +49,19 @@ hero {
   },
 }`;
 
+export const boostersquery = groq`*[_type == "boosters"][0] {
+  tag,
+  title,
+  products[] {
+    name,
+    description,
+    "imageUrl": image.asset->url
+  },
+  seo {
+    title
+  }
+}`;
+
 export const contactquery = groq`*[_type == "contact"][0] {
     title,
     description,
