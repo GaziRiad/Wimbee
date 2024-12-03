@@ -8,7 +8,7 @@ function Article({ post }) {
   return (
     <section className="relative z-10 mx-auto max-w-5xl px-5 pb-28 pt-16">
       <div className="text-primary">
-        <div className="mb-4 flex flex-wrap items-center gap-2">
+        {/* <div className="mb-4 flex flex-wrap items-center gap-2">
           {post.categories.map((category, index) => (
             <span
               key={index}
@@ -17,8 +17,8 @@ function Article({ post }) {
               {category.title}
             </span>
           ))}
-        </div>
-        <h1 className="mb-20 max-w-5xl text-2xl text-primary-800 lg:text-7xl">
+        </div> */}
+        <h1 className="mb-8 max-w-5xl text-5xl text-primary-800 lg:mb-10 lg:text-7xl 2xl:mb-20">
           {post.title}
         </h1>
         <div className="text-primary-500">

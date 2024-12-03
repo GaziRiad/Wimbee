@@ -16,9 +16,9 @@ export const myPortableTextComponents = {
         <Image
           src={urlFor(value).url()}
           alt="Image"
-          width={800}
-          height={800}
-          className="mb-8 h-72 w-full object-cover object-center"
+          width={1200}
+          height={1200}
+          className="mb-8 h-24 w-full object-cover object-center lg:mb-10 2xl:mb-20"
         />
       );
     },
@@ -93,7 +93,9 @@ export const myPortableTextComponents = {
     // Styling for normal text
     normal: ({ children, index, value, next }) => {
       return (
-        <p className="mb-20 text-base leading-relaxed lg:text-xl">{children}</p>
+        <p className="mb-8 text-base leading-relaxed lg:text-xl 2xl:mb-20">
+          {children}
+        </p>
       );
     },
   },

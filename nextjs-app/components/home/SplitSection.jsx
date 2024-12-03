@@ -12,7 +12,7 @@ function SplitSection({ content, flipped = false }) {
   return (
     <section className={`${flipped ? "bg-light-300" : ""}`}>
       <div className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">
-        <div className="mb-8 flex items-start justify-between lg:mb-28">
+        <div className="mb-8 flex items-start justify-between lg:mb-14 2xl:mb-28">
           <Tag>{content.tag}</Tag>
         </div>
 
