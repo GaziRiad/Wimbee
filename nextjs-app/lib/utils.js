@@ -26,7 +26,7 @@ export const myPortableTextComponents = {
 
   marks: {
     em: ({ children }) => (
-      <em className="font-semibold text-primary-800">{children}</em>
+      <em className="font-medium text-primary-800">{children}</em>
     ),
 
     link: ({ children, value }) => {
@@ -51,7 +51,7 @@ export const myPortableTextComponents = {
     h1: ({ children, node }) => (
       <h1
         id={node?._key}
-        className="font-display mb-4 text-2xl font-medium text-primary-800"
+        className="mb-10 font-main text-2xl font-medium text-primary-800"
       >
         {children}
       </h1>
@@ -59,7 +59,7 @@ export const myPortableTextComponents = {
     h2: ({ children, node }) => (
       <h2
         id={node?._key}
-        className="font-display mb-4 text-2xl font-medium text-primary-800"
+        className="mb-10 font-main text-3xl font-medium text-primary-800"
       >
         {children}
       </h2>
@@ -67,7 +67,7 @@ export const myPortableTextComponents = {
     h3: ({ children, node }) => (
       <h3
         id={node?._key}
-        className="font-display mb-1 text-xl font-medium text-primary-800 lg:text-2xl"
+        className="mb-10 font-main text-3xl font-medium text-primary-800"
       >
         {children}
       </h3>
@@ -75,31 +75,17 @@ export const myPortableTextComponents = {
     h4: ({ children, node }) => (
       <h4
         id={node?._key}
-        className="font-display mb-1 text-lg font-medium text-primary-800 lg:text-xl"
+        className="mb-1 font-main text-lg font-medium text-primary-800 lg:text-xl"
       >
         {children}
       </h4>
     ),
     blockquote: ({ children }) => {
       return (
-        <blockquote
-          style={{
-            backgroundColor: "#242535",
-            borderLeft: "4px solid",
-            borderLeftColor: "#E8E8EA",
-            borderRadius: "12px",
-            display: "inline-block",
-            fontFamily: "'SourceSerifPro-Regular', serif",
-            lineHeight: "32px",
-            letterSpacing: "0.6px",
-          }}
-          className={`mb-8 p-8 text-xl text-white lg:text-2xl`}
-        >
-          <em>
-            <span className="text-3xl">“</span>
-            {children}
-            <span className="text-3xl">”</span>
-          </em>
+        <blockquote className="mb-20 inline-block p-8 text-4xl text-primary-500 lg:text-2xl">
+          <span className="text-3xl">“</span>
+          {children}
+          <span className="text-3xl">”</span>
         </blockquote>
       );
     },
@@ -107,9 +93,7 @@ export const myPortableTextComponents = {
     // Styling for normal text
     normal: ({ children, index, value, next }) => {
       return (
-        <p className="mb-6 text-base leading-relaxed text-primary-800 lg:text-xl">
-          {children}
-        </p>
+        <p className="mb-20 text-base leading-relaxed lg:text-xl">{children}</p>
       );
     },
   },

@@ -34,7 +34,7 @@ async function InfoSection() {
 
   return (
     <section className="bg-primary-800 px-4 py-20 text-light-200">
-      <div className="mx-auto flex max-w-[1568px] flex-col items-start justify-between gap-4 lg:flex-row lg:gap-40">
+      <div className="mx-auto flex max-w-[1568px] flex-col items-start justify-between gap-4 lg:flex-row lg:gap-20 2xl:gap-40">
         <Image
           src={data.contactImage}
           width={1200}

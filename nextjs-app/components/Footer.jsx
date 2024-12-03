@@ -27,7 +27,7 @@ async function Footer() {
 
   return (
     <section className="bg-primary-700 px-4 py-20 text-light-200">
-      <div className="mx-auto grid max-w-[1568px] grid-cols-2 gap-y-8 lg:grid-cols-4 2xl:grid-cols-6">
+      <div className="mx-auto grid max-w-[1568px] grid-cols-2 gap-y-8 lg:grid-cols-4 xl:grid-cols-6">
         <Link href="/" className="col-span-2 row-span-2 lg:col-span-1">
           <Image
             src={data.logoUrl}
