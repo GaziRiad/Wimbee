@@ -6,6 +6,8 @@ import Newsletter from "@/components/Newsletter";
 import { sanityFetch } from "@/sanity/client";
 import { blogPageQuery } from "@/sanity/groq";
 
+export const revalidate = 2592000; // 30 days in seconds
+
 async function page({ params: { locale } }) {
   const data = await sanityFetch({
     query: blogPageQuery,

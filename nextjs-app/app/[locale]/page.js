@@ -15,6 +15,8 @@ import InfoSection from "@/components/InfoSection";
 import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
 
+export const revalidate = 2592000; // 30 days in seconds
+
 const i18nNamespaces = ["home"];
 
 export default async function Home({ params: { locale } }) {

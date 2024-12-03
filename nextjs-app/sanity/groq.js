@@ -191,3 +191,8 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
     summary
   }
 }`;
+
+// For generatestaticparams
+export const allSlugsquery = groq`*[_type == "post"] {
+        "slug": slug.current
+      }`;
