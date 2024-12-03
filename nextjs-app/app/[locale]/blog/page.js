@@ -7,7 +7,10 @@ import { sanityFetch } from "@/sanity/client";
 import { blogPageQuery } from "@/sanity/groq";
 
 async function page({ params: { locale } }) {
-  const data = await sanityFetch({ query: blogPageQuery, tags: ["posts"] });
+  const data = await sanityFetch({
+    query: blogPageQuery,
+    tags: ["blog", "posts"],
+  });
 
   const content = {
     tag: data.blog.tag,

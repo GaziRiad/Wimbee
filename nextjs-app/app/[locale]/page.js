@@ -21,7 +21,10 @@ export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
   const data = await sanityFetch({ query: homequery, tags: ["home"] });
-  const posts = await sanityFetch({ query: postsquery, tags: ["posts"] });
+  const posts = await sanityFetch({
+    query: postsquery,
+    tags: ["blog", "posts"],
+  });
 
   const blogContent = {
     tag: data?.blog.tag,
