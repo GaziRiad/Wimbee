@@ -34,13 +34,13 @@ async function InfoSection() {
 
   return (
     <section className="bg-primary-800 px-4 py-8 text-light-200 lg:py-20">
-      <div className="mx-auto flex max-w-[1568px] flex-col items-start justify-between gap-4 lg:flex-row lg:gap-20 2xl:gap-40">
+      <div className="mx-auto flex max-w-[1568px] flex-col items-center justify-between gap-4 md:gap-10 lg:flex-row lg:gap-20 2xl:gap-40">
         <Image
           src={data.contactImage}
-          width={1200}
-          height={1200}
+          width={2200}
+          height={2200}
           alt="Introduction section of wimbee GIF"
-          className="h-[808px] flex-1 rounded-custom"
+          className="h-80 flex-1 rounded-custom lg:h-[520px] 2xl:h-[808px]"
         />
 
         <div className="flex-1">

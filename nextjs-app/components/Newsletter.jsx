@@ -25,7 +25,7 @@ async function Newsletter() {
           </li>
         ))}
       </ul>
-      <form className="max-w-[720px]">
+      <form className="lg:max-w-[720px]">
         <h2 className="mb-6 max-w-lg text-lg font-medium text-primary-800 lg:text-3xl">
           {data.title}
         </h2>
@@ -33,14 +33,14 @@ async function Newsletter() {
           <label className="mb-6 text-xs uppercase lg:text-base">
             {data.labelText}
           </label>
-          <div className="flex items-center">
+          <div className="flex flex-wrap items-center gap-4">
             <input
               type="email"
               placeholder={data.placeholderText}
               className="flex-1 bg-inherit text-lg font-medium lg:text-3xl"
             />
 
-            <Button className="rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-[#97CAFE]/70 lg:text-lg">
+            <Button className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-[#88b6e5] lg:p-1 lg:text-lg">
               {data.buttonText}
             </Button>
           </div>
