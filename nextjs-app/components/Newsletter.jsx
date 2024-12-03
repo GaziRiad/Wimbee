@@ -12,7 +12,7 @@ async function Newsletter() {
   if (!data) return <p>Loading...</p>;
 
   return (
-    <section className="mx-auto flex max-w-[1568px] flex-col-reverse justify-between gap-8 px-4 pb-20 pt-12 lg:flex-row lg:items-center lg:gap-0">
+    <section className="mx-auto flex max-w-[1568px] flex-col-reverse justify-between gap-8 px-4 py-8 lg:flex-row lg:items-center lg:gap-0 lg:pb-20 lg:pt-12">
       <ul className="flex flex-col gap-2 text-lg">
         {data.socials.map((social, index) => (
           <li key={index}>
@@ -30,7 +30,7 @@ async function Newsletter() {
           {data.title}
         </h2>
         <div className="flex flex-col bg-light-300 p-2 text-[#76848F]">
-          <label className="mb-6 text-sm uppercase lg:text-base">
+          <label className="mb-6 text-xs uppercase lg:text-base">
             {data.labelText}
           </label>
           <div className="flex items-center">
@@ -40,7 +40,7 @@ async function Newsletter() {
               className="flex-1 bg-inherit text-lg font-medium lg:text-3xl"
             />
 
-            <Button className="rounded-custom bg-[#97CAFE] p-1 text-sm text-primary-700 hover:bg-[#97CAFE]/70 lg:text-lg">
+            <Button className="rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-[#97CAFE]/70 lg:text-lg">
               {data.buttonText}
             </Button>
           </div>

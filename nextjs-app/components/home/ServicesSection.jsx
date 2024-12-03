@@ -24,7 +24,7 @@ const SERVICES = [
 
 function ServicesSection({ content }) {
   return (
-    <section className="mx-auto max-w-[1568px] px-4 pb-20 pt-12">
+    <section className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">
       <div className="mb-12 flex flex-col items-start justify-between lg:mb-28 lg:flex-row">
         <Tag>{content.tag}</Tag>
         <h2 className="mt-8 max-w-5xl text-2xl text-primary-600 lg:mt-0 lg:w-2/3 lg:text-3xl 2xl:text-[40px] 2xl:leading-[117.647%]">

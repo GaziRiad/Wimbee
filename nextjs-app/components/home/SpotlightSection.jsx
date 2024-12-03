@@ -12,7 +12,7 @@ async function SpotlightSection() {
   if (!data) return <p>Loading...</p>;
 
   return (
-    <section className="bg-primary-800 px-4 pb-20 pt-10 text-light-200">
+    <section className="bg-primary-800 px-4 py-8 text-light-200 lg:pb-20 lg:pt-10">
       <div className="mx-auto max-w-[1568px]">
         <div className="mb-4 flex flex-col items-start justify-between lg:mb-10 lg:flex-row">
           <Tag bg="light">{data.tag}</Tag>

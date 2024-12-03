@@ -3,7 +3,7 @@ import Tag from "../Tag";
 
 function SectorsSection({ content }) {
   return (
-    <section className="bg-primary-800 px-4 pb-20 pt-12 text-light-200">
+    <section className="bg-primary-800 px-4 py-8 text-light-200 lg:pb-20 lg:pt-12">
       <div className="mx-auto max-w-[1568px]">
         <div className="mb-16 flex flex-col items-start justify-between lg:mb-28 lg:flex-row">
           <Tag bg="light">{content.tag}</Tag>
