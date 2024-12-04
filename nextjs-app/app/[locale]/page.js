@@ -14,6 +14,7 @@ import Newsletter from "@/components/Newsletter";
 import InfoSection from "@/components/InfoSection";
 import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
+import NavigationWrapper from "@/components/NavigationWrapper";
 
 export const revalidate = 2592000; // 30 days in seconds
 
@@ -52,7 +53,7 @@ export default async function Home({ params: { locale } }) {
           className={`min-h-screen bg-cover bg-center`}
           style={{ backgroundImage: `url(${data.hero.backgroundImageUrl})` }}
         >
-          <Navigation />
+          <NavigationWrapper />
           <Hero title={data?.hero.title} />
         </div>
         <LogoCarousel logos={data?.partners?.logos} />

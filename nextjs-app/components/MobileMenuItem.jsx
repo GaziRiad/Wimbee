@@ -24,7 +24,7 @@ export function MobileMenuItem({ item }) {
                     item.background === "light"
                       ? "bg-primary-800"
                       : "bg-primary-400"
-                  } hidden size-4 rounded-full group-hover:inline-block`}
+                  } size-4 rounded-full opacity-0 transition-all group-hover:opacity-100`}
                 />
               </Link>
             </li>

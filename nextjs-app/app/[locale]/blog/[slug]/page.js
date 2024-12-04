@@ -1,8 +1,8 @@
-import Article from "@/components/blog/Article";
 import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
-import Navigation from "@/components/Navigation";
+import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
+import SingleContent from "@/components/SingleContent";
 import { sanityFetch } from "@/sanity/client";
 import { allSlugsquery, singlearticlequery } from "@/sanity/groq";
 
@@ -29,8 +29,8 @@ async function page({ params: { locale, slug } }) {
   return (
     <main>
       <div className="bg-light-300">
-        <Navigation />
-        <Article post={post} />
+        <NavigationWrapper />
+        <SingleContent content={post} />
       </div>
       <Newsletter />
       <InfoSection />

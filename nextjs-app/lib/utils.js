@@ -51,7 +51,7 @@ export const myPortableTextComponents = {
     h1: ({ children, node }) => (
       <h1
         id={node?._key}
-        className="mb-10 font-main text-2xl font-medium text-primary-800"
+        className="mb-8 max-w-5xl text-5xl text-primary-800 lg:mb-10 lg:text-7xl 2xl:mb-20"
       >
         {children}
       </h1>

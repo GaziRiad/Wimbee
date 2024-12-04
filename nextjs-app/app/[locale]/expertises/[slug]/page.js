@@ -1,8 +1,10 @@
-import Article from "@/components/blog/Article";
 import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
-import Navigation from "@/components/Navigation";
+import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
+import SingleContent from "@/components/SingleContent";
+import { sanityFetch } from "@/sanity/client";
+import { singleExpertiseQuery } from "@/sanity/groq";
 
 export const revalidate = 2592000; // 30 days in seconds
 
@@ -19,17 +21,19 @@ export const revalidate = 2592000; // 30 days in seconds
 
 async function page({ params: { locale, slug } }) {
   console.log(slug);
-  // const post = await sanityFetch({
-  //   query: singlearticlequery,
-  //   qParams: { slug },
-  //   tags: ["post"],
-  // });
+  const expertise = await sanityFetch({
+    query: singleExpertiseQuery,
+    qParams: { slug },
+    tags: ["expertise"],
+  });
+
+  // console.log(expertise);
 
   return (
     <main>
       <div className="bg-light-300">
-        <Navigation />
-        {/* <Article  /> */}
+        <NavigationWrapper />
+        <SingleContent content={expertise} />
       </div>
       <Newsletter />
       <InfoSection />

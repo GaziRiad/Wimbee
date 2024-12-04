@@ -27,7 +27,7 @@ export function DesktopMenuItem({ item }) {
       <DropdownMenuContent
         align="start"
         alignOffset={-5}
-        className="flex items-end gap-6 p-4"
+        className="flex items-start gap-6 p-4"
       >
         <div className="flex-1">
           <DropdownMenuLabel className="font-main text-xl font-medium text-primary-800">
@@ -41,15 +41,15 @@ export function DesktopMenuItem({ item }) {
             className="mt-2 h-48 w-48 object-cover"
           />
         </div>
-        <div className="flex w-80 flex-col text-primary-800">
+        <div className="flex flex-col text-primary-800">
           {item.items.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
-              className="group flex w-full items-center justify-between border-b border-light-300 py-5 text-xl"
+              className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-5 text-xl"
             >
               <span>{subItem.label}</span>
-              <span className="hidden size-4 rounded-full bg-primary-800 group-hover:inline-block" />
+              <span className="size-4 rounded-full bg-primary-800 opacity-0 transition-all group-hover:opacity-100" />
             </Link>
           ))}
         </div>
