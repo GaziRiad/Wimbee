@@ -34,13 +34,13 @@ function ServicesSection({ content }) {
 
       <div className="flex flex-col items-start gap-6 lg:flex-row">
         {content.hubs.map((service, index) => (
-          <div key={index}>
+          <div key={index} className="min-h-full">
             <Image
               src={service.imageUrl}
               alt={`Gif image of ${service.title} from wimbee`}
               width={300}
               height={300}
-              className="mb-4 h-full w-full"
+              className="mb-4 min-h-full w-full"
             />
             <p className="text-lg font-medium uppercase text-primary-800">
               {service.title}

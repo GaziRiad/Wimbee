@@ -31,7 +31,7 @@ export default function LanguageChanger() {
       router.push("/" + newLocale + currentPathname);
     } else {
       router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
+        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`),
       );
     }
 
@@ -39,22 +39,22 @@ export default function LanguageChanger() {
   };
 
   return (
-    <div className="p-0.5 h-[34px] bg-white w-fit flex items-center gap-0.5 rounded-[4px]">
+    <div className="hidden h-[34px] w-fit items-center gap-0.5 rounded-[4px] bg-white p-0.5 lg:flex">
       <button
         onClick={() => handleChange("en")}
-        className={`p-1 rounded-[4px] ${
+        className={`rounded-[4px] p-1 ${
           currentLocale === "en" ? "bg-[#97CAFE]" : ""
         }`}
       >
-        <Image src={england} className=" w-6 h-4" alt="united kingdoms flag" />
+        <Image src={england} className="h-4 w-6" alt="united kingdoms flag" />
       </button>
       <button
         onClick={() => handleChange("fr")}
-        className={`p-1 rounded-[4px] ${
+        className={`rounded-[4px] p-1 ${
           currentLocale === "fr" ? "bg-[#97CAFE]" : ""
         }`}
       >
-        <Image src={france} className=" w-6 h-4" alt="France flag" />
+        <Image src={france} className="h-4 w-6" alt="France flag" />
       </button>
     </div>
   );
