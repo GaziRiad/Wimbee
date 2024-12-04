@@ -9,6 +9,7 @@ import spotlight from './spotlight'
 import home from './home'
 import boosters from './boosters'
 import blog from './blog'
+import expertise from './expertise'
 
 export const schemaTypes = [
   home,
@@ -21,5 +22,6 @@ export const schemaTypes = [
   post,
   author,
   category,
+  expertise,
   blockContent,
 ]

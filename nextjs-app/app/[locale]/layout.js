@@ -31,6 +31,17 @@ export const modernGothic = localFont({
   variable: "--font-modern-gothic",
 });
 
+export const modernGothicMono = localFont({
+  src: [
+    {
+      path: "../fonts/ModernGothic/ModernGothicMono-Medium.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-modern-gothic-mono",
+});
+
 export const metadata = {
   title: "Wimbee",
   description: "Wimbee is a digital AI agency",
@@ -44,7 +55,7 @@ export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale} dir={dir(locale)}>
       <body
-        className={`${modernGothic.variable} bg-light-200 font-main antialiased`}
+        className={`${modernGothic.variable} ${modernGothicMono.variable} bg-light-200 font-main antialiased`}
       >
         {children}
       </body>

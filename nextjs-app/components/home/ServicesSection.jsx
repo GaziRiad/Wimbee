@@ -42,7 +42,7 @@ function ServicesSection({ content }) {
               height={300}
               className="mb-4 min-h-full w-full"
             />
-            <p className="text-lg font-medium uppercase text-primary-800">
+            <p className="font-mono text-lg uppercase text-primary-800">
               {service.title}
             </p>
             <p className="text-lg text-primary-500">{service.description}</p>

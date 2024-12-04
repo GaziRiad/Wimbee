@@ -37,7 +37,7 @@ async function page({ params: { locale } }) {
                   height={300}
                   className="mb-4 h-[720px] w-full"
                 />
-                <p className="text-lg font-medium uppercase text-[#0F6FFF]">
+                <p className="font-mono text-lg uppercase text-[#0F6FFF]">
                   {product.name}
                 </p>
                 <p className="text-lg text-primary-500">
