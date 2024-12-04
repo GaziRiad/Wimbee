@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
 import InfoSection from "@/components/InfoSection";
-import Navigation from "@/components/Navigation";
+import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import { sanityFetch } from "@/sanity/client";
 import { blogPageQuery } from "@/sanity/groq";
@@ -11,7 +11,7 @@ export const revalidate = 2592000; // 30 days in seconds
 async function page({ params: { locale } }) {
   const data = await sanityFetch({
     query: blogPageQuery,
-    tags: ["post"],
+    tags: ["post", "blog"],
   });
 
   const content = {
@@ -23,7 +23,7 @@ async function page({ params: { locale } }) {
   return (
     <main>
       <div className="bg-light-300">
-        <Navigation />
+        <NavigationWrapper />
         <SplitSection content={content} flipped />
       </div>
       <Newsletter />

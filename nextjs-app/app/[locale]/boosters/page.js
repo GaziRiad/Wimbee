@@ -4,10 +4,10 @@ import Newsletter from "@/components/Newsletter";
 import Image from "next/image";
 
 import gif from "../../../public/service1.gif";
-import Navigation from "@/components/Navigation";
 import Tag from "@/components/Tag";
 import { sanityFetch } from "@/sanity/client";
 import { boostersquery } from "@/sanity/groq";
+import NavigationWrapper from "@/components/NavigationWrapper";
 
 async function page({ params: { locale } }) {
   const data = await sanityFetch({
@@ -18,7 +18,7 @@ async function page({ params: { locale } }) {
   return (
     <main>
       <section className="bg-light-300">
-        <Navigation />
+        <NavigationWrapper />
         <div className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">
           <div className="mb-8 flex items-start justify-between 2xl:mb-12">
             <Tag>{data.tag}</Tag>
