@@ -39,7 +39,7 @@ export default function LanguageChanger() {
   };
 
   return (
-    <div className="hidden h-[34px] w-fit items-center gap-0.5 rounded-[4px] bg-white p-0.5 lg:flex">
+    <div className="flex h-[34px] w-fit items-center gap-0.5 rounded-[4px] bg-white p-0.5">
       <button
         onClick={() => handleChange("en")}
         className={`rounded-[4px] p-1 ${

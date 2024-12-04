@@ -11,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import { useState } from "react";
 
 import { IoClose } from "react-icons/io5";
@@ -100,7 +99,9 @@ function Navigation() {
       </nav>
 
       <nav className="flex items-center gap-2">
-        <LanguageChanger />
+        <div className="hidden lg:block">
+          <LanguageChanger />
+        </div>
         <ContactBtn />
         <button
           className="flex h-[34px] items-center rounded-[4px] bg-white px-2 text-primary-700 lg:hidden"
@@ -113,12 +114,16 @@ function Navigation() {
             {Menu.map((item, index) =>
               item.items ? (
                 <div
+                  key={index}
                   className={`${item.background === "light" ? "bg-white text-primary-800" : "bg-primary-800 text-primary-400"} rounded-custom px-3 py-2`}
                 >
                   <p className="text-xs">{item.title}</p>
                   <ul>
                     {item.items.map((link, index) => (
-                      <li key={index} className="py-3">
+                      <li
+                        key={index}
+                        className="border-b border-primary-800 py-3"
+                      >
                         <Link
                           href={link.href}
                           className="group flex items-center justify-between"
@@ -133,11 +138,19 @@ function Navigation() {
                   </ul>
                 </div>
               ) : (
-                <Link href={item.href} className="block py-3">
-                  {item.title}
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="group flex items-center justify-between border-b border-primary-800 py-3"
+                >
+                  <span>{item.title}</span>
+                  <span className="hidden size-4 rounded-full bg-primary-800 group-hover:inline-block" />
                 </Link>
               ),
             )}
+            <div className="mt-2 flex items-center justify-end">
+              <LanguageChanger />
+            </div>
           </div>
         )}
       </nav>
