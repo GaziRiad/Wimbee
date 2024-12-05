@@ -1,3 +1,4 @@
+import Article from "@/components/blog/Article";
 import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
@@ -30,7 +31,7 @@ async function page({ params: { locale, slug } }) {
     <main>
       <div className="bg-light-300">
         <NavigationWrapper />
-        <SingleContent content={post} />
+        <Article content={post} />
       </div>
       <Newsletter />
       <InfoSection />

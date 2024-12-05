@@ -20,20 +20,17 @@ export const revalidate = 2592000; // 30 days in seconds
 // }
 
 async function page({ params: { locale, slug } }) {
-  console.log(slug);
   const expertise = await sanityFetch({
     query: singleExpertiseQuery,
     qParams: { slug },
     tags: ["expertise"],
   });
 
-  // console.log(expertise);
-
   return (
     <main>
       <div className="bg-light-300">
         <NavigationWrapper />
-        <SingleContent content={expertise} />
+        <SingleContent name="Expertises" content={expertise} />
       </div>
       <Newsletter />
       <InfoSection />

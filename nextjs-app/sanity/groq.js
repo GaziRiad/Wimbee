@@ -213,7 +213,11 @@ export const expertisesquery = groq`*[_type == "expertise"] {
 export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current == $slug][0] {
   title,
   "slug": slug.current,
-  body
+  body,
+  "allExpertises": *[_type == "expertise"] {
+    title,
+    "slug": slug.current
+  }
 }`;
 
 // For generatestaticparams
