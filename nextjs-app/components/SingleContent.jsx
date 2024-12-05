@@ -9,7 +9,7 @@ function SingleContent({ content, name = "" }) {
         <div className="sticky top-4 hidden self-start lg:block">
           <div className="rounded-custom bg-primary-700 p-4">
             <p className="mb-6 font-mono uppercase text-light-300">{name}</p>
-            <nav className="flex min-w-72 flex-col gap-2">
+            <nav className="flex min-w-72 flex-col gap-1">
               {content.allExpertises.map((expertise, index) => (
                 <Link
                   key={index}
