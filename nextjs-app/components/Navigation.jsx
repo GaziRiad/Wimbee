@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import Logo from "./Logo";
 import LanguageChanger from "./LanguageChanger";

@@ -5,7 +5,7 @@ export function MobileMenuItem({ item }) {
     return (
       <div
         className={`${
-          item.background === "light"
+          item.type === "expertises"
             ? "bg-white text-primary-800"
             : "bg-primary-800 text-primary-400"
         } rounded-custom px-3 py-2`}
@@ -21,7 +21,7 @@ export function MobileMenuItem({ item }) {
                 <span>{link.label}</span>
                 <span
                   className={`${
-                    item.background === "light"
+                    item.type === "expertises"
                       ? "bg-primary-800"
                       : "bg-primary-400"
                   } size-4 rounded-full opacity-0 transition-all group-hover:opacity-100`}

@@ -27,26 +27,28 @@ export function DesktopMenuItem({ item }) {
       <DropdownMenuContent
         align="start"
         alignOffset={-5}
-        className="flex items-start gap-6 p-4"
+        className={`flex items-start p-4 ${item.type === "sectors" ? "flex-col" : "gap-6"}`}
       >
         <div className="flex-1">
-          <DropdownMenuLabel className="font-main text-xl font-medium text-primary-800">
+          <DropdownMenuLabel className="px-0 font-main text-xl font-medium text-primary-800">
             <span>{item.title}</span>
           </DropdownMenuLabel>
-          <Image
-            src="/introGif.gif"
-            width={300}
-            height={300}
-            alt="wimbee GIF"
-            className="mt-2 h-48 w-48 object-cover"
-          />
+          {item.type === "expertises" && (
+            <Image
+              src="/introGif.gif"
+              width={300}
+              height={300}
+              alt="wimbee GIF"
+              className="mt-2 h-48 w-48 object-cover"
+            />
+          )}
         </div>
         <div className="flex flex-col text-primary-800">
           {item.items.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
-              className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-5 text-xl"
+              className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-3 text-xl"
             >
               <span>{subItem.label}</span>
               <span className="size-4 rounded-full bg-primary-800 opacity-0 transition-all group-hover:opacity-100" />

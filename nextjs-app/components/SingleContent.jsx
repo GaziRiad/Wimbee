@@ -14,7 +14,7 @@ function SingleContent({ content, name = "" }) {
                 <Link
                   key={index}
                   href={`/expertises/${expertise.slug}`}
-                  className={`rounded-custom p-2 transition-all hover:bg-primary-800 hover:text-primary-400 ${
+                  className={`text rounded-custom p-2 text-sm transition-all hover:bg-primary-800 hover:text-primary-400 2xl:text-base ${
                     content.title === expertise.title
                       ? "bg-primary-800 text-primary-400"
                       : "bg-primary-700 text-[#97CAFE]"

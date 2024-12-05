@@ -11,7 +11,7 @@ async function NavigationWrapper() {
   const menu = [
     {
       title: "Expertises",
-      background: "light",
+      type: "expertises",
       items:
         expertises?.map((item) => ({
           label: item.title,
@@ -20,7 +20,7 @@ async function NavigationWrapper() {
     },
     {
       title: "Sectors",
-      background: "dark",
+      type: "sectors",
       items:
         expertises?.map((item) => ({
           label: item.title,
