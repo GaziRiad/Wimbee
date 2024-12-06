@@ -28,6 +28,7 @@ export const modernGothic = localFont({
       style: "normal",
     },
   ],
+  display: "swap",
   variable: "--font-modern-gothic",
 });
 
