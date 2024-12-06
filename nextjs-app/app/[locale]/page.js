@@ -40,7 +40,7 @@ export default async function Home({ params: { locale } }) {
     posts,
   };
 
-  if (!data) return <p>Loading...</p>;
+  if (!data) return null;
 
   return (
     <TranslationsProvider
@@ -50,12 +50,12 @@ export default async function Home({ params: { locale } }) {
     >
       <main>
         <div
-          className={`hero-section min-h-screen bg-cover bg-center`}
+          className={`hero-section h-screen bg-cover bg-center`}
           style={{ backgroundImage: `url(${data.hero.backgroundImageUrl})` }}
         >
           <NavigationWrapper />
-          <section className="mx-auto flex max-w-[1568px] px-4 pt-44 2xl:pt-80">
-            <h1 className="max-w-xl text-4xl leading-[116.667%] text-light-200 lg:text-[52px] 2xl:max-w-5xl 2xl:text-7xl">
+          <section className="mx-auto flex h-full max-w-[1568px] items-center px-4">
+            <h1 className="text-titleSmall lg:text-titleMedium 2xl:text-titleLarge max-w-xl text-light-200 2xl:max-w-5xl">
               {data?.hero.title}
             </h1>
           </section>

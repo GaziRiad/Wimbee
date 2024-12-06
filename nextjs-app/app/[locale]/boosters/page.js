@@ -15,6 +15,8 @@ async function page({ params: { locale } }) {
     tags: ["boosters"],
   });
 
+  if (!data) return null;
+
   return (
     <main>
       <section className="bg-light-300">
@@ -24,7 +26,7 @@ async function page({ params: { locale } }) {
             <Tag>{data.tag}</Tag>
           </div>
 
-          <h1 className="mb-8 text-4xl leading-[116.667%] text-primary-800 lg:mb-14 lg:text-[52px] 2xl:mb-24 2xl:text-7xl">
+          <h1 className="text-titleSmall lg:text-titleMedium 2xl:text-titleLarge mb-8 text-primary-800 lg:mb-14 2xl:mb-24">
             {data.title}
           </h1>
           <div className="flex flex-col items-start gap-6 lg:flex-row">

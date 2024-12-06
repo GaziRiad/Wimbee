@@ -20,6 +20,8 @@ async function page({ params: { locale } }) {
     posts: data.posts,
   };
 
+  if (!data) return null;
+
   return (
     <main>
       <div className="bg-light-300">

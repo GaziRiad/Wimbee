@@ -12,6 +12,11 @@ module.exports = {
         main: ["var(--font-modern-gothic)"],
         mono: ["var(--font-modern-gothic-mono)"],
       },
+      fontSize: {
+        titleLarge: ["72px", "84px"],
+        titleMedium: ["52px", "58px"],
+        titleSmall: ["48px", "52px"],
+      },
       colors: {
         primary: {
           400: "#A8E9EF",

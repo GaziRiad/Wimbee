@@ -26,6 +26,8 @@ async function page({ params: { locale, slug } }) {
     tags: ["expertise"],
   });
 
+  if (!expertise) return null;
+
   return (
     <main>
       <div className="bg-light-300">

@@ -15,6 +15,8 @@ async function page({ params: { locale, slug } }) {
     tags: ["sector"],
   });
 
+  if (!sector) return null;
+
   return (
     <main>
       <div className="bg-light-300">
