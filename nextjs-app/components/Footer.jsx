@@ -3,18 +3,18 @@ import Link from "next/link";
 import { sanityFetch } from "@/sanity/client";
 import { footerquery } from "@/sanity/groq";
 
-const transformFooterData = (data) => {
-  // Extract all keys except 'logoUrl'
-  const { logoUrl, ...sections } = data;
+// const transformFooterData = (data) => {
+//   // Extract all keys except 'logoUrl'
+//   const { logoUrl, ...sections } = data;
 
-  // Convert the remaining sections into an array
-  const sectionsArray = Object.keys(sections).map((key) => ({
-    section: key,
-    ...sections[key],
-  }));
+//   // Convert the remaining sections into an array
+//   const sectionsArray = Object.keys(sections).map((key) => ({
+//     section: key,
+//     ...sections[key],
+//   }));
 
-  return sectionsArray;
-};
+//   return sectionsArray;
+// };
 
 async function Footer() {
   const data = await sanityFetch({
@@ -23,7 +23,15 @@ async function Footer() {
   });
 
   if (!data) return null;
-  const transformedData = transformFooterData(data);
+  // const transformedData = transformFooterData(data);
+
+  const orderedFooter = [
+    { key: "services", ...data.services },
+    { key: "customers", ...data.customers },
+    { key: "news", ...data.news },
+    { key: "company", ...data.company },
+    { key: "socials", ...data.socials },
+  ];
 
   return (
     <section className="bg-primary-700 px-4 py-8 text-light-200 lg:py-20">
@@ -37,7 +45,7 @@ async function Footer() {
             className="max-w-40"
           />
         </Link>
-        {transformedData.map((menu, index) => (
+        {orderedFooter.map((menu, index) => (
           <div key={index}>
             <p className="mb-4 font-medium uppercase text-primary-500 2xl:mb-10">
               {menu.title}
