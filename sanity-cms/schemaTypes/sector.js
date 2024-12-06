@@ -1,13 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'expertise',
-  title: 'Expertise',
+  name: 'sector',
+  title: 'Sector',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Experties Title',
+      title: 'Sector Title',
       type: 'string',
     }),
     defineField({
@@ -33,6 +33,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',
+      initialValue: () => new Date().toISOString(),
     }),
   ],
 })

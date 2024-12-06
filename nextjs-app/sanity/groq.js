@@ -205,16 +205,32 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
   }
 }`;
 
-export const expertisesquery = groq`*[_type == "expertise"] {
+export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true] | order(publishedAt asc) {
   title,
   "slug": slug.current
 }`;
 
-export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current == $slug][0] {
+export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current == $slug][0]  {
   title,
   "slug": slug.current,
   body,
-  "allExpertises": *[_type == "expertise"] {
+  "allLinks": *[_type == "expertise"] | order(publishedAt asc)  {
+    title,
+    "slug": slug.current
+  }
+}`;
+
+//
+export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true] | order(publishedAt asc) {
+  title,
+  "slug": slug.current
+}`;
+
+export const singleSectoreQuery = groq`*[_type == "sector" && slug.current == $slug][0]  {
+  title,
+  "slug": slug.current,
+  body,
+  "allLinks": *[_type == "sector"] | order(publishedAt asc)  {
     title,
     "slug": slug.current
   }

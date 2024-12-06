@@ -1,4 +1,4 @@
-import { expertisesquery } from "@/sanity/groq";
+import { expertisesquery, sectorsQuery } from "@/sanity/groq";
 import { sanityFetch } from "@/sanity/client";
 import Navigation from "./Navigation";
 
@@ -6,6 +6,11 @@ async function NavigationWrapper() {
   const expertises = await sanityFetch({
     query: expertisesquery,
     tags: ["expertise"],
+  });
+
+  const sectors = await sanityFetch({
+    query: sectorsQuery,
+    tags: ["sector"],
   });
 
   const menu = [
@@ -22,7 +27,7 @@ async function NavigationWrapper() {
       title: "Sectors",
       type: "sectors",
       items:
-        expertises?.map((item) => ({
+        sectors?.map((item) => ({
           label: item.title,
           href: `/sectors/${item.slug}`,
         })) || [],

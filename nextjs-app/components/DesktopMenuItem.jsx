@@ -24,7 +24,7 @@ export function DesktopMenuItem({ item }) {
       <DropdownMenuTrigger className="m-1 rounded-[4px] px-2 text-lg font-medium text-primary-800 outline-none transition-all hover:bg-primary-800 hover:text-primary-400 data-[state=open]:bg-primary-800 data-[state=open]:text-primary-400">
         {item.title}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" alignOffset={-5} className="p-4">
+      <DropdownMenuContent align="start" alignOffset={-5} className="mt-1 p-4">
         <DropdownMenuLabel className="px-0 font-main text-xl font-medium text-primary-800">
           <span>{item.title}</span>
         </DropdownMenuLabel>
@@ -47,7 +47,7 @@ export function DesktopMenuItem({ item }) {
               <Link
                 key={index}
                 href={subItem.href}
-                className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-3 text-xl"
+                className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-5 text-xl"
               >
                 <span>{subItem.label}</span>
                 <span className="size-4 rounded-full bg-primary-800 opacity-0 transition-all group-hover:opacity-100" />

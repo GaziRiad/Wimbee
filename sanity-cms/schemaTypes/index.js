@@ -10,6 +10,7 @@ import home from './home'
 import boosters from './boosters'
 import blog from './blog'
 import expertise from './expertise'
+import sector from './sector'
 
 export const schemaTypes = [
   home,
@@ -23,5 +24,6 @@ export const schemaTypes = [
   author,
   category,
   expertise,
+  sector,
   blockContent,
 ]
