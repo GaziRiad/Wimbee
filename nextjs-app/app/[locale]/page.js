@@ -29,14 +29,9 @@ export default async function Home({ params: { locale } }) {
     tags: ["post"],
   });
 
-  const blogContent = {
-    tag: data?.blog.tag,
-    image: data?.blog.imageUrl,
-    posts,
-  };
   const casestudiesContent = {
     tag: data.caseStudies.tag,
-    image: data.caseStudies.imageUrl,
+    imageUrl: data.caseStudies.imageUrl,
     posts,
   };
 
@@ -66,7 +61,7 @@ export default async function Home({ params: { locale } }) {
         <ServicesSection content={data?.services} />
         <SplitSection content={casestudiesContent} />
         <SpotlightSection />
-        <SplitSection content={blogContent} flipped={true} />
+        <SplitSection content={data.blog} flipped={true} />
         <Newsletter />
         <InfoSection />
         <Footer />

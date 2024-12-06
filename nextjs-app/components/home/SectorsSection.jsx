@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Tag from "../Tag";
+import Link from "next/link";
 
 function SectorsSection({ content }) {
   return (
@@ -14,23 +15,17 @@ function SectorsSection({ content }) {
 
         <div className="flex flex-col items-center justify-between gap-6 lg:flex-row lg:gap-20">
           <ul className="w-full text-3xl font-medium text-primary-500 2xl:w-[40%]">
-            <li className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400">
-              <span>Life Sciences</span>
-              <span className="size-4 rounded-full bg-primary-400 opacity-0 transition-all group-hover:opacity-100" />
-            </li>
-
-            <li className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400">
-              <span>Life Sciences</span>
-              <span className="size-4 rounded-full bg-primary-400 opacity-0 transition-all group-hover:opacity-100" />
-            </li>
-            <li className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400">
-              <span>Life Sciences</span>
-              <span className="size-4 rounded-full bg-primary-400 opacity-0 transition-all group-hover:opacity-100" />
-            </li>
-            <li className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400">
-              <span>Life Sciences</span>
-              <span className="size-4 rounded-full bg-primary-400 opacity-0 transition-all group-hover:opacity-100" />
-            </li>
+            {content.allSectors.map((sector, index) => (
+              <li key={index}>
+                <Link
+                  href={`/sectors/${sector.slug}`}
+                  className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400"
+                >
+                  <span>{sector.title}</span>
+                  <span className="size-4 rounded-full bg-primary-400 opacity-0 transition-all group-hover:opacity-100" />
+                </Link>
+              </li>
+            ))}
           </ul>
           <Image
             src={content.imageUrl}

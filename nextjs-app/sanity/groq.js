@@ -28,7 +28,11 @@ hero {
   sectors {
     tag,
     title,
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    "allSectors": *[_type == "sector"] | order(publishedAt asc) {
+      title,
+      "slug": slug.current
+    }
   },
   services {
     tag,
@@ -45,7 +49,13 @@ hero {
   },
   blog {
     tag,
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    "posts": *[_type == "post"] | order(publishedAt desc) {
+    title,
+    slug,
+    categories[]->,
+    summary
+  }
   },
 }`;
 
@@ -59,6 +69,24 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
   },
   seo {
     title
+  }
+}`;
+
+// Blog page query
+
+export const blogPageQuery = groq`*[_type == "blog"][0]{
+  blog {
+    tag,
+    "imageUrl": image.asset->url
+  },
+  seo {
+    title
+  },
+  "posts": *[_type == "post"] | order(publishedAt desc) {
+    title,
+    slug,
+    categories[]->,
+    summary
   }
 }`;
 
@@ -187,24 +215,6 @@ export const singlearticlequery = groq`*[_type == "post" && slug.current == $slu
       }
 `;
 
-// Blog page query
-
-export const blogPageQuery = groq`*[_type == "blog"][0]{
-  blog {
-    tag,
-    "imageUrl": image.asset->url
-  },
-  seo {
-    title
-  },
-  "posts": *[_type == "post"] | order(publishedAt desc) {
-    title,
-    slug,
-    categories[]->,
-    summary
-  }
-}`;
-
 export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true] | order(publishedAt asc) {
   title,
   "slug": slug.current
@@ -237,6 +247,14 @@ export const singleSectoreQuery = groq`*[_type == "sector" && slug.current == $s
 }`;
 
 // For generatestaticparams
-export const allSlugsquery = groq`*[_type == "post"] {
+export const allBlogSlugsquery = groq`*[_type == "post"] {
+        "slug": slug.current
+      }`;
+
+export const allExpertisesSlugsquery = groq`*[_type == "expertise"] {
+        "slug": slug.current
+      }`;
+
+export const allSectorsSlugsquery = groq`*[_type == "sector"] {
         "slug": slug.current
       }`;

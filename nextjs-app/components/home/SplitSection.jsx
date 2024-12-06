@@ -61,7 +61,7 @@ function SplitSection({ content, flipped = false }) {
             ))}
           </Accordion>
           <Image
-            src={content.image}
+            src={content.imageUrl}
             width={600}
             height={600}
             alt="Introduction section of wimbee GIF"

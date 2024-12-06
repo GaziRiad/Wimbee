@@ -3,15 +3,14 @@ import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
-import SingleContent from "@/components/SingleContent";
 import { sanityFetch } from "@/sanity/client";
-import { allSlugsquery, singlearticlequery } from "@/sanity/groq";
+import { allBlogSlugsquery, singlearticlequery } from "@/sanity/groq";
 
 export const revalidate = 2592000; // 30 days in seconds
 
 export async function generateStaticParams() {
   const slugs = await sanityFetch({
-    query: allSlugsquery,
+    query: allBlogSlugsquery,
     tags: ["post"],
   });
 

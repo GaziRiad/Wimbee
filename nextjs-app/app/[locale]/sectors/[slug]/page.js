@@ -4,9 +4,20 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import SingleContent from "@/components/SingleContent";
 import { sanityFetch } from "@/sanity/client";
-import { singleSectoreQuery } from "@/sanity/groq";
+import { allSectorsSlugsquery, singleSectoreQuery } from "@/sanity/groq";
 
 export const revalidate = 2592000; // 30 days in seconds
+
+export async function generateStaticParams() {
+  const slugs = await sanityFetch({
+    query: allSectorsSlugsquery,
+    tags: ["sector"],
+  });
+
+  return slugs.map((slug) => ({
+    slug: slug.current, // Adjust to match the returned slug field
+  }));
+}
 
 async function page({ params: { locale, slug } }) {
   const sector = await sanityFetch({
