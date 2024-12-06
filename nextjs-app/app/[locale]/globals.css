@@ -23,3 +23,16 @@
     --radius: 0.5rem;
   }
 }
+
+/* Scroll bar for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283139;
+}
+
+::-webkit-scrollbar-track {
+  /* background: #262626; */
+}

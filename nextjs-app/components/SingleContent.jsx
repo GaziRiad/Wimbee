@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function SingleContent({ content, name = "" }) {
   return (
-    <section className="relative z-10 mx-auto max-w-[1568px] px-5 pb-28 pt-16">
+    <section className="relative z-10 mx-auto max-w-[1568px] px-5 pb-28 pt-36">
       <div className="text-primary flex items-start justify-between gap-5">
         <div className="sticky top-4 hidden self-start lg:block">
           <div className="rounded-custom bg-primary-700 p-4">
