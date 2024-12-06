@@ -18,7 +18,7 @@ function SectorsSection({ content }) {
             {content.allSectors.map((sector, index) => (
               <li key={index}>
                 <Link
-                  href={`/sectors/${sector.slug}`}
+                  href={`/sectors/${sector.slug}` || "/"}
                   className="group flex cursor-pointer items-center justify-between border-b border-primary-500 py-4 transition-all duration-300 hover:text-primary-400"
                 >
                   <span>{sector.title}</span>

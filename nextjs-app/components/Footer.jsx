@@ -22,7 +22,7 @@ async function Footer() {
     tags: ["footer"],
   });
 
-  if (!data) return <p>Loading...</p>;
+  if (!data) return null;
   const transformedData = transformFooterData(data);
 
   return (
@@ -46,7 +46,7 @@ async function Footer() {
               {menu.links.map((item, index) => (
                 <li key={index}>
                   <Link
-                    href={item.url}
+                    href={item.url || "/"}
                     className="text-light-300 transition-all hover:text-primary-500"
                   >
                     {item.title}

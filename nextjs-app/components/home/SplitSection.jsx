@@ -51,7 +51,7 @@ function SplitSection({ content, flipped = false }) {
                   </p>
 
                   <Link
-                    href={`/blog/${post.slug.current}`}
+                    href={`/blog/${post.slug.current}` || "/"}
                     className="min-w-fit text-xs uppercase text-primary-800 underline-offset-2 transition-all hover:underline"
                   >
                     Read more...

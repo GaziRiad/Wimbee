@@ -15,7 +15,7 @@ export function MobileMenuItem({ item }) {
           {item.items.map((link, index) => (
             <li key={index} className="border-b border-primary-800 py-3">
               <Link
-                href={link.href}
+                href={link.href || "/"}
                 className="group flex items-center justify-between"
               >
                 <span>{link.label}</span>
