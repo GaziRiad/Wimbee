@@ -44,7 +44,7 @@ async function InfoSection() {
         />
 
         <div className="flex-1">
-          <h2 className="mb-3 text-2xl text-light-300 lg:mb-4 lg:text-3xl 2xl:mb-6 2xl:text-[40px]">
+          <h2 className="mb-3 text-2xl text-light-300 lg:mb-4 lg:text-3xl 2xl:mb-6 2xl:text-[40px] 2xl:leading-snug">
             {data.title}
           </h2>
           <p className="mb-8 text-lg text-[#93989C] lg:mb-10 lg:text-xl 2xl:mb-20">
