@@ -1,27 +1,6 @@
 import Image from "next/image";
 import Tag from "../Tag";
 
-const SERVICES = [
-  {
-    image: "/service1.gif",
-    title: "Data & AI Hub",
-    description:
-      "Empowering businesses and individuals for an AI-driven future with tailored strategies and advanced solutions.",
-  },
-  {
-    image: "/service2.gif",
-    title: "Talent Hub",
-    description:
-      "Preparing tomorrow’s workforce by nurturing talent for the evolving business landscape.",
-  },
-  {
-    image: "/service3.gif",
-    title: "Digital Transformation Hub",
-    description:
-      "Driving innovation through cutting-edge digital solutions that ensure businesses excel in the digital age.",
-  },
-];
-
 function ServicesSection({ content }) {
   return (
     <section className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">

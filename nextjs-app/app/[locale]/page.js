@@ -23,7 +23,10 @@ const i18nNamespaces = ["home"];
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
-  const data = await sanityFetch({ query: homequery, tags: ["home"] });
+  const data = await sanityFetch({
+    query: homequery,
+    tags: ["home", "sector", "post"],
+  });
   const posts = await sanityFetch({
     query: postsquery,
     tags: ["post"],
@@ -50,7 +53,7 @@ export default async function Home({ params: { locale } }) {
         >
           <NavigationWrapper />
           <section className="mx-auto flex h-full max-w-[1568px] items-center px-4">
-            <h1 className="text-titleSmall lg:text-titleMedium 2xl:text-titleLarge max-w-xl text-light-200 2xl:max-w-5xl">
+            <h1 className="max-w-xl text-titleSmall text-light-200 lg:text-titleMedium 2xl:max-w-5xl 2xl:text-titleLarge">
               {data?.hero.title}
             </h1>
           </section>
