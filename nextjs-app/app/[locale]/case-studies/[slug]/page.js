@@ -1,38 +1,38 @@
+import Article from "@/components/blog/Article";
 import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
-import SingleContent from "@/components/SingleContent";
 import { sanityFetch } from "@/sanity/client";
-import { allSectorsSlugsquery, singleSectoreQuery } from "@/sanity/groq";
+import { singleCasestudyQuery } from "@/sanity/groq";
 
 export const revalidate = 2592000; // 30 days in seconds
 
-export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allSectorsSlugsquery,
-    tags: ["sector"],
-  });
+// export async function generateStaticParams() {
+//   const slugs = await sanityFetch({
+//     query: allBlogSlugsquery,
+//     tags: ["case-study"],
+//   });
 
-  return slugs.map((slug) => ({
-    slug: slug.current, // Adjust to match the returned slug field
-  }));
-}
+//   return slugs.map((slug) => ({
+//     slug: slug.current, // Adjust to match the returned slug field
+//   }));
+// }
 
 async function page({ params: { locale, slug } }) {
-  const sector = await sanityFetch({
-    query: singleSectoreQuery,
+  const caseStudy = await sanityFetch({
+    query: singleCasestudyQuery,
     qParams: { slug },
-    tags: ["sector"],
+    tags: ["case-study"],
   });
 
-  if (!sector) return null;
+  if (!caseStudy) return null;
 
   return (
     <main>
       <div className="bg-light-300">
         <NavigationWrapper />
-        <SingleContent type="sectors" name="Sectors" content={sector} />
+        <Article content={caseStudy} />
       </div>
       <Newsletter />
       <InfoSection />

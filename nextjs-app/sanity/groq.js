@@ -45,17 +45,23 @@ hero {
   },
   caseStudies {
     tag,
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    "items": *[_type == "case-study"] | order(publishedAt desc) {
+      title,
+      slug,
+      categories[]->,
+      summary
+    }
   },
   blog {
     tag,
     "imageUrl": image.asset->url,
-    "posts": *[_type == "post"] | order(publishedAt desc) {
-    title,
-    slug,
-    categories[]->,
-    summary
-  }
+    "items": *[_type == "post"] | order(publishedAt desc) {
+      title,
+      slug,
+      categories[]->,
+      summary
+    }
   },
 }`;
 
@@ -77,7 +83,7 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
 export const blogPageQuery = groq`*[_type == "blog"][0]{
   tag,
   "imageUrl": image.asset->url,
-  "posts": *[_type == "post"] | order(publishedAt desc) {
+  "items": *[_type == "post"] | order(publishedAt desc) {
     title,
     slug,
     categories[]->,
@@ -166,45 +172,12 @@ export const postsquery = groq`
   summary
 }
 `;
-// Get all posts (FULL DATA)
-// export const postsquery = groq`
-// *[_type == "post"] | order(publishedAt desc, _createdAt desc) {
-//   _id,
-//   _createdAt,
-//   publishedAt,
-//   mainImage {
-//     ...,
-//     "blurDataURL":asset->metadata.lqip,
-//     "ImageColor": asset->metadata.palette.dominant.background,
-//   },
-//   featured,
-//   excerpt,
-//   slug,
-//   title,
-//   author-> {
-//     _id,
-//     image,
-//     slug,
-//     name
-//   },
-//   categories[]->,
-// }
-// `;
 
 // Single Post
 export const singlearticlequery = groq`*[_type == "post" && slug.current == $slug][0] {
         title,
         slug,
         publishedAt,
-        author -> {
-          name,
-          image {
-            asset -> {
-              _id,
-              url
-            }
-          }
-        },
         categories[]->{
           title,
           slug
@@ -213,11 +186,20 @@ export const singlearticlequery = groq`*[_type == "post" && slug.current == $slu
       }
 `;
 
-export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true] | order(publishedAt asc) {
-  title,
-  "slug": slug.current
-}`;
+// Single Post
+export const singleCasestudyQuery = groq`*[_type == "case-study" && slug.current == $slug][0] {
+        title,
+        slug,
+        publishedAt,
+        categories[]->{
+          title,
+          slug
+        },
+        body
+      }
+`;
 
+// Single Expertise
 export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current == $slug][0]  {
   title,
   "slug": slug.current,
@@ -228,12 +210,7 @@ export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current 
   }
 }`;
 
-//
-export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true] | order(publishedAt asc) {
-  title,
-  "slug": slug.current
-}`;
-
+// Single Sector
 export const singleSectoreQuery = groq`*[_type == "sector" && slug.current == $slug][0]  {
   title,
   "slug": slug.current,
@@ -242,6 +219,18 @@ export const singleSectoreQuery = groq`*[_type == "sector" && slug.current == $s
     title,
     "slug": slug.current
   }
+}`;
+
+//
+export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true] | order(publishedAt asc) {
+  title,
+  "slug": slug.current
+}`;
+
+//
+export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true] | order(publishedAt asc) {
+  title,
+  "slug": slug.current
 }`;
 
 // For generatestaticparams

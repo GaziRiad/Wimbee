@@ -33,8 +33,8 @@ async function page({ params: { locale, slug } }) {
       <div className="bg-light-300">
         <NavigationWrapper />
         <SingleContent
-          name="Expertises"
           type="expertises"
+          name="Expertises"
           content={expertise}
         />
       </div>

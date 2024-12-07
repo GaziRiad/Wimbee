@@ -25,18 +25,8 @@ export default async function Home({ params: { locale } }) {
 
   const data = await sanityFetch({
     query: homequery,
-    tags: ["home", "sector", "post"],
+    tags: ["home", "sector", "post", "case-study"],
   });
-  const posts = await sanityFetch({
-    query: postsquery,
-    tags: ["post"],
-  });
-
-  const casestudiesContent = {
-    tag: data.caseStudies.tag,
-    imageUrl: data.caseStudies.imageUrl,
-    posts,
-  };
 
   if (!data) return null;
 
@@ -62,9 +52,9 @@ export default async function Home({ params: { locale } }) {
         <IntroductionSection content={data?.introduction} />
         <SectorsSection content={data?.sectors} />
         <ServicesSection content={data?.services} />
-        <SplitSection content={casestudiesContent} />
+        <SplitSection type="case-studies" content={data?.caseStudies} />
         <SpotlightSection />
-        <SplitSection content={data.blog} flipped={true} />
+        <SplitSection type="blog" content={data?.blog} flipped={true} />
         <Newsletter />
         <InfoSection />
         <Footer />

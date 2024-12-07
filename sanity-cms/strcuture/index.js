@@ -50,6 +50,7 @@ export const structure = (S) =>
       S.documentTypeListItem('post').title('Posts').icon(DocumentIcon),
       S.documentTypeListItem('author').title('Authors').icon(UserIcon),
       S.documentTypeListItem('category').title('Categories').icon(ListIcon),
+      S.documentTypeListItem('case-study').title('Case Studies').icon(DocumentIcon),
       S.documentTypeListItem('expertise').title('Expertises').icon(DocumentIcon),
       S.documentTypeListItem('sector').title('Sectors').icon(DocumentIcon),
     ])

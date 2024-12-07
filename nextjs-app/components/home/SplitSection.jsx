@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 
-function SplitSection({ content, flipped = false }) {
+function SplitSection({ content, type = "blog", flipped = false }) {
   return (
     <section className={`${flipped ? "bg-light-300" : ""}`}>
       <div className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">
@@ -29,7 +29,7 @@ function SplitSection({ content, flipped = false }) {
             defaultValue="item-0"
             className="w-full text-primary-800 2xl:w-[720px]"
           >
-            {content.posts.map((post, index) => (
+            {content.items.map((post, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
@@ -51,7 +51,7 @@ function SplitSection({ content, flipped = false }) {
                   </p>
 
                   <Link
-                    href={`/blog/${post.slug.current}` || "/"}
+                    href={`/${type}/${post.slug.current}` || "/"}
                     className="min-w-fit text-xs uppercase text-primary-800 underline-offset-2 transition-all hover:underline"
                   >
                     Read more...
