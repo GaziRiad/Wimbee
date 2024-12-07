@@ -42,6 +42,14 @@ export const structure = (S) =>
                 .title('Spotlight')
                 .id('spotlight')
                 .child(S.document().schemaType('spotlight').documentId('spotlight')),
+              S.listItem()
+                .title('Case Studies section')
+                .id('case-studies-section')
+                .child(
+                  S.document()
+                    .schemaType('case-studies-section')
+                    .documentId('case-studies-section'),
+                ),
             ]),
         ),
 

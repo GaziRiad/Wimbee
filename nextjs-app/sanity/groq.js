@@ -78,8 +78,6 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
   }
 }`;
 
-// Blog page query
-
 export const blogPageQuery = groq`*[_type == "blog"][0]{
   tag,
   "imageUrl": image.asset->url,
@@ -93,6 +91,19 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
     title
   },
 }`;
+
+export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0]{
+  tag,
+  "imageUrl": image.asset->url,
+  "items": *[_type == "case-study"] | order(publishedAt desc) {
+      title,
+      slug,
+      categories[]->,
+      summary
+    }
+}`;
+
+// Reusable sections
 
 export const contactquery = groq`*[_type == "contact"][0] {
     title,

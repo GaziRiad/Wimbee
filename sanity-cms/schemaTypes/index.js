@@ -12,11 +12,13 @@ import blog from './blog'
 import expertise from './expertise'
 import sector from './sector'
 import caseStudy from './case-study'
+import caseStudiesSection from './case-studies-section'
 
 export const schemaTypes = [
   home,
   boosters,
   blog,
+  caseStudiesSection,
   spotlight,
   contact,
   newsletter,

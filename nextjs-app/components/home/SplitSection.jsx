@@ -8,12 +8,21 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 
-function SplitSection({ content, type = "blog", flipped = false }) {
+function SplitSection({
+  content,
+  type = "blog",
+  flipped = false,
+  variant = "default",
+}) {
+  if (!content) return null;
+
   return (
-    <section className={`${flipped ? "bg-light-300" : ""}`}>
+    <section
+      className={`${variant === "light" ? "bg-light-300" : variant === "primary" ? "bg-primary-800" : ""} `}
+    >
       <div className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-12">
         <div className="mb-8 flex items-start justify-between lg:mb-14 2xl:mb-28">
-          <Tag>{content.tag}</Tag>
+          <Tag bg={`${variant === "primary" && "light"}`}>{content.tag}</Tag>
         </div>
 
         <div
@@ -33,20 +42,26 @@ function SplitSection({ content, type = "blog", flipped = false }) {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border-b border-primary-800 py-4"
+                className={`border-b border-primary-800 py-4 ${variant === "primary" && "border-primary-[#97CAFE]"}`}
               >
                 <AccordionTrigger className="group hover:no-underline">
                   <div className="flex w-full items-center justify-between font-medium">
-                    <p className="text-left text-2xl lg:text-[28px]">
+                    <p
+                      className={`text-left text-2xl lg:text-[28px] ${variant === "primary" && "text-light-200"}`}
+                    >
                       {post.title}
                     </p>
-                    <span className="rounded-custom p-2 text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out group-data-[state=open]:bg-primary-400 lg:text-sm 2xl:text-lg">
+                    <span
+                      className={`rounded-custom p-2 font-mono text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out group-data-[state=open]:bg-primary-400 lg:text-sm 2xl:text-lg ${variant === "primary" && "!text-[#0F6FFF]"}`}
+                    >
                       retail
                     </span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="flex items-end justify-between">
-                  <p className="pt-6 text-lg font-normal text-[#76848F] lg:text-xl">
+                  <p
+                    className={`pt-6 text-lg font-normal text-[#76848F] lg:text-xl ${variant === "primary" && "text-light-300"}`}
+                  >
                     {post.summary}
                   </p>
 

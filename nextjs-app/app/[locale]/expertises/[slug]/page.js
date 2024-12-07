@@ -1,10 +1,15 @@
 import Footer from "@/components/Footer";
+import SplitSection from "@/components/home/SplitSection";
 import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import SingleContent from "@/components/SingleContent";
 import { sanityFetch } from "@/sanity/client";
-import { allExpertisesSlugsquery, singleExpertiseQuery } from "@/sanity/groq";
+import {
+  allExpertisesSlugsquery,
+  caseStudiesSectionQuery,
+  singleExpertiseQuery,
+} from "@/sanity/groq";
 
 export const revalidate = 2592000; // 30 days in seconds
 
@@ -26,6 +31,14 @@ async function page({ params: { locale, slug } }) {
     tags: ["expertise"],
   });
 
+  const caseStudiesSection = await sanityFetch({
+    query: caseStudiesSectionQuery,
+    qParams: { slug },
+    tags: ["case-studies-section", "case-study"],
+  });
+
+  console.log(caseStudiesSection);
+
   if (!expertise) return null;
 
   return (
@@ -38,6 +51,11 @@ async function page({ params: { locale, slug } }) {
           content={expertise}
         />
       </div>
+      <SplitSection
+        content={caseStudiesSection}
+        type="case-studies"
+        variant="primary"
+      />
       <Newsletter />
       <InfoSection />
       <Footer />

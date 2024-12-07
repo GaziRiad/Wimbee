@@ -54,7 +54,12 @@ export default async function Home({ params: { locale } }) {
         <ServicesSection content={data?.services} />
         <SplitSection type="case-studies" content={data?.caseStudies} />
         <SpotlightSection />
-        <SplitSection type="blog" content={data?.blog} flipped={true} />
+        <SplitSection
+          type="blog"
+          content={data?.blog}
+          flipped={true}
+          variant="light"
+        />
         <Newsletter />
         <InfoSection />
         <Footer />

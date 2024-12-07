@@ -18,9 +18,9 @@ async function page({ params: { locale } }) {
 
   return (
     <main>
-      <div className="bg-light-300 pt-16">
+      <div className="pt-16">
         <NavigationWrapper />
-        <SplitSection type="blog" content={data} flipped />
+        <SplitSection type="blog" content={data} flipped variant="light" />
       </div>
       <Newsletter />
       <InfoSection />
