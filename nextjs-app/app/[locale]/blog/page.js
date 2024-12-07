@@ -14,19 +14,13 @@ async function page({ params: { locale } }) {
     tags: ["post", "blog"],
   });
 
-  const content = {
-    tag: data.blog.tag,
-    image: data.blog.imageUrl,
-    posts: data.posts,
-  };
-
   if (!data) return null;
 
   return (
     <main>
-      <div className="bg-light-300">
+      <div className="bg-light-300 pt-16">
         <NavigationWrapper />
-        <SplitSection content={content} flipped />
+        <SplitSection content={data} flipped />
       </div>
       <Newsletter />
       <InfoSection />

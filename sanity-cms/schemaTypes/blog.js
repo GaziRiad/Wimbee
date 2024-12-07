@@ -6,25 +6,18 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'blog',
-      title: 'Blog Section',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'tag',
-          title: 'Tag',
-          type: 'string',
-          initialValue: 'BLOG',
-        }),
-        defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-        }),
-      ],
+      name: 'tag',
+      title: 'Page Tag',
+      type: 'string',
+      initialValue: 'BLOG',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'seo',

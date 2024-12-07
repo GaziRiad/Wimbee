@@ -75,19 +75,17 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
 // Blog page query
 
 export const blogPageQuery = groq`*[_type == "blog"][0]{
-  blog {
-    tag,
-    "imageUrl": image.asset->url
-  },
-  seo {
-    title
-  },
+  tag,
+  "imageUrl": image.asset->url,
   "posts": *[_type == "post"] | order(publishedAt desc) {
     title,
     slug,
     categories[]->,
     summary
-  }
+  },
+  seo {
+    title
+  },
 }`;
 
 export const contactquery = groq`*[_type == "contact"][0] {
