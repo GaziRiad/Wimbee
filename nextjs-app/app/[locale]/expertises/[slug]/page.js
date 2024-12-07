@@ -37,8 +37,6 @@ async function page({ params: { locale, slug } }) {
     tags: ["case-studies-section", "case-study"],
   });
 
-  console.log(caseStudiesSection);
-
   if (!expertise) return null;
 
   return (
