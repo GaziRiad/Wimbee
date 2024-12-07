@@ -5,7 +5,7 @@ import DataTable from "./DataTable";
 
 function SingleContent({ content, type = "", name = "" }) {
   return (
-    <section className="relative z-10 mx-auto max-w-[1568px] px-5 pb-28 pt-20 2xl:pt-32">
+    <section className="relative z-10 mx-auto max-w-[1568px] px-5 pb-28 pt-24 2xl:pt-32">
       <div className="text-primary flex flex-col items-start justify-between gap-5 lg:flex-row">
         <DataTable content={content} type={type} name={name} />
 

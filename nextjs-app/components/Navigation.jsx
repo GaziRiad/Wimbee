@@ -97,7 +97,7 @@ function Navigation({ menu }) {
       ref={headerRef}
       className="fixed left-0 right-0 top-0 z-20 transition-all duration-300"
     >
-      <div className="mx-auto flex max-w-[1568px] items-center justify-between p-4 lg:py-6">
+      <div className="mx-auto flex max-w-[1568px] items-center justify-between p-4 2xl:py-6">
         <nav className="flex items-center gap-20">
           <Logo />
           <ul className="hidden h-[34px] items-center rounded-[4px] bg-white lg:flex">
