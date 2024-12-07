@@ -238,6 +238,10 @@ export const allBlogSlugsquery = groq`*[_type == "post"] {
         "slug": slug.current
       }`;
 
+export const allCasestudiesQuery = groq`*[_type == "case-study"] {
+        "slug": slug.current
+      }`;
+
 export const allExpertisesSlugsquery = groq`*[_type == "expertise"] {
         "slug": slug.current
       }`;

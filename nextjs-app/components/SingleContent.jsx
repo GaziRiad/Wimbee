@@ -1,8 +1,6 @@
 import { myPortableTextComponents } from "@/lib/utils";
 import { PortableText } from "next-sanity";
-import Link from "next/link";
 
-import { HiMenuAlt4 } from "react-icons/hi";
 import DataTable from "./DataTable";
 
 function SingleContent({ content, type = "", name = "" }) {
