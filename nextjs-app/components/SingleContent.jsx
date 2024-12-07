@@ -9,7 +9,7 @@ function SingleContent({ content, type = "", name = "" }) {
   return (
     <section className="relative z-10 mx-auto max-w-[1568px] px-5 pb-28 pt-36">
       <div className="text-primary flex flex-col items-start justify-between gap-5 lg:flex-row">
-        <DataTable content={content} />
+        <DataTable content={content} type={type} name={name} />
 
         <div className="max-w-5xl text-primary-500">
           <PortableText
