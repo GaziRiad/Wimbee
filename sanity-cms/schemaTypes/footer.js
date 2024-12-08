@@ -13,8 +13,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
-          initialValue: 'SERVICES',
+          type: 'internationalizedArrayString', // For translatable titles
         }),
         defineField({
           name: 'links',
@@ -27,12 +26,12 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString', // Translatable titles
                 }),
                 defineField({
                   name: 'url',
                   title: 'URL',
-                  type: 'string',
+                  type: 'string', // URLs remain static
                 }),
               ],
             },
@@ -48,8 +47,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
-          initialValue: 'CUSTOMERS',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'links',
@@ -62,7 +60,7 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'url',
@@ -83,8 +81,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
-          initialValue: 'NEWS',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'links',
@@ -97,7 +94,7 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'url',
@@ -118,8 +115,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
-          initialValue: 'COMPANY',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'links',
@@ -132,7 +128,7 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'url',
@@ -153,8 +149,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
-          initialValue: 'SOCIALS',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'links',
@@ -183,7 +178,7 @@ export default defineType({
     defineField({
       name: 'logo',
       title: 'Footer Logo',
-      type: 'image',
+      type: 'image', // Static, non-translatable
       options: {
         hotspot: true,
       },

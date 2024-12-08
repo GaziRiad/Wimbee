@@ -130,35 +130,35 @@ export const newsletterquery = groq`*[_type == "newsletter"][0] {
 
 export const footerquery = groq`*[_type == "footer"][0] {
       services {
-        title,
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         links[] {
-          title,
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
           url
         }
       },
       customers {
-        title,
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         links[] {
-          title,
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
           url
         }
       },
       news {
-        title,
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         links[] {
-          title,
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
           url
         }
       },
       company {
-        title,
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         links[] {
-          title,
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
           url
         }
       },
       socials {
-        title,
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         links[] {
           title,
           url

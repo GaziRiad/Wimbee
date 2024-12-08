@@ -3,27 +3,14 @@ import Link from "next/link";
 import { sanityFetch } from "@/sanity/client";
 import { footerquery } from "@/sanity/groq";
 
-// const transformFooterData = (data) => {
-//   // Extract all keys except 'logoUrl'
-//   const { logoUrl, ...sections } = data;
-
-//   // Convert the remaining sections into an array
-//   const sectionsArray = Object.keys(sections).map((key) => ({
-//     section: key,
-//     ...sections[key],
-//   }));
-
-//   return sectionsArray;
-// };
-
-async function Footer() {
+async function Footer({ locale = "en" }) {
   const data = await sanityFetch({
     query: footerquery,
+    qParams: { locale },
     tags: ["footer"],
   });
 
   if (!data) return null;
-  // const transformedData = transformFooterData(data);
 
   const orderedFooter = [
     { key: "services", ...data.services },
@@ -32,6 +19,8 @@ async function Footer() {
     { key: "company", ...data.company },
     { key: "socials", ...data.socials },
   ];
+
+  // console.log(orderedFooter);
 
   return (
     <section className="bg-primary-700 px-4 py-8 text-light-200 lg:py-20">

@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './strcuture/index.js'
+import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 
 export default defineConfig({
   name: 'default',
@@ -11,7 +12,18 @@ export default defineConfig({
   projectId: 'j5a0ndtr',
   dataset: 'production',
 
-  plugins: [structureTool({structure}), visionTool()],
+  plugins: [
+    structureTool({structure}),
+    visionTool(),
+    internationalizedArray({
+      languages: [
+        {id: 'en', title: 'English'},
+        {id: 'fr', title: 'French'},
+      ],
+      defaultLanguages: ['en'],
+      fieldTypes: ['string'],
+    }),
+  ],
 
   schema: {
     types: schemaTypes,

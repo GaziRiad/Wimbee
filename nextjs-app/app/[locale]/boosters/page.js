@@ -26,7 +26,7 @@ async function page({ params: { locale } }) {
             <Tag>{data.tag}</Tag>
           </div>
 
-          <h1 className="text-titleSmall lg:text-titleMedium 2xl:text-titleLarge mb-8 text-primary-800 lg:mb-14 2xl:mb-24">
+          <h1 className="mb-8 text-titleSmall text-primary-800 lg:mb-14 lg:text-titleMedium 2xl:mb-24 2xl:text-titleLarge">
             {data.title}
           </h1>
           <div className="flex flex-col items-start gap-6 lg:flex-row">
@@ -52,7 +52,7 @@ async function page({ params: { locale } }) {
       </section>
       <Newsletter />
       <InfoSection />
-      <Footer />
+      <Footer locale={locale} />
     </main>
   );
 }

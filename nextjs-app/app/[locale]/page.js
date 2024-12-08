@@ -2,10 +2,8 @@ import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 
 import { sanityFetch } from "@/sanity/client";
-import { homequery, postsquery } from "@/sanity/groq";
-import Navigation from "@/components/Navigation";
+import { homequery } from "@/sanity/groq";
 import LogoCarousel from "@/components/home/LogoCarousel";
-import Hero from "@/components/home/Hero";
 import IntroductionSection from "@/components/home/IntroductionSection";
 import SectorsSection from "@/components/home/SectorsSection";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -22,7 +20,6 @@ const i18nNamespaces = ["home"];
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
-
   const data = await sanityFetch({
     query: homequery,
     tags: ["home", "sector", "post", "case-study"],
@@ -62,7 +59,7 @@ export default async function Home({ params: { locale } }) {
         />
         <Newsletter />
         <InfoSection />
-        <Footer />
+        <Footer locale={locale} />
       </main>
     </TranslationsProvider>
   );
