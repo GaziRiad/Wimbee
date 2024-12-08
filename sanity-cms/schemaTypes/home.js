@@ -13,7 +13,7 @@ export default defineType({
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: 'Pioneering Digital Transformation and AI Excellence',
         }),
         defineField({
@@ -66,13 +66,13 @@ export default defineType({
         defineField({
           name: 'tag',
           title: 'Tag',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: 'WHO WE ARE',
         }),
         defineField({
           name: 'description',
           title: 'Description',
-          type: 'text',
+          type: 'internationalizedArrayString',
           initialValue:
             "At Wimbee, our passion for innovation drives excellence in digital transformation, data management, and AI. We've become a trusted leader by blending deep technical expertise with a clear understanding of our clients' business needs.",
         }),
@@ -95,7 +95,7 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'url',
@@ -120,13 +120,13 @@ export default defineType({
         defineField({
           name: 'tag',
           title: 'Tag',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: 'SECTORS WE SERVE',
         }),
         defineField({
           name: 'title',
           title: 'Title',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue:
             'We empower industries with tailored AI and data solutions to excel in the digital age.',
         }),
@@ -148,13 +148,13 @@ export default defineType({
         defineField({
           name: 'tag',
           title: 'Tag',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: 'KEY SERVICES ACROSS SECTORS',
         }),
         defineField({
           name: 'description',
           title: 'Description',
-          type: 'text',
+          type: 'internationalizedArrayString',
           initialValue:
             'We offer tailored solutions to help businesses and individuals thrive with AI, talent development, and digital transformation.',
         }),
@@ -169,12 +169,12 @@ export default defineType({
                 defineField({
                   name: 'title',
                   title: 'Title',
-                  type: 'string',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'description',
                   title: 'Description',
-                  type: 'text',
+                  type: 'internationalizedArrayString',
                 }),
                 defineField({
                   name: 'image',
@@ -198,7 +198,7 @@ export default defineType({
         defineField({
           name: 'tag',
           title: 'Tag',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: 'CASE STUDIES',
         }),
         defineField({
@@ -219,7 +219,7 @@ export default defineType({
         defineField({
           name: 'tag',
           title: 'Tag',
-          type: 'string',
+          type: 'internationalizedArrayString',
           initialValue: "WHAT'S NEW",
         }),
         defineField({

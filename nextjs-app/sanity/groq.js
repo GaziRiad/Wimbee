@@ -6,7 +6,7 @@ export const homequery = groq`*[_type == "home"][0]{
     description
   },  
 hero {
-    title,
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
     "backgroundImageUrl": backgroundImage.asset->url
   },
   partners {
@@ -17,17 +17,17 @@ hero {
     }
   },
   introduction {
-    tag,
-    description,
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
     "imageUrl": image.asset->url,
     links[] {
-      title,
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
       url
     }
   },
   sectors {
-    tag,
-    title,
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
     "imageUrl": image.asset->url,
     "allSectors": *[_type == "sector"] | order(publishedAt asc) {
       title,
@@ -35,16 +35,16 @@ hero {
     }
   },
   services {
-    tag,
-    description,
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
     hubs[] {
-      title,
-      description,
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
       "imageUrl": image.asset->url
     }
   },
   caseStudies {
-    tag,
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
     "items": *[_type == "case-study"] | order(publishedAt desc) {
       title,
@@ -54,7 +54,7 @@ hero {
     }
   },
   blog {
-    tag,
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
     "items": *[_type == "post"] | order(publishedAt desc) {
       title,
