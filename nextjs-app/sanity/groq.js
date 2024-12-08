@@ -106,9 +106,9 @@ export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0
 // Reusable sections
 
 export const contactquery = groq`*[_type == "contact"][0] {
-    title,
-    description,
-    buttonText,
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
+    "buttonText": coalesce(buttonText[_key == $locale][0].value, buttonText[_key == "en"][0].value),
     locations[] {
       country,
       phone,

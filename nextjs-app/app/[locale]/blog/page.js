@@ -23,7 +23,7 @@ async function page({ params: { locale } }) {
         <SplitSection type="blog" content={data} flipped variant="light" />
       </div>
       <Newsletter />
-      <InfoSection />
+      <InfoSection locale={locale} />
       <Footer locale={locale} />
     </main>
   );

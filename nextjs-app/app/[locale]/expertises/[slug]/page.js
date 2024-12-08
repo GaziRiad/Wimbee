@@ -55,7 +55,7 @@ async function page({ params: { locale, slug } }) {
         variant="primary"
       />
       <Newsletter />
-      <InfoSection />
+      <InfoSection locale={locale} />
       <Footer locale={locale} />
     </main>
   );

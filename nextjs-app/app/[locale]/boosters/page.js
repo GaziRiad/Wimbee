@@ -51,7 +51,7 @@ async function page({ params: { locale } }) {
         </div>
       </section>
       <Newsletter />
-      <InfoSection />
+      <InfoSection locale={locale} />
       <Footer locale={locale} />
     </main>
   );

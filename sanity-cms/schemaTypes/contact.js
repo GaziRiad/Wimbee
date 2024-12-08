@@ -8,21 +8,21 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Main Title',
-      type: 'string',
+      type: 'internationalizedArrayString',
       description: 'The main title or heading of the contact section.',
       initialValue: 'Find the space to drive innovation and bring ideas to life with us.',
     }),
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'string',
+      type: 'internationalizedArrayString',
       description: 'Subtitle or a brief description for the contact section.',
       initialValue: 'Fill out the form and contact wimbee as soon as possible!',
     }),
     defineField({
       name: 'buttonText',
       title: 'Button Text',
-      type: 'string',
+      type: 'internationalizedArrayString',
       initialValue: 'Contact us',
     }),
     defineField({

@@ -58,7 +58,7 @@ export default async function Home({ params: { locale } }) {
           variant="light"
         />
         <Newsletter />
-        <InfoSection />
+        <InfoSection locale={locale} />
         <Footer locale={locale} />
       </main>
     </TranslationsProvider>

@@ -1,36 +1,16 @@
 import Image from "next/image";
-import infoImg from "../public/images/info.png";
 import ContactBtn from "./ContactBtn";
 import { sanityFetch } from "@/sanity/client";
 import { contactquery } from "@/sanity/groq";
 
-const locations = [
-  {
-    name: "Wimbee France",
-    phone: "+33 (18) 8614122",
-    address: "74 Avenue Kléber, 75116 Paris",
-  },
-  {
-    name: "Wimbee France",
-    phone: "+33 (18) 8614122",
-    address: "74 Avenue Kléber, 75116 Paris",
-  },
-  {
-    name: "Wimbee France",
-    phone: "+33 (18) 8614122",
-    address: "74 Avenue Kléber, 75116 Paris",
-  },
-  {
-    name: "Wimbee France",
-    phone: "+33 (18) 8614122",
-    address: "74 Avenue Kléber, 75116 Paris",
-  },
-];
+async function InfoSection({ locale }) {
+  const data = await sanityFetch({
+    query: contactquery,
+    qParams: { locale },
+    tags: ["contact"],
+  });
 
-async function InfoSection() {
-  const data = await sanityFetch({ query: contactquery, tags: ["contact"] });
-
-  if (!data) return <p>Loading...</p>;
+  if (!data) return null;
 
   return (
     <section className="bg-primary-800 px-4 py-8 text-light-200 lg:py-20">
