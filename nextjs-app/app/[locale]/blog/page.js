@@ -22,7 +22,7 @@ async function page({ params: { locale } }) {
         <NavigationWrapper />
         <SplitSection type="blog" content={data} flipped variant="light" />
       </div>
-      <Newsletter />
+      <Newsletter locale={locale} />
       <InfoSection locale={locale} />
       <Footer locale={locale} />
     </main>

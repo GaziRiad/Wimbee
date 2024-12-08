@@ -34,7 +34,7 @@ async function page({ params: { locale, slug } }) {
         <NavigationWrapper />
         <Article content={caseStudy} />
       </div>
-      <Newsletter />
+      <Newsletter locale={locale} />
       <InfoSection locale={locale} />
       <Footer locale={locale} />
     </main>

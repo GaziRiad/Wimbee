@@ -57,7 +57,7 @@ export default async function Home({ params: { locale } }) {
           flipped={true}
           variant="light"
         />
-        <Newsletter />
+        <Newsletter locale={locale} />
         <InfoSection locale={locale} />
         <Footer locale={locale} />
       </main>

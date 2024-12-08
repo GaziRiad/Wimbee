@@ -3,7 +3,7 @@ import ContactBtn from "./ContactBtn";
 import { sanityFetch } from "@/sanity/client";
 import { contactquery } from "@/sanity/groq";
 
-async function InfoSection({ locale }) {
+async function InfoSection({ locale = "en" }) {
   const data = await sanityFetch({
     query: contactquery,
     qParams: { locale },

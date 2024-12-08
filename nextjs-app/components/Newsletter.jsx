@@ -3,9 +3,10 @@ import { newsletterquery } from "@/sanity/groq";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
-async function Newsletter() {
+async function Newsletter({ locale = "en" }) {
   const data = await sanityFetch({
     query: newsletterquery,
+    qParams: { locale },
     tags: ["newsletter"],
   });
 

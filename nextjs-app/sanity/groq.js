@@ -122,10 +122,11 @@ export const newsletterquery = groq`*[_type == "newsletter"][0] {
       title,
       url
     },
-    title,
-    labelText,
-    placeholderText,
-    buttonText
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    "labelText": coalesce(labelText[_key == $locale][0].value, labelText[_key == "en"][0].value),
+    "placeholderText": coalesce(placeholderText[_key == $locale][0].value, placeholderText[_key == "en"][0].value),
+    "buttonText": coalesce(buttonText[_key == $locale][0].value, buttonText[_key == "en"][0].value),
+    
   }`;
 
 export const footerquery = groq`*[_type == "footer"][0] {
