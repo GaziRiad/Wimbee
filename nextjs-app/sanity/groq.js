@@ -72,11 +72,11 @@ hero {
 }`;
 
 export const boostersquery = groq`*[_type == "boosters"][0] {
-  tag,
-  title,
+  "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+  "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
   products[] {
-    name,
-    description,
+    "name": coalesce(name[_key == $locale][0].value, name[_key == "en"][0].value),
+    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
     "imageUrl": image.asset->url
   },
   seo {
@@ -96,17 +96,6 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
   seo {
     title
   },
-}`;
-
-export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0]{
-  tag,
-  "imageUrl": image.asset->url,
-  "items": *[_type == "case-study"] | order(publishedAt desc) {
-      title,
-      slug,
-      categories[]->,
-      summary
-    }
 }`;
 
 // Reusable sections
@@ -172,6 +161,17 @@ export const footerquery = groq`*[_type == "footer"][0] {
         }
       },
       "logoUrl": logo.asset->url
+    }`;
+
+export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0]{
+      "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+      "imageUrl": image.asset->url,
+      "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
+          title,
+          slug,
+          categories[]->,
+          summary
+        }
     }`;
 
 // Get all posts (FULL DATA)

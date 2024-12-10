@@ -12,6 +12,7 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 async function page({ params: { locale } }) {
   const data = await sanityFetch({
     query: boostersquery,
+    qParams: { locale },
     tags: ["boosters"],
   });
 

@@ -8,7 +8,7 @@ export default defineType({
     defineField({
       name: 'tag',
       title: 'section Tag',
-      type: 'string',
+      type: 'internationalizedArrayString',
       initialValue: 'CASE STUDIES',
     }),
     defineField({

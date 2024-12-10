@@ -8,13 +8,13 @@ export default defineType({
     defineField({
       name: 'tag',
       title: 'Page Tag',
-      type: 'string',
+      type: 'internationalizedArrayString',
       initialValue: 'BOOSTERS',
     }),
     defineField({
       name: 'title',
       title: 'Main Title',
-      type: 'string',
+      type: 'internationalizedArrayString',
       initialValue: "Innovation isn't just a goal—it's how we lead.",
     }),
     defineField({
@@ -28,12 +28,12 @@ export default defineType({
             defineField({
               name: 'name',
               title: 'Product Name',
-              type: 'string',
+              type: 'internationalizedArrayString',
             }),
             defineField({
               name: 'description',
               title: 'Product Description',
-              type: 'text',
+              type: 'internationalizedArrayString',
             }),
             defineField({
               name: 'image',

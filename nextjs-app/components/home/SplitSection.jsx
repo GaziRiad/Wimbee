@@ -45,7 +45,7 @@ function SplitSection({
                 className={`border-b border-primary-800 py-4 ${variant === "primary" && "border-primary-[#97CAFE]"}`}
               >
                 <AccordionTrigger className="group hover:no-underline">
-                  <div className="flex w-full items-center justify-between font-medium">
+                  <div className="flex w-full items-center justify-between gap-1 font-medium">
                     <p
                       className={`text-left text-2xl lg:text-[28px] ${variant === "primary" && "text-light-200"}`}
                     >
@@ -67,7 +67,7 @@ function SplitSection({
 
                   <Link
                     href={`/${type}/${post.slug.current}` || "/"}
-                    className="min-w-fit text-xs uppercase text-primary-800 underline-offset-2 transition-all hover:underline"
+                    className={`min-w-fit text-xs uppercase ${variant === "primary" ? "text-light-300" : "text-primary-800"} underline-offset-2 transition-all hover:underline`}
                   >
                     Read more...
                   </Link>

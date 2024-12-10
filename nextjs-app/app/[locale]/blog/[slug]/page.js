@@ -41,12 +41,12 @@ async function page({ params: { locale, slug } }) {
 
   const caseStudiesSection = await sanityFetch({
     query: caseStudiesSectionQuery,
-    qParams: { slug },
+    qParams: { slug, locale },
     tags: ["case-studies-section", "case-study"],
   });
 
   const localesWithSlugsMap = mapSlugsWithLocales(
-    post._translations ?? [], // Sanity translations array
+    post?._translations ?? [], // Sanity translations array
     { currentLocalization: { [locale]: slug } }, // Current slug and locale
   );
 
