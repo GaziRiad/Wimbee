@@ -211,6 +211,42 @@ export default defineType({
         }),
       ],
     }),
+    defineType({
+      name: 'spotlight',
+      title: 'Spotlight Section',
+      type: 'document',
+      fields: [
+        // Tag/Label
+        defineField({
+          name: 'tag',
+          title: 'Tag/Label',
+          type: 'internationalizedArrayString',
+          initialValue: 'SPOTLIGHT',
+        }),
+        // Title
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'internationalizedArrayString',
+        }),
+        // Description
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'internationalizedArrayString',
+        }),
+        // Image
+        defineField({
+          name: 'image',
+          title: 'Featured Image',
+          type: 'image',
+          options: {
+            hotspot: true, // Enables image cropping
+          },
+          description: 'The main image for the spotlight section.',
+        }),
+      ],
+    }),
     defineField({
       name: 'blog',
       title: 'Blog Section',

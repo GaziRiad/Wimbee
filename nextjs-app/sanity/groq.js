@@ -53,6 +53,12 @@ hero {
       summary
     }
   },
+  spotlight {
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
+    "imageUrl": image.asset->url
+  },
   blog {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
@@ -167,13 +173,6 @@ export const footerquery = groq`*[_type == "footer"][0] {
       },
       "logoUrl": logo.asset->url
     }`;
-
-export const spotlightquery = groq`*[_type == "spotlight"][0]{
-  tag,
-  title,
-  description,
-  "imageUrl": image.asset->url
-}`;
 
 // Get all posts (FULL DATA)
 export const postsquery = groq`
