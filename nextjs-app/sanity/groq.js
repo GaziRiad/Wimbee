@@ -56,11 +56,11 @@ hero {
   blog {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
-    "items": *[_type == "post"] | order(publishedAt desc) {
+    "items": *[_type == "post" && language == $locale] | order(publishedAt desc) {
       title,
       slug,
       categories[]->,
-      summary
+      summary,
     }
   },
 }`;
@@ -81,7 +81,7 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
 export const blogPageQuery = groq`*[_type == "blog"][0]{
   tag,
   "imageUrl": image.asset->url,
-  "items": *[_type == "post"] | order(publishedAt desc) {
+  "items": *[_type == "post" && language == $locale] | order(publishedAt desc) {
     title,
     slug,
     categories[]->,
@@ -191,10 +191,14 @@ export const singlearticlequery = groq`*[_type == "post" && slug.current == $slu
         slug,
         publishedAt,
         categories[]->{
-          title,
-          slug
+          title
         },
-        body
+        body,
+        "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+          title,
+          slug,
+          language
+  },
       }
 `;
 

@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './strcuture/index.js'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {documentInternationalization} from '@sanity/document-internationalization'
 
 export default defineConfig({
   name: 'default',
@@ -15,6 +16,14 @@ export default defineConfig({
   plugins: [
     structureTool({structure}),
     visionTool(),
+    documentInternationalization({
+      // Required configuration
+      supportedLanguages: [
+        {id: 'en', title: 'English'},
+        {id: 'fr', title: 'French'},
+      ],
+      schemaTypes: ['post'],
+    }),
     internationalizedArray({
       languages: [
         {id: 'en', title: 'English'},

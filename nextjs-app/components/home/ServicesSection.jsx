@@ -14,13 +14,14 @@ function ServicesSection({ content }) {
       <div className="flex flex-col items-start gap-6 lg:flex-row">
         {content.hubs.map((service, index) => (
           <div key={index} className="flex-grow">
-            <Image
-              src={service.imageUrl}
-              alt={`Gif image of ${service.title} from wimbee`}
-              width={1200}
-              height={1200}
-              className="mb-4 w-full"
-            />
+            <div className="relative mb-4 h-[580px] w-full">
+              <Image
+                src={service.imageUrl}
+                alt={`Gif image of ${service.title} from wimbee`}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
             <p className="font-mono text-lg uppercase text-primary-800">
               {service.title}
             </p>
