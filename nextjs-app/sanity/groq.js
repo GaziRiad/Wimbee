@@ -71,6 +71,19 @@ hero {
   },
 }`;
 
+export const aboutQuery = groq`*[_type == "about"][0]{
+ "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+  "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+  sideText[] {
+    "text": coalesce(text[_key == $locale][0].value, text[_key == "en"][0].value),
+  },
+  "imageUrl": image.asset->url,
+  "contentSection": coalesce(contentSection[$locale], contentSection["en"]),
+  seo {
+    title
+  }
+}`;
+
 export const boostersquery = groq`*[_type == "boosters"][0] {
   "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
   "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),

@@ -35,7 +35,7 @@ async function NavigationWrapper({ locale = "en" }) {
         })) || [],
     },
     { title: "Boosters", href: "/boosters" },
-    { title: "About", href: "/" },
+    { title: "About", href: "/about" },
   ];
 
   return <Navigation menu={menu} />;

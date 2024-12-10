@@ -1,0 +1,67 @@
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'about',
+  title: 'About us Page',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'tag',
+      title: 'Page Tag',
+      type: 'internationalizedArrayString',
+      initialValue: 'ABOUT',
+    }),
+    defineField({
+      name: 'title',
+      title: 'Main Title',
+      type: 'internationalizedArrayString',
+      initialValue: "Innovation isn't just a goal—it's how we lead.",
+    }),
+
+    defineField({
+      name: 'sideText',
+      title: 'Side Text',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'text',
+              title: 'Text',
+              type: 'internationalizedArrayString',
+            }),
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'image',
+      title: 'Content Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
+      name: 'contentSection',
+      title: 'Content Section',
+      type: 'internationalizedBlockContent', // Use the new type here
+    }),
+
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'SEO Title',
+          type: 'string',
+        }),
+      ],
+    }),
+  ],
+})

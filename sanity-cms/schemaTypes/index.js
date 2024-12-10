@@ -11,10 +11,13 @@ import expertise from './expertise'
 import sector from './sector'
 import caseStudy from './case-study'
 import caseStudiesSection from './case-studies-section'
+import about from './about'
+import internationalizedBlockContent from './internationalizedBlockContent'
 
 export const schemaTypes = [
   home,
   boosters,
+  about,
   blog,
   caseStudiesSection,
   contact,
@@ -26,4 +29,5 @@ export const schemaTypes = [
   expertise,
   sector,
   blockContent,
+  internationalizedBlockContent,
 ]
