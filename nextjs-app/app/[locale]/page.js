@@ -39,7 +39,7 @@ export default async function Home({ params: { locale } }) {
           className={`hero-section h-screen bg-cover bg-center`}
           style={{ backgroundImage: `url(${data.hero.backgroundImageUrl})` }}
         >
-          <NavigationWrapper />
+          <NavigationWrapper locale={locale} />
           <section className="mx-auto flex h-full max-w-[1568px] items-center px-4">
             <h1 className="max-w-xl text-titleSmall text-light-200 lg:text-titleMedium 2xl:max-w-5xl 2xl:text-titleLarge">
               {data?.hero.title}

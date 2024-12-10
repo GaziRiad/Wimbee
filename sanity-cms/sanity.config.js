@@ -22,7 +22,7 @@ export default defineConfig({
         {id: 'en', title: 'English'},
         {id: 'fr', title: 'French'},
       ],
-      schemaTypes: ['post'],
+      schemaTypes: ['post', 'case-study', 'sector', 'expertise'],
     }),
     internationalizedArray({
       languages: [

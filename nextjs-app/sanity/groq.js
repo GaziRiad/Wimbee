@@ -29,7 +29,7 @@ hero {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
     "imageUrl": image.asset->url,
-    "allSectors": *[_type == "sector"] | order(publishedAt asc) {
+    "allSectors": *[_type == "sector" && language == $locale] | order(publishedAt asc) {
       title,
       "slug": slug.current
     }
@@ -46,7 +46,7 @@ hero {
   caseStudies {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
-    "items": *[_type == "case-study"] | order(publishedAt desc) {
+    "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
       title,
       slug,
       categories[]->,
@@ -79,7 +79,7 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
 }`;
 
 export const blogPageQuery = groq`*[_type == "blog"][0]{
-  tag,
+  "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
   "imageUrl": image.asset->url,
   "items": *[_type == "post" && language == $locale] | order(publishedAt desc) {
     title,
@@ -198,7 +198,7 @@ export const singlearticlequery = groq`*[_type == "post" && slug.current == $slu
           title,
           slug,
           language
-  },
+        },
       }
 `;
 
@@ -211,7 +211,12 @@ export const singleCasestudyQuery = groq`*[_type == "case-study" && slug.current
           title,
           slug
         },
-        body
+        body,
+        "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+          title,
+          slug,
+          language
+        },
       }
 `;
 
@@ -220,31 +225,41 @@ export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current 
   title,
   "slug": slug.current,
   body,
-  "allLinks": *[_type == "expertise"] | order(publishedAt asc)  {
+  "allLinks": *[_type == "expertise" && language == $locale] | order(publishedAt asc)  {
     title,
     "slug": slug.current
-  }
+  },
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      title,
+      slug,
+      language
+    },
 }`;
 
 // Single Sector
-export const singleSectoreQuery = groq`*[_type == "sector" && slug.current == $slug][0]  {
+export const singleSectorQuery = groq`*[_type == "sector" && slug.current == $slug][0]  {
   title,
   "slug": slug.current,
   body,
-  "allLinks": *[_type == "sector"] | order(publishedAt asc)  {
+  "allLinks": *[_type == "sector" && language == $locale] | order(publishedAt asc)  {
     title,
     "slug": slug.current
-  }
+  },
+   "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      title,
+      slug,
+      language
+    },
 }`;
 
 //
-export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true] | order(publishedAt asc) {
+export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt asc) {
   title,
   "slug": slug.current
 }`;
 
 //
-export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true] | order(publishedAt asc) {
+export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true  && language == $locale] | order(publishedAt asc) {
   title,
   "slug": slug.current
 }`;

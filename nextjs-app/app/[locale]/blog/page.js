@@ -30,7 +30,7 @@ async function page({ params: { locale } }) {
     >
       <main>
         <div className="pt-16">
-          <NavigationWrapper />
+          <NavigationWrapper locale={locale} />
           <SplitSection type="blog" content={data} flipped variant="light" />
         </div>
         <Newsletter locale={locale} />

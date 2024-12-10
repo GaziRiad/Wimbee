@@ -2,14 +2,16 @@ import { expertisesquery, sectorsQuery } from "@/sanity/groq";
 import { sanityFetch } from "@/sanity/client";
 import Navigation from "./Navigation";
 
-async function NavigationWrapper() {
+async function NavigationWrapper({ locale = "en" }) {
   const expertises = await sanityFetch({
     query: expertisesquery,
+    qParams: { locale },
     tags: ["expertise"],
   });
 
   const sectors = await sanityFetch({
     query: sectorsQuery,
+    qParams: { locale },
     tags: ["sector"],
   });
 

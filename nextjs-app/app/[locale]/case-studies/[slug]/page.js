@@ -1,10 +1,14 @@
+import initTranslations from "@/app/i18n";
 import Article from "@/components/blog/Article";
 import Footer from "@/components/Footer";
 import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
+import TranslationsProvider from "@/components/TranslationsProvider";
+import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import { allCasestudiesQuery, singleCasestudyQuery } from "@/sanity/groq";
+import { redirect } from "next/navigation";
 
 export const revalidate = 2592000; // 30 days in seconds
 
@@ -19,25 +23,46 @@ export async function generateStaticParams() {
   }));
 }
 
+const i18nNamespaces = ["case-study"];
+
 async function page({ params: { locale, slug } }) {
+  const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
   const caseStudy = await sanityFetch({
     query: singleCasestudyQuery,
-    qParams: { slug },
+    qParams: { slug, locale },
     tags: ["case-study"],
   });
+
+  const localesWithSlugsMap = mapSlugsWithLocales(
+    caseStudy._translations ?? [], // Sanity translations array
+    { currentLocalization: { [locale]: slug } }, // Current slug and locale
+  );
+
+  const currentSlugIsInvalid = slug !== localesWithSlugsMap[locale];
+
+  if (currentSlugIsInvalid) {
+    redirect(`/case-studies/${localesWithSlugsMap[locale]}`); // Redirect to the correct slug
+  }
 
   if (!caseStudy) return null;
 
   return (
-    <main>
-      <div className="bg-light-300">
-        <NavigationWrapper />
-        <Article content={caseStudy} />
-      </div>
-      <Newsletter locale={locale} />
-      <InfoSection locale={locale} />
-      <Footer locale={locale} />
-    </main>
+    <TranslationsProvider
+      namespaces={i18nNamespaces}
+      locale={locale}
+      resources={resources}
+    >
+      <main>
+        <div className="bg-light-300">
+          <NavigationWrapper locale={locale} />
+          <Article content={caseStudy} />
+        </div>
+        <Newsletter locale={locale} />
+        <InfoSection locale={locale} />
+        <Footer locale={locale} />
+      </main>
+    </TranslationsProvider>
   );
 }
 

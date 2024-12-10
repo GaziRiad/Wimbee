@@ -45,28 +45,6 @@ async function page({ params: { locale, slug } }) {
     tags: ["case-studies-section", "case-study"],
   });
 
-  // const currentSlugIsInvalid = slug !== localesWithSlugsMap[locale];
-
-  // // Redirect to the correct slug if invalid
-  // if (currentSlugIsInvalid) {
-  //   redirect(`/blog/${localesWithSlugsMap[locale]}`);
-  // }
-
-  // console.log(post?._translations);
-
-  // const currentSlugIsInvalid =
-  //   slug !==
-  //   post?._translations.find((t) => t.language === locale)?.slug.current;
-
-  // console.log(currentSlugIsInvalid);
-
-  // // Redirect to the correct slug if invalid
-  // if (currentSlugIsInvalid) {
-  //   redirect(
-  //     `/blog/${post?._translations.find((t) => t.language === locale).slug.current}`,
-  //   );
-  // }
-
   const localesWithSlugsMap = mapSlugsWithLocales(
     post._translations ?? [], // Sanity translations array
     { currentLocalization: { [locale]: slug } }, // Current slug and locale
@@ -86,7 +64,7 @@ async function page({ params: { locale, slug } }) {
         resources={resources}
       >
         <div className="bg-light-300">
-          <NavigationWrapper />
+          <NavigationWrapper locale={locale} />
         </div>
       </TranslationsProvider>
     );

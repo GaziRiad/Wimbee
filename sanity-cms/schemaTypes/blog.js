@@ -8,7 +8,7 @@ export default defineType({
     defineField({
       name: 'tag',
       title: 'Page Tag',
-      type: 'string',
+      type: 'internationalizedArrayString',
       initialValue: 'BLOG',
     }),
     defineField({

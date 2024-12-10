@@ -20,7 +20,7 @@ async function page({ params: { locale } }) {
   return (
     <main>
       <section className="bg-light-300">
-        <NavigationWrapper />
+        <NavigationWrapper locale={locale} />
         <div className="mx-auto max-w-[1568px] px-4 py-8 lg:pb-20 lg:pt-36">
           <div className="mb-8 flex items-start justify-between 2xl:mb-12">
             <Tag>{data.tag}</Tag>

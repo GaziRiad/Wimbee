@@ -34,5 +34,12 @@ export default defineType({
       title: 'Published At',
       type: 'datetime',
     }),
+    defineField({
+      // should match 'languageField' plugin configuration setting, if customized
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 })
