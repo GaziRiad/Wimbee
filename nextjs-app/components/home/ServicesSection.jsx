@@ -11,21 +11,26 @@ function ServicesSection({ content }) {
         </h2>
       </div>
 
-      <div className="flex flex-col items-start gap-6 lg:flex-row">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {content.hubs.map((service, index) => (
-          <div key={index} className="flex-grow">
-            <div className="relative mb-4 h-[580px] w-full">
+          <div key={index} className="flex h-full flex-col">
+            <div className="relative mb-4 h-[600px] w-full">
               <Image
                 src={service.imageUrl}
-                alt={`Gif image of ${service.title} from wimbee`}
+                alt={`Image of ${service.title} from wimbee`}
                 layout="fill"
                 objectFit="cover"
+                className="rounded-custom"
               />
             </div>
-            <p className="font-mono text-lg uppercase text-primary-800">
-              {service.title}
-            </p>
-            <p className="text-lg text-primary-500">{service.description}</p>
+            <div className="flex flex-grow flex-col">
+              <p className="mb-2 font-mono text-lg uppercase text-primary-800">
+                {service.title}
+              </p>
+              <p className="flex-grow text-lg text-primary-500">
+                {service.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
