@@ -98,6 +98,26 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
   }
 }`;
 
+export const careersQuery = groq`*[_type == "careers"][0]{
+  "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+   "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+  "imageUrl": image.asset->url,
+  sideText[] {
+    "text": coalesce(text[_key == $locale][0].value, text[_key == "en"][0].value),
+  },
+  "mainText": coalesce(mainText[$locale], mainText["en"]),
+  positionsSection {
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    positions[] {
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      date,
+      "place": coalesce(place[_key == $locale][0].value, place[_key == "en"][0].value),
+      company,
+      url
+    }
+  }
+}`;
+
 // Reusable sections
 
 export const contactquery = groq`*[_type == "contact"][0] {

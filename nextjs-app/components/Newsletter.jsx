@@ -41,7 +41,7 @@ async function Newsletter({ locale = "en" }) {
               className="flex-1 bg-inherit text-lg font-medium lg:text-3xl"
             />
 
-            <Button className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-[#88b6e5] lg:p-1 lg:text-lg">
+            <Button className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:p-1 lg:text-lg">
               {data.buttonText}
             </Button>
           </div>

@@ -8,7 +8,7 @@ import { sanityFetch } from "@/sanity/client";
 import { aboutQuery } from "@/sanity/groq";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import { groq, PortableText } from "next-sanity";
-import { aboutUsPortableText } from "@/lib/utils";
+import { MiniPortableText } from "@/lib/utils";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import initTranslations from "@/app/i18n";
 
@@ -80,7 +80,7 @@ async function page({ params: { locale } }) {
         <section className="mx-auto max-w-[1520px] px-4 py-6 text-primary-500">
           <PortableText
             value={data.contentSection}
-            components={aboutUsPortableText}
+            components={MiniPortableText}
           />
         </section>
         <Newsletter locale={locale} />

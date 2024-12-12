@@ -26,6 +26,10 @@ export const structure = (S) =>
         .title('Blog')
         .id('blog')
         .child(S.document().schemaType('blog').documentId('blog')),
+      S.listItem()
+        .title('Careers')
+        .id('careers')
+        .child(S.document().schemaType('careers').documentId('careers')),
 
       S.divider(),
 

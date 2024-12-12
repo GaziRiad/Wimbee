@@ -35,7 +35,7 @@ export default defineType({
     defineField({
       name: 'summary',
       title: 'Summary',
-      type: 'string',
+      type: 'text',
       description: 'A short summary of the post (e.g., for previews or meta descriptions)',
       validation: (Rule) => Rule.max(200).warning('Keep summaries concise!'),
     }),

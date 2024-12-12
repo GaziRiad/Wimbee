@@ -29,6 +29,11 @@ export default defineType({
           title: 'Title',
           type: 'internationalizedArrayString',
         }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'internationalizedArrayString',
+        }),
       ],
     }),
   ],

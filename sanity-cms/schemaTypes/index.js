@@ -14,6 +14,7 @@ import caseStudiesSection from './case-studies-section'
 import about from './about'
 import internationalizedBlockContent from './internationalizedBlockContent'
 import settings from './settings'
+import careers from './careers'
 
 export const schemaTypes = [
   settings,
@@ -21,6 +22,7 @@ export const schemaTypes = [
   boosters,
   about,
   blog,
+  careers,
   caseStudiesSection,
   contact,
   newsletter,

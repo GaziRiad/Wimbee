@@ -121,7 +121,7 @@ export const myPortableTextComponents = {
 };
 //
 
-export const aboutUsPortableText = {
+export const MiniPortableText = {
   types: {
     image: ({ value }) => {
       return (
