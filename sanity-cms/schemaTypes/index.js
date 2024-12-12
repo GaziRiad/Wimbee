@@ -15,6 +15,7 @@ import about from './about'
 import internationalizedBlockContent from './internationalizedBlockContent'
 import settings from './settings'
 import careers from './careers'
+import ecosystems from './ecosystems'
 
 export const schemaTypes = [
   settings,
@@ -23,6 +24,7 @@ export const schemaTypes = [
   about,
   blog,
   careers,
+  ecosystems,
   caseStudiesSection,
   contact,
   newsletter,

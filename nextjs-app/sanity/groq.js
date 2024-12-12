@@ -118,6 +118,34 @@ export const careersQuery = groq`*[_type == "careers"][0]{
   }
 }`;
 
+export const ecosystemsQuery = groq`*[_type == "ecosystems"][0]{
+  "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+   "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+  "imageUrl": image.asset->url,
+  sideText[] {
+    "text": coalesce(text[_key == $locale][0].value, text[_key == "en"][0].value),
+  },
+  "mainText": coalesce(mainText[$locale], mainText["en"]),
+  platformSection {
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    sideText[] {
+      "text": coalesce(text[_key == $locale][0].value, text[_key == "en"][0].value),
+    },
+    "mainText": coalesce(mainText[$locale], mainText["en"])
+  },
+  featuresSection {
+    "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+    features[] {
+      "feature": coalesce(feature[_key == $locale][0].value, feature[_key == "en"][0].value),
+    },
+  },
+  partnersSection {
+    "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    "mainText": coalesce(mainText[$locale], mainText["en"]),
+    "imageUrl": image.asset->url,
+  }
+}`;
+
 // Reusable sections
 
 export const contactquery = groq`*[_type == "contact"][0] {

@@ -30,6 +30,10 @@ export const structure = (S) =>
         .title('Careers')
         .id('careers')
         .child(S.document().schemaType('careers').documentId('careers')),
+      S.listItem()
+        .title('Ecosystems')
+        .id('ecosystems')
+        .child(S.document().schemaType('ecosystems').documentId('ecosystems')),
 
       S.divider(),
 
