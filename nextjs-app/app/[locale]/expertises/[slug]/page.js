@@ -13,7 +13,25 @@ import {
   caseStudiesSectionQuery,
   singleExpertiseQuery,
 } from "@/sanity/groq";
+import { groq } from "next-sanity";
 import { redirect } from "next/navigation";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale, slug } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "expertise" && slug.current == $slug][0]{
+      seo {
+        title,
+      }
+    }`,
+    qParams: { slug, locale },
+    tags: ["expertise"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
 
 export const revalidate = 2592000; // 30 days in seconds
 

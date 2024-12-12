@@ -13,8 +13,10 @@ import caseStudy from './case-study'
 import caseStudiesSection from './case-studies-section'
 import about from './about'
 import internationalizedBlockContent from './internationalizedBlockContent'
+import settings from './settings'
 
 export const schemaTypes = [
+  settings,
   home,
   boosters,
   about,

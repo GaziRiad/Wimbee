@@ -13,6 +13,24 @@ import InfoSection from "@/components/InfoSection";
 import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
+import { groq } from "next-sanity";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "home"][0]{
+      seo {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      }
+    }`,
+    qParams: { locale },
+    tags: ["home"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
 
 export const revalidate = 2592000; // 30 days in seconds
 

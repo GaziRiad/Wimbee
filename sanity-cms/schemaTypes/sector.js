@@ -36,6 +36,18 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+      ],
+    }),
+    defineField({
       // should match 'languageField' plugin configuration setting, if customized
       name: 'language',
       type: 'string',

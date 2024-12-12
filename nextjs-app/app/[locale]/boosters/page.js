@@ -10,6 +10,26 @@ import { boostersquery } from "@/sanity/groq";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import initTranslations from "@/app/i18n";
+import { groq } from "next-sanity";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "boosters"][0]{
+      seo {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      }
+    }`,
+    qParams: { locale },
+    tags: ["boosters"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
+
+export const revalidate = 2592000; // 30 days in seconds
 
 const i18nNamespaces = ["boosters"];
 

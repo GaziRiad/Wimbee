@@ -7,6 +7,24 @@ import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { sanityFetch } from "@/sanity/client";
 import { blogPageQuery } from "@/sanity/groq";
+import { groq } from "next-sanity";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "blog"][0]{
+      seo {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      }
+    }`,
+    qParams: { locale },
+    tags: ["blog"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
 
 export const revalidate = 2592000; // 30 days in seconds
 

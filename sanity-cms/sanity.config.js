@@ -5,6 +5,7 @@ import {schemaTypes} from './schemaTypes'
 import {structure} from './strcuture/index.js'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 import {documentInternationalization} from '@sanity/document-internationalization'
+import {media} from 'sanity-plugin-media'
 
 export default defineConfig({
   name: 'default',
@@ -16,6 +17,7 @@ export default defineConfig({
   plugins: [
     structureTool({structure}),
     visionTool(),
+    media(),
     documentInternationalization({
       // Required configuration
       supportedLanguages: [

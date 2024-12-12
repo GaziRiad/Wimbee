@@ -50,7 +50,6 @@ export default defineType({
       title: 'Content Section',
       type: 'internationalizedBlockContent', // Use the new type here
     }),
-
     defineField({
       name: 'seo',
       title: 'SEO Settings',
@@ -58,8 +57,8 @@ export default defineType({
       fields: [
         defineField({
           name: 'title',
-          title: 'SEO Title',
-          type: 'string',
+          title: 'Title',
+          type: 'internationalizedArrayString',
         }),
       ],
     }),

@@ -3,17 +3,8 @@ import "./globals.css";
 
 import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
-
-// const geistSans = localFont({
-//   src: "../fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "../fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+import { settingsQuery } from "@/sanity/groq";
+import { sanityFetch } from "@/sanity/client";
 
 export const modernGothic = localFont({
   src: [
@@ -43,10 +34,26 @@ export const modernGothicMono = localFont({
   variable: "--font-modern-gothic-mono",
 });
 
-export const metadata = {
-  title: "Wimbee",
-  description: "Wimbee is a digital AI agency",
-};
+// Dynamic metadata
+export async function generateMetadata({ params: { locale } }) {
+  const data = await sanityFetch({
+    query: settingsQuery,
+    qParams: { locale },
+    tags: ["settings"],
+  });
+
+  return {
+    title: {
+      default: data?.defaultTitle || "Welcome — Wimbee",
+    },
+    description:
+      data?.description ||
+      "A team at the heart of your Data & Digital strategy. Business experts, functional experts, consultants and technical developers who master market innovations and solutions. A team with strong experience and major references serving your projects and programs around Data & Digital.",
+    icons: {
+      icon: [data?.imageUrl || "/favicon.png"],
+    },
+  };
+}
 
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));

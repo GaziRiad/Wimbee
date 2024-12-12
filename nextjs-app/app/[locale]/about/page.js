@@ -7,10 +7,29 @@ import Tag from "@/components/Tag";
 import { sanityFetch } from "@/sanity/client";
 import { aboutQuery } from "@/sanity/groq";
 import NavigationWrapper from "@/components/NavigationWrapper";
-import { PortableText } from "next-sanity";
+import { groq, PortableText } from "next-sanity";
 import { aboutUsPortableText } from "@/lib/utils";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import initTranslations from "@/app/i18n";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "about"][0]{
+      seo {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      }
+    }`,
+    qParams: { locale },
+    tags: ["about"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
+
+export const revalidate = 2592000; // 30 days in seconds
 
 const i18nNamespaces = ["about"];
 

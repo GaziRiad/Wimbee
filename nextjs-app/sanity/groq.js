@@ -1,10 +1,6 @@
 import { groq } from "next-sanity";
 
 export const homequery = groq`*[_type == "home"][0]{
-  seo {
-    title,
-    description
-  },  
 hero {
     "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
     "backgroundImageUrl": backgroundImage.asset->url
@@ -79,9 +75,6 @@ export const aboutQuery = groq`*[_type == "about"][0]{
   },
   "imageUrl": image.asset->url,
   "contentSection": coalesce(contentSection[$locale], contentSection["en"]),
-  seo {
-    title
-  }
 }`;
 
 export const boostersquery = groq`*[_type == "boosters"][0] {
@@ -91,9 +84,6 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
     "name": coalesce(name[_key == $locale][0].value, name[_key == "en"][0].value),
     "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
     "imageUrl": image.asset->url
-  },
-  seo {
-    title
   }
 }`;
 
@@ -105,10 +95,7 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
     slug,
     categories[]->,
     summary
-  },
-  seo {
-    title
-  },
+  }
 }`;
 
 // Reusable sections
@@ -292,3 +279,9 @@ export const allExpertisesSlugsquery = groq`*[_type == "expertise"] {
 export const allSectorsSlugsquery = groq`*[_type == "sector"] {
         "slug": slug.current
       }`;
+
+export const settingsQuery = groq`*[_type == "settings"][0] {
+  "imageUrl": favicon.asset->url,
+  "defaultTitle": coalesce(defaultTitle[_key == $locale][0].value, defaultTitle[_key == "en"][0].value),
+  "description": coalesce(siteDescription[_key == $locale][0].value, siteDescription[_key == "en"][0].value),
+}`;

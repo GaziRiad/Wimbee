@@ -66,8 +66,8 @@ export default defineType({
       fields: [
         defineField({
           name: 'title',
-          title: 'SEO Title',
-          type: 'string',
+          title: 'Title',
+          type: 'internationalizedArrayString',
         }),
       ],
     }),

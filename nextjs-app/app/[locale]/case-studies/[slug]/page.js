@@ -8,7 +8,25 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import { allCasestudiesQuery, singleCasestudyQuery } from "@/sanity/groq";
+import { groq } from "next-sanity";
 import { redirect } from "next/navigation";
+
+// Dynamic metadata
+export async function generateMetadata({ params: { locale, slug } }) {
+  const data = await sanityFetch({
+    query: groq`*[_type == "case-study" && slug.current == $slug][0]{
+      seo {
+        title,
+      }
+    }`,
+    qParams: { slug, locale },
+    tags: ["sector"],
+  });
+
+  return {
+    title: data?.seo?.title || "Welcome — Wimbee",
+  };
+}
 
 export const revalidate = 2592000; // 30 days in seconds
 
