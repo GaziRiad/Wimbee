@@ -22,6 +22,7 @@ export async function generateMetadata({ params: { locale, slug } }) {
     query: groq`*[_type == "expertise" && slug.current == $slug][0]{
       seo {
         title,
+        description
       }
     }`,
     qParams: { slug, locale },
@@ -30,6 +31,7 @@ export async function generateMetadata({ params: { locale, slug } }) {
 
   return {
     title: data?.seo?.title || "Welcome — Wimbee",
+    description: data?.seo?.description || "Welcome — Wimbee",
   };
 }
 

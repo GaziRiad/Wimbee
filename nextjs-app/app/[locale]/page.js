@@ -21,6 +21,7 @@ export async function generateMetadata({ params: { locale } }) {
     query: groq`*[_type == "home"][0]{
       seo {
         "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+        "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value)
       }
     }`,
     qParams: { locale },
@@ -29,6 +30,7 @@ export async function generateMetadata({ params: { locale } }) {
 
   return {
     title: data?.seo?.title || "Welcome — Wimbee",
+    title: data?.seo?.description || "Welcome — Wimbee",
   };
 }
 

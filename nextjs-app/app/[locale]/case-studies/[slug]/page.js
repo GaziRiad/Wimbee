@@ -17,7 +17,8 @@ export async function generateMetadata({ params: { locale, slug } }) {
     query: groq`*[_type == "case-study" && slug.current == $slug][0]{
       seo {
         title,
-      }
+      },
+      summary
     }`,
     qParams: { slug, locale },
     tags: ["sector"],
@@ -25,6 +26,7 @@ export async function generateMetadata({ params: { locale, slug } }) {
 
   return {
     title: data?.seo?.title || "Welcome — Wimbee",
+    description: data?.summary || "Welcome — Wimbee",
   };
 }
 
