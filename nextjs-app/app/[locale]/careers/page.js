@@ -77,7 +77,7 @@ async function page({ params: { locale } }) {
                   <p key={index}>{p.text}</p>
                 ))}
               </div>
-              <div className="text-primary-500">
+              <div className="!font-medium text-primary-500 *:!text-2xl">
                 <PortableText
                   value={data?.mainText}
                   components={MiniPortableText}
@@ -95,25 +95,25 @@ async function page({ params: { locale } }) {
               {data?.positionsSection?.positions?.map((position, index) => (
                 <div
                   key={index}
-                  className="flex w-fit items-start gap-20 border-b border-primary-800 py-4"
+                  className="flex flex-col border-b border-primary-800 py-4"
                 >
-                  <div className="flex flex-col">
-                    <p className="mb-6 text-3xl text-primary-700">
+                  <div className="flex items-start gap-5 lg:gap-20">
+                    <p className="mb-6 text-2xl text-primary-700 2xl:text-3xl">
                       {position.title}
                     </p>
-                    <div className="flex items-center gap-3 font-mono text-sm uppercase text-primary-500/70">
-                      <span>{position.date},</span>
-                      <span>{position.place},</span>
-                      <span>{position.company}</span>
-                    </div>
+                    <Link
+                      href={position?.url || "/"}
+                      target="_blank"
+                      className="h-auto rounded-custom bg-[#97CAFE] px-1 py-0.5 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:text-lg"
+                    >
+                      Apply
+                    </Link>
                   </div>
-                  <Link
-                    href={position?.url || "/"}
-                    target="_blank"
-                    className="h-auto rounded-custom bg-[#97CAFE] px-1 py-0.5 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:text-lg"
-                  >
-                    Apply
-                  </Link>
+                  <div className="flex w-full items-center gap-3 font-mono text-sm uppercase text-primary-500/70">
+                    <span>{position.date},</span>
+                    <span>{position.place},</span>
+                    <span>{position.company}</span>
+                  </div>
                 </div>
               ))}
             </div>

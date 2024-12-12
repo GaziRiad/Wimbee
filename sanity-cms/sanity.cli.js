@@ -5,7 +5,6 @@ export default defineCliConfig({
     projectId: 'j5a0ndtr',
     dataset: 'production',
   },
-  studioHost: 'wimbee.sanity.studio',
 
   /**
    * Enable auto-updates for studios.
