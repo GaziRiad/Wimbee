@@ -39,7 +39,8 @@ async function Newsletter({ locale = "en" }) {
               <input
                 type="email"
                 placeholder={data.placeholderText}
-                className="flex-1 bg-inherit text-lg font-medium lg:text-3xl"
+                className="flex-1 bg-light-300 text-lg font-medium text-[#222] placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
+                required
               />
 
               <Button className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:p-1 lg:text-lg">

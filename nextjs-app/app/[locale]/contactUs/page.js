@@ -76,13 +76,13 @@ async function page({ params: { locale } }) {
                     <input
                       type={item.type}
                       placeholder={item.placeHolder}
-                      className="flex-1 bg-light-200 text-lg font-medium placeholder:text-gray-400 focus:outline-none lg:text-2xl"
+                      className="flex-1 bg-light-200 text-lg font-medium text-[#222] placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
                       required={item.required}
                     />
                   ) : (
                     <textarea
                       name={item.name}
-                      className="min-h-[200px] flex-1 resize-none bg-light-200 text-lg font-medium placeholder:absolute placeholder:bottom-0 placeholder:text-gray-400 focus:outline-none lg:text-2xl"
+                      className="min-h-[200px] flex-1 resize-none bg-light-200 text-lg font-medium text-[#222] placeholder:absolute placeholder:bottom-0 placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
                       required={item.required}
                       placeholder={item.placeHolder}
                     />
