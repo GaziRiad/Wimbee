@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import { groq } from "next-sanity";
+import Head from "next/head";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
@@ -46,6 +47,9 @@ export default async function Home({ params: { locale } }) {
     tags: ["home", "sector", "post", "case-study"],
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : locale}`;
+
   if (!data) return null;
 
   return (
@@ -54,6 +58,9 @@ export default async function Home({ params: { locale } }) {
       locale={locale}
       resources={resources}
     >
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
         <div
           className={`hero-section h-screen bg-cover bg-center`}
