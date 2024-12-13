@@ -2,7 +2,6 @@ import blockContent from './blockContent'
 import category from './category'
 import post from './post'
 import footer from './footer'
-import contact from './contact'
 import newsletter from './newsletter'
 import home from './home'
 import boosters from './boosters'
@@ -16,6 +15,8 @@ import internationalizedBlockContent from './internationalizedBlockContent'
 import settings from './settings'
 import careers from './careers'
 import ecosystems from './ecosystems'
+import contact from './contact'
+import contactPage from './contact-page'
 
 export const schemaTypes = [
   settings,
@@ -25,6 +26,7 @@ export const schemaTypes = [
   blog,
   careers,
   ecosystems,
+  contactPage,
   caseStudiesSection,
   contact,
   newsletter,

@@ -34,6 +34,10 @@ export const structure = (S) =>
         .title('Ecosystems')
         .id('ecosystems')
         .child(S.document().schemaType('ecosystems').documentId('ecosystems')),
+      S.listItem()
+        .title('Contact Us')
+        .id('contact-page')
+        .child(S.document().schemaType('contact-page').documentId('contact-page')),
 
       S.divider(),
 
@@ -48,7 +52,7 @@ export const structure = (S) =>
                 .id('footer')
                 .child(S.document().schemaType('footer').documentId('footer')),
               S.listItem()
-                .title('Contact')
+                .title('Contact Information')
                 .id('contact')
                 .child(S.document().schemaType('contact').documentId('contact')),
               S.listItem()
