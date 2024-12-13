@@ -3,7 +3,7 @@ import Link from "next/link";
 function ContactBtn({ label = "Contact us" }) {
   return (
     <Link
-      href="/contact"
+      href="/contactUs"
       className="flex h-[34px] items-center gap-3 rounded-[4px] bg-white px-3 py-[10px] text-lg font-medium text-primary-700"
     >
       <span>{label}</span>
