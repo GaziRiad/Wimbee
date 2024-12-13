@@ -146,6 +146,18 @@ export const ecosystemsQuery = groq`*[_type == "ecosystems"][0]{
   }
 }`;
 
+export const contactPageQuery = groq`*[_type == "contact-page"][0]{
+  "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
+  "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+  inputs[] {
+    "label": coalesce(label[_key == $locale][0].value, label[_key == "en"][0].value),
+    "placeHolder": coalesce(placeHolder[_key == $locale][0].value, placeHolder[_key == "en"][0].value),
+    type,
+    required
+  },
+  "submitBtnText": coalesce(submitBtnText[_key == $locale][0].value, submitBtnText[_key == "en"][0].value)
+}`;
+
 // Reusable sections
 
 export const contactquery = groq`*[_type == "contact"][0] {
