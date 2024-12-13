@@ -11,7 +11,8 @@ export const client = createClient({
 
 export async function sanityFetch({ query, qParams = {}, tags }) {
   return client.fetch(query, qParams, {
-    cache: process.env.NODE_ENV === "development" ? "no-store" : "default",
+    cache:
+      process.env.NEXT_PUBLIC_ENV === "development" ? "no-store" : "default",
     next: { tags },
   });
 }

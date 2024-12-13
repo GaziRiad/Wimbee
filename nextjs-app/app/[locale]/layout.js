@@ -52,6 +52,10 @@ export async function generateMetadata({ params: { locale } }) {
     icons: {
       icon: [data?.imageUrl || "/favicon.png"],
     },
+    robots:
+      process.env.NEXT_PUBLIC_ENV === "production"
+        ? { index: true, follow: true }
+        : { index: false, follow: false },
   };
 }
 
