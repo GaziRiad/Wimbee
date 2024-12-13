@@ -9,7 +9,7 @@ import {
 const locales = ["en", "fr"]; // Add your locales here
 
 export default async function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com";
 
   const routes = [
     "",
