@@ -7,7 +7,7 @@ import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
-import { allCasestudiesQuery, singleCasestudyQuery } from "@/sanity/groq";
+import { allCasestudiesSlugsQuery, singleCasestudyQuery } from "@/sanity/groq";
 import { groq } from "next-sanity";
 import { redirect } from "next/navigation";
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params: { locale, slug } }) {
       summary
     }`,
     qParams: { slug, locale },
-    tags: ["sector"],
+    tags: ["case-study"],
   });
 
   return {
@@ -34,7 +34,7 @@ export const revalidate = 2592000; // 30 days in seconds
 
 export async function generateStaticParams() {
   const slugs = await sanityFetch({
-    query: allCasestudiesQuery,
+    query: allCasestudiesSlugsQuery,
     tags: ["case-study"],
   });
 

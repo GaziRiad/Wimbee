@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { locale } }) {
       }
     }`,
     qParams: { locale },
-    tags: ["blog"],
+    tags: ["blog", "post"],
   });
 
   return {
@@ -30,7 +30,7 @@ export async function generateMetadata({ params: { locale } }) {
 
 export const revalidate = 2592000; // 30 days in seconds
 
-const i18nNamespaces = ["blog"];
+const i18nNamespaces = ["blog", "post"];
 
 async function page({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);

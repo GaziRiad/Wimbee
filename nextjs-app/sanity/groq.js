@@ -234,16 +234,6 @@ export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0
         }
     }`;
 
-// Get all posts (FULL DATA)
-export const postsquery = groq`
-*[_type == "post"] | order(publishedAt desc, _createdAt desc) {
-  slug,
-  title,
-  categories[]->,
-  summary
-}
-`;
-
 // Single Post
 export const singlearticlequery = groq`*[_type == "post" && slug.current == $slug][0] {
         title,
@@ -311,10 +301,12 @@ export const singleSectorQuery = groq`*[_type == "sector" && slug.current == $sl
     },
 }`;
 
-//
+// ALL DATA
 export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt asc) {
   title,
-  "slug": slug.current
+  "slug": slug.current,
+  _updatedAt,
+  language,
 }`;
 
 //
@@ -328,7 +320,7 @@ export const allBlogSlugsquery = groq`*[_type == "post"] {
         "slug": slug.current
       }`;
 
-export const allCasestudiesQuery = groq`*[_type == "case-study"] {
+export const allCasestudiesSlugsQuery = groq`*[_type == "case-study"] {
         "slug": slug.current
       }`;
 
@@ -345,3 +337,36 @@ export const settingsQuery = groq`*[_type == "settings"][0] {
   "defaultTitle": coalesce(defaultTitle[_key == $locale][0].value, defaultTitle[_key == "en"][0].value),
   "description": coalesce(siteDescription[_key == $locale][0].value, siteDescription[_key == "en"][0].value),
 }`;
+
+// ALL routes (mostly for sitemap)
+export const allPostsQuery = groq`
+    *[_type == "post"] {
+      "slug": slug.current,
+      _updatedAt,
+      language,
+    }
+  `;
+
+export const allCasestudiesquery = groq`
+    *[_type == "case-study"] {
+      "slug": slug.current,
+      _updatedAt,
+      language,
+    }
+  `;
+
+export const allExpertisesQuery = groq`
+    *[_type == "expertise"] {
+      "slug": slug.current,
+      _updatedAt,
+      language,
+    }
+  `;
+
+export const allSectorsQuery = groq`
+    *[_type == "sector"] {
+      "slug": slug.current,
+      _updatedAt,
+      language,
+    }
+  `;
