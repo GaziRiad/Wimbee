@@ -18,9 +18,8 @@ function ServicesSection({ content }) {
               <Image
                 src={service.imageUrl}
                 alt={`Image of ${service.title} from wimbee`}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-custom"
+                fill
+                className="rounded-custom object-cover"
               />
             </div>
             <div className="flex flex-grow flex-col">

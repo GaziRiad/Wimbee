@@ -15,7 +15,7 @@ import {
 } from "@/sanity/groq";
 import { groq } from "next-sanity";
 import Head from "next/head";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale, slug } }) {
@@ -80,7 +80,7 @@ async function page({ params: { locale, slug } }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
   const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}expertises/${slug}`;
 
-  if (!expertise) return null;
+  if (!expertise) return notFound();
 
   return (
     <TranslationsProvider
