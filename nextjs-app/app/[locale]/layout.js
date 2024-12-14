@@ -42,8 +42,6 @@ export async function generateMetadata({ params: { locale } }) {
     tags: ["settings"],
   });
 
-  console.log(process.env.NEXT_PUBLIC_ENV);
-
   return {
     title: {
       default: data?.defaultTitle || "Welcome — Wimbee",

@@ -8,6 +8,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import { sanityFetch } from "@/sanity/client";
 import { blogPageQuery } from "@/sanity/groq";
 import { groq } from "next-sanity";
+import Head from "next/head";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
@@ -40,6 +41,10 @@ async function page({ params: { locale } }) {
     qParams: { locale },
     tags: ["post", "blog"],
   });
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog`;
+
   if (!data) return null;
 
   return (
@@ -48,6 +53,9 @@ async function page({ params: { locale } }) {
       locale={locale}
       resources={resources}
     >
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
         <div className="pt-16">
           <NavigationWrapper locale={locale} />

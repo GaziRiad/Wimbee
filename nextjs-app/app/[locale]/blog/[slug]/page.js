@@ -14,6 +14,7 @@ import {
   singlearticlequery,
 } from "@/sanity/groq";
 import { groq } from "next-sanity";
+import Head from "next/head";
 import { redirect } from "next/navigation";
 
 // Dynamic metadata
@@ -76,18 +77,10 @@ async function page({ params: { locale, slug } }) {
     redirect(`/blog/${localesWithSlugsMap[locale]}`); // Redirect to the correct slug
   }
 
-  if (!post)
-    return (
-      <TranslationsProvider
-        namespaces={i18nNamespaces}
-        locale={locale}
-        resources={resources}
-      >
-        <div className="bg-light-300">
-          <NavigationWrapper locale={locale} />
-        </div>
-      </TranslationsProvider>
-    );
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog/${slug}`;
+
+  if (!post) return null;
 
   return (
     <TranslationsProvider
@@ -95,6 +88,9 @@ async function page({ params: { locale, slug } }) {
       locale={locale}
       resources={resources}
     >
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
         <div className="bg-light-300">
           <NavigationWrapper />

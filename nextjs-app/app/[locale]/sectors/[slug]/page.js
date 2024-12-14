@@ -14,6 +14,7 @@ import {
   singleSectorQuery,
 } from "@/sanity/groq";
 import { groq } from "next-sanity";
+import Head from "next/head";
 import { redirect } from "next/navigation";
 
 // Dynamic metadata
@@ -76,6 +77,10 @@ async function page({ params: { locale, slug } }) {
     redirect(`/sectors/${localesWithSlugsMap[locale]}`); // Redirect to the correct slug
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}sectors/${slug}`;
+  console.log(canonicalUrl);
+
   if (!sector) return null;
 
   return (
@@ -84,6 +89,9 @@ async function page({ params: { locale, slug } }) {
       locale={locale}
       resources={resources}
     >
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
         <div className="bg-light-300">
           <NavigationWrapper locale={locale} />

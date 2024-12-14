@@ -11,6 +11,7 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import initTranslations from "@/app/i18n";
 import { groq } from "next-sanity";
+import Head from "next/head";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
@@ -44,6 +45,8 @@ async function page({ params: { locale } }) {
     tags: ["boosters"],
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}boosters`;
   if (!data) return null;
 
   return (
@@ -52,6 +55,9 @@ async function page({ params: { locale } }) {
       locale={locale}
       resources={resources}
     >
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
         <section className="bg-light-300">
           <NavigationWrapper locale={locale} />
