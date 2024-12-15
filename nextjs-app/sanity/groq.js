@@ -311,11 +311,11 @@ export const navigationQuery = groq`*[_type == "settings"][0] {
   navigation {
     "imageUrl": logo.asset->url,
     "buttonText": coalesce(buttonText[_key == $locale][0].value, buttonText[_key == "en"][0].value),
-    "navExpertises": *[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt desc) {
+    "navExpertises": *[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt asc) {
       title,
       "slug": slug.current,
     },
-    "navSectors": *[_type == "sector" && isNavigation == true && language == $locale] | order(publishedAt desc) {
+    "navSectors": *[_type == "sector" && isNavigation == true && language == $locale] | order(publishedAt asc) {
       title,
       "slug": slug.current
     },
