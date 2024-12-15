@@ -77,9 +77,8 @@ async function page({ params: { locale, slug } }) {
     redirect(`/sectors/${localesWithSlugsMap[locale]}`); // Redirect to the correct slug
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
-  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}sectors/${slug}`;
-  console.log(canonicalUrl);
+  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  // const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}sectors/${slug}`;
 
   if (!sector) return null;
 
@@ -89,9 +88,9 @@ async function page({ params: { locale, slug } }) {
       locale={locale}
       resources={resources}
     >
-      <Head>
+      {/* <Head>
         <link rel="canonical" href={canonicalUrl} />
-      </Head>
+      </Head> */}
       <main>
         <div className="bg-light-300">
           <NavigationWrapper locale={locale} />

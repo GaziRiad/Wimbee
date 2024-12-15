@@ -19,8 +19,6 @@ export function DesktopMenuItem({ item }) {
     );
   }
 
-  console.log(item);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="m-1 rounded-[4px] px-2 text-lg font-medium text-primary-800 outline-none transition-all hover:bg-primary-800 hover:text-primary-400 data-[state=open]:bg-primary-800 data-[state=open]:text-primary-400">
