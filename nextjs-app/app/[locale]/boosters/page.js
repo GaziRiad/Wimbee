@@ -3,7 +3,6 @@ import InfoSection from "@/components/InfoSection";
 import Newsletter from "@/components/Newsletter";
 import Image from "next/image";
 
-import gif from "../../../public/service1.gif";
 import Tag from "@/components/Tag";
 import { sanityFetch } from "@/sanity/client";
 import { boostersquery } from "@/sanity/groq";
@@ -73,7 +72,7 @@ async function page({ params: { locale } }) {
               {data.products.map((product, index) => (
                 <div key={index} className="w-full">
                   <Image
-                    src={product.imageUrl || gif}
+                    src={product.imageUrl}
                     alt={`Gif image from wimbee`}
                     width={300}
                     height={300}
