@@ -6,6 +6,7 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import SingleContent from "@/components/SingleContent";
 import TranslationsProvider from "@/components/TranslationsProvider";
+import { locales } from "@/lib/locales";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
@@ -36,18 +37,21 @@ export async function generateMetadata({ params: { locale, slug } }) {
   };
 }
 
-// export const revalidate = 2592000; // 30 days in seconds
+export const revalidate = 2592000; // 30 days in seconds
 
-// export async function generateStaticParams() {
-//   const slugs = await sanityFetch({
-//     query: allSectorsSlugsquery,
-//     tags: ["sector"],
-//   });
+export async function generateStaticParams() {
+  const slugs = await sanityFetch({
+    query: allSectorsSlugsquery,
+    tags: ["sector"],
+  });
 
-//   return slugs.map((slug) => ({
-//     slug: slug.current, // Adjust to match the returned slug field
-//   }));
-// }
+  return slugs.flatMap((post) =>
+    locales.map((locale) => ({
+      locale,
+      slug: post.slug.current,
+    })),
+  );
+}
 
 const i18nNamespaces = ["sector"];
 
