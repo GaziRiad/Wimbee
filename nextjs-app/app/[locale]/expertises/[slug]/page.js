@@ -10,7 +10,7 @@ import { locales } from "@/lib/locales";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
-  allExpertisesSlugsquery,
+  allExpertisesQuery,
   caseStudiesSectionQuery,
   singleExpertiseQuery,
 } from "@/sanity/groq";
@@ -37,21 +37,23 @@ export async function generateMetadata({ params: { locale, slug } }) {
   };
 }
 
-// export const revalidate = 2592000; // 30 days in seconds
+export const revalidate = 2592000; // 30 days in seconds
 
-// export async function generateStaticParams() {
-//   const slugs = await sanityFetch({
-//     query: allExpertisesSlugsquery,
-//     tags: ["expertise"],
-//   });
+export async function generateStaticParams() {
+  const expertises = await sanityFetch({
+    query: allExpertisesQuery,
+    tags: ["expertise"],
+  });
 
-//   return slugs.flatMap((post) =>
-//     locales.map((locale) => ({
-//       locale,
-//       slug: post.slug.current,
-//     })),
-//   );
-// }
+  return expertises.flatMap((post) =>
+    locales
+      .map((locale) => ({
+        locale,
+        slug: post?.language === locale ? post?.slug : null,
+      }))
+      .filter((param) => param.slug !== null),
+  );
+}
 
 const i18nNamespaces = ["expertise"];
 

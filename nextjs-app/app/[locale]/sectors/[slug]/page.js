@@ -11,7 +11,6 @@ import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
   allSectorsQuery,
-  allSectorsSlugsquery,
   caseStudiesSectionQuery,
   singleSectorQuery,
 } from "@/sanity/groq";

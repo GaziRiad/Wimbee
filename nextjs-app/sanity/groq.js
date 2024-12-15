@@ -310,14 +310,6 @@ export const allCasestudiesSlugsQuery = groq`*[_type == "case-study"] {
         "slug": slug.current
       }`;
 
-export const allExpertisesSlugsquery = groq`*[_type == "expertise"] {
-        "slug": slug.current
-      }`;
-
-export const allSectorsSlugsquery = groq`*[_type == "sector"] {
-        "slug": slug.current
-      }`;
-
 export const settingsQuery = groq`*[_type == "settings"][0] {
   "imageUrl": favicon.asset->url,
   "defaultTitle": coalesce(defaultTitle[_key == $locale][0].value, defaultTitle[_key == "en"][0].value),
