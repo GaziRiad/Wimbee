@@ -37,21 +37,21 @@ export async function generateMetadata({ params: { locale, slug } }) {
   };
 }
 
-export const revalidate = 2592000; // 30 days in seconds
+// export const revalidate = 2592000; // 30 days in seconds
 
-export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allExpertisesSlugsquery,
-    tags: ["expertise"],
-  });
+// export async function generateStaticParams() {
+//   const slugs = await sanityFetch({
+//     query: allExpertisesSlugsquery,
+//     tags: ["expertise"],
+//   });
 
-  return slugs.flatMap((post) =>
-    locales.map((locale) => ({
-      locale,
-      slug: post.slug.current,
-    })),
-  );
-}
+//   return slugs.flatMap((post) =>
+//     locales.map((locale) => ({
+//       locale,
+//       slug: post.slug.current,
+//     })),
+//   );
+// }
 
 const i18nNamespaces = ["expertise"];
 

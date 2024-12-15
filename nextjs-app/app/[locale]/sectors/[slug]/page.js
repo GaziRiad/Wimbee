@@ -10,6 +10,7 @@ import { locales } from "@/lib/locales";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
+  allSectorsQuery,
   allSectorsSlugsquery,
   caseStudiesSectionQuery,
   singleSectorQuery,
@@ -40,16 +41,18 @@ export async function generateMetadata({ params: { locale, slug } }) {
 export const revalidate = 2592000; // 30 days in seconds
 
 export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allSectorsSlugsquery,
+  const sectors = await sanityFetch({
+    query: allSectorsQuery,
     tags: ["sector"],
   });
 
-  return slugs.flatMap((post) =>
-    locales.map((locale) => ({
-      locale,
-      slug: post.slug.current,
-    })),
+  return sectors.flatMap((post) =>
+    locales
+      .map((locale) => ({
+        locale,
+        slug: post?.language === locale ? post?.slug : null,
+      }))
+      .filter((param) => param.slug !== null),
   );
 }
 
