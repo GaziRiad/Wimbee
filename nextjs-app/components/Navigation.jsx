@@ -4,15 +4,16 @@ import { useState, useEffect, useRef } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Logo from "./Logo";
 import LanguageChanger from "./LanguageChanger";
 import ContactBtn from "./ContactBtn";
 import { DesktopMenuItem } from "./DesktopMenuItem";
 import { MobileMenuItem } from "./MobileMenuItem";
+import Link from "next/link";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Navigation({ menu }) {
+function Navigation({ menu, content }) {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -99,7 +100,15 @@ function Navigation({ menu }) {
     >
       <div className="mx-auto flex max-w-[1568px] items-center justify-between p-4 2xl:py-6">
         <nav className="flex items-center gap-20">
-          <Logo />
+          <Link href="/">
+            <Image
+              width={600}
+              height={600}
+              src={content?.imageUrl}
+              alt="Wimbee logo"
+              className="h-8 w-fit"
+            />
+          </Link>
           <ul className="hidden h-[34px] items-center rounded-[4px] bg-white lg:flex">
             {menu.map((item, index) => (
               <li key={index}>
@@ -113,7 +122,7 @@ function Navigation({ menu }) {
           <div className="hidden lg:block">
             <LanguageChanger />
           </div>
-          <ContactBtn />
+          <ContactBtn label={content?.buttonText} />
           <button
             className="hover:bg-primary-100 flex h-[34px] items-center rounded-[4px] bg-white px-2 text-primary-700 transition-colors duration-200 lg:hidden"
             onClick={() => setNavIsOpen((current) => !current)}

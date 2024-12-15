@@ -24,5 +24,79 @@ export default defineType({
       title: 'Site Description',
       type: 'internationalizedArrayString',
     }),
+    defineField({
+      name: 'navigation',
+      title: 'Navigation',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'logo',
+          title: 'Logo',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: 'buttonText',
+          title: 'Button Text',
+          type: 'internationalizedArrayString',
+          initialValue: 'Contact us',
+        }),
+        defineField({
+          name: 'expertisesLink',
+          title: 'Expertises Link',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'internationalizedArrayString',
+              initialValue: 'Expertises',
+            }),
+            defineField({
+              name: 'dropdownTitle',
+              title: 'Dropdown Title',
+              type: 'internationalizedArrayString',
+            }),
+            defineField({
+              name: 'dropdownImage',
+              title: 'Dropdown Image',
+              type: 'image',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'sectorsLink',
+          title: 'Sectors Link',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'internationalizedArrayString',
+              initialValue: 'Sectors',
+            }),
+            defineField({
+              name: 'dropdownTitle',
+              title: 'Dropdown Title',
+              type: 'internationalizedArrayString',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'boostersLink',
+          title: 'Boosters Link',
+          type: 'internationalizedArrayString',
+          initialValue: 'Boosters',
+        }),
+        defineField({
+          name: 'aboutLink',
+          title: 'About Link',
+          type: 'internationalizedArrayString',
+          initialValue: 'About',
+        }),
+      ],
+    }),
   ],
 })

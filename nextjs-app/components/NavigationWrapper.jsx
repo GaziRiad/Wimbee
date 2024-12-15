@@ -1,18 +1,12 @@
-import { expertisesquery, sectorsQuery } from "@/sanity/groq";
+import { expertisesquery, navigationQuery, sectorsQuery } from "@/sanity/groq";
 import { sanityFetch } from "@/sanity/client";
 import Navigation from "./Navigation";
 
 async function NavigationWrapper({ locale = "en" }) {
-  const expertises = await sanityFetch({
-    query: expertisesquery,
+  const nav = await sanityFetch({
+    query: navigationQuery,
     qParams: { locale },
-    tags: ["expertise"],
-  });
-
-  const sectors = await sanityFetch({
-    query: sectorsQuery,
-    qParams: { locale },
-    tags: ["sector"],
+    tags: ["navigation", "sector", "expertise"],
   });
 
   const menu = [
@@ -20,25 +14,32 @@ async function NavigationWrapper({ locale = "en" }) {
       title: "Expertises",
       type: "expertises",
       items:
-        expertises?.map((item) => ({
+        nav?.navigation?.navExpertises.map((item) => ({
           label: item.title,
           href: `/expertises/${item.slug}`,
         })) || [],
+      dropDown: {
+        title: nav?.navigation?.expertisesLink?.dropdownTitle,
+        image: nav?.navigation?.expertisesLink?.imageUrl,
+      },
     },
     {
       title: "Sectors",
       type: "sectors",
       items:
-        sectors?.map((item) => ({
+        nav?.navigation?.navSectors.map((item) => ({
           label: item.title,
           href: `/sectors/${item.slug}`,
         })) || [],
+      dropDown: {
+        title: nav?.navigation?.sectorsLink?.dropdownTitle,
+      },
     },
-    { title: "Boosters", href: "/boosters" },
-    { title: "About", href: "/about" },
+    { title: nav?.navigation?.boostersLink, href: "/boosters" },
+    { title: nav?.navigation?.aboutLink, href: "/about" },
   ];
 
-  return <Navigation menu={menu} />;
+  return <Navigation menu={menu} content={nav?.navigation} />;
 }
 
 export default NavigationWrapper;

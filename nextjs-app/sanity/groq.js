@@ -301,20 +301,6 @@ export const singleSectorQuery = groq`*[_type == "sector" && slug.current == $sl
     },
 }`;
 
-// ALL DATA
-export const expertisesquery = groq`*[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt asc) {
-  title,
-  "slug": slug.current,
-  _updatedAt,
-  language,
-}`;
-
-//
-export const sectorsQuery = groq`*[_type == "sector" && isNavigation == true  && language == $locale] | order(publishedAt asc) {
-  title,
-  "slug": slug.current
-}`;
-
 // For generatestaticparams
 export const allBlogSlugsquery = groq`*[_type == "post"] {
         "slug": slug.current
@@ -336,6 +322,32 @@ export const settingsQuery = groq`*[_type == "settings"][0] {
   "imageUrl": favicon.asset->url,
   "defaultTitle": coalesce(defaultTitle[_key == $locale][0].value, defaultTitle[_key == "en"][0].value),
   "description": coalesce(siteDescription[_key == $locale][0].value, siteDescription[_key == "en"][0].value),
+}`;
+
+export const navigationQuery = groq`*[_type == "settings"][0] {
+  navigation {
+    "imageUrl": logo.asset->url,
+    "buttonText": coalesce(buttonText[_key == $locale][0].value, buttonText[_key == "en"][0].value),
+    "navExpertises": *[_type == "expertise" && isNavigation == true && language == $locale] | order(publishedAt desc) {
+      title,
+      "slug": slug.current,
+    },
+    "navSectors": *[_type == "sector" && isNavigation == true && language == $locale] | order(publishedAt desc) {
+      title,
+      "slug": slug.current
+    },
+    expertisesLink {
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      "dropdownTitle": coalesce(dropdownTitle[_key == $locale][0].value, dropdownTitle[_key == "en"][0].value),
+      "imageUrl": dropdownImage.asset->url
+    },
+    sectorsLink {
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      "dropdownTitle": coalesce(dropdownTitle[_key == $locale][0].value, dropdownTitle[_key == "en"][0].value),
+    },
+    "boostersLink": coalesce(boostersLink[_key == $locale][0].value, boostersLink[_key == "en"][0].value),
+    "aboutLink": coalesce(aboutLink[_key == $locale][0].value, aboutLink[_key == "en"][0].value)
+  }
 }`;
 
 // ALL routes (mostly for sitemap)

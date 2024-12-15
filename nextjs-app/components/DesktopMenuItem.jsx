@@ -19,6 +19,8 @@ export function DesktopMenuItem({ item }) {
     );
   }
 
+  console.log(item);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="m-1 rounded-[4px] px-2 text-lg font-medium text-primary-800 outline-none transition-all hover:bg-primary-800 hover:text-primary-400 data-[state=open]:bg-primary-800 data-[state=open]:text-primary-400">
@@ -26,7 +28,7 @@ export function DesktopMenuItem({ item }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" alignOffset={-5} className="mt-1 p-4">
         <DropdownMenuLabel className="px-0 font-main text-xl font-medium text-primary-800">
-          <span>{item.title}</span>
+          <span>{item.dropDown.title}</span>
         </DropdownMenuLabel>
         <div
           className={`flex items-start ${item.type === "sectors" ? "flex-col" : "gap-6"}`}
@@ -34,7 +36,7 @@ export function DesktopMenuItem({ item }) {
           <div className="flex-1">
             {item.type === "expertises" && (
               <Image
-                src="/introGif.gif"
+                src={item.dropDown.image}
                 width={300}
                 height={300}
                 alt="wimbee GIF"

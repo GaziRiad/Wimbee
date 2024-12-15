@@ -32,7 +32,7 @@ function SectorsSection({ content }) {
             width={600}
             height={600}
             alt="Introduction section of wimbee GIF"
-            className="aspect-square lg:max-w-[270px] 2xl:max-w-[580px]"
+            className="aspect-square object-cover lg:max-w-[270px] 2xl:max-w-[580px]"
           />
         </div>
       </div>
