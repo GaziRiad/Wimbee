@@ -15,7 +15,6 @@ export default defineType({
       name: 'title',
       title: 'Main Title',
       type: 'internationalizedArrayString',
-      initialValue: "Innovation isn't just a goal—it's how we lead.",
     }),
 
     defineField({
