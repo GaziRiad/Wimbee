@@ -5,6 +5,7 @@ import InfoSection from "@/components/InfoSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
+import { locales } from "@/lib/locales";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import { allCasestudiesquery, singleCasestudyQuery } from "@/sanity/groq";
