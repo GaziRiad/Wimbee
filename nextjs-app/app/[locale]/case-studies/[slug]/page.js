@@ -7,7 +7,7 @@ import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
-import { allCasestudiesSlugsQuery, singleCasestudyQuery } from "@/sanity/groq";
+import { allCasestudiesquery, singleCasestudyQuery } from "@/sanity/groq";
 import { groq } from "next-sanity";
 import Head from "next/head";
 import { redirect } from "next/navigation";
@@ -34,14 +34,19 @@ export async function generateMetadata({ params: { locale, slug } }) {
 export const revalidate = 2592000; // 30 days in seconds
 
 export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allCasestudiesSlugsQuery,
+  const cases = await sanityFetch({
+    query: allCasestudiesquery,
     tags: ["case-study"],
   });
 
-  return slugs.map((slug) => ({
-    slug: slug.current, // Adjust to match the returned slug field
-  }));
+  return cases.flatMap((post) =>
+    locales
+      .map((locale) => ({
+        locale,
+        slug: post?.language === locale ? post?.slug : null,
+      }))
+      .filter((param) => param.slug !== null),
+  );
 }
 
 const i18nNamespaces = ["case-study"];

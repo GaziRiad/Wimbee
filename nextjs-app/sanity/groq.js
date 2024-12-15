@@ -301,15 +301,6 @@ export const singleSectorQuery = groq`*[_type == "sector" && slug.current == $sl
     },
 }`;
 
-// For generatestaticparams
-export const allBlogSlugsquery = groq`*[_type == "post"] {
-        "slug": slug.current
-      }`;
-
-export const allCasestudiesSlugsQuery = groq`*[_type == "case-study"] {
-        "slug": slug.current
-      }`;
-
 export const settingsQuery = groq`*[_type == "settings"][0] {
   "imageUrl": favicon.asset->url,
   "defaultTitle": coalesce(defaultTitle[_key == $locale][0].value, defaultTitle[_key == "en"][0].value),
@@ -342,7 +333,8 @@ export const navigationQuery = groq`*[_type == "settings"][0] {
   }
 }`;
 
-// ALL routes (mostly for sitemap)
+// ALL routes (mostly for sitemap and SSG)
+
 export const allPostsQuery = groq`
     *[_type == "post"] {
       "slug": slug.current,

@@ -9,7 +9,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
-  allBlogSlugsquery,
+  allPostsQuery,
   caseStudiesSectionQuery,
   singlearticlequery,
 } from "@/sanity/groq";
@@ -39,14 +39,19 @@ export async function generateMetadata({ params: { locale, slug } }) {
 export const revalidate = 2592000; // 30 days in seconds
 
 export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allBlogSlugsquery,
+  const posts = await sanityFetch({
+    query: allPostsQuery,
     tags: ["post"],
   });
 
-  return slugs.map((slug) => ({
-    slug: slug.current, // Adjust to match the returned slug field
-  }));
+  return posts.flatMap((post) =>
+    locales
+      .map((locale) => ({
+        locale,
+        slug: post?.language === locale ? post?.slug : null,
+      }))
+      .filter((param) => param.slug !== null),
+  );
 }
 
 const i18nNamespaces = ["article"];
