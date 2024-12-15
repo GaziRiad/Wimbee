@@ -36,18 +36,18 @@ export async function generateMetadata({ params: { locale, slug } }) {
   };
 }
 
-export const revalidate = 2592000; // 30 days in seconds
+// export const revalidate = 2592000; // 30 days in seconds
 
-export async function generateStaticParams() {
-  const slugs = await sanityFetch({
-    query: allSectorsSlugsquery,
-    tags: ["sector"],
-  });
+// export async function generateStaticParams() {
+//   const slugs = await sanityFetch({
+//     query: allSectorsSlugsquery,
+//     tags: ["sector"],
+//   });
 
-  return slugs.map((slug) => ({
-    slug: slug.current, // Adjust to match the returned slug field
-  }));
-}
+//   return slugs.map((slug) => ({
+//     slug: slug.current, // Adjust to match the returned slug field
+//   }));
+// }
 
 const i18nNamespaces = ["sector"];
 
@@ -77,8 +77,8 @@ async function page({ params: { locale, slug } }) {
     redirect(`/sectors/${localesWithSlugsMap[locale]}`); // Redirect to the correct slug
   }
 
-  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
-  // const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}sectors/${slug}`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}sectors/${slug}`;
 
   if (!sector) return null;
 
@@ -88,9 +88,9 @@ async function page({ params: { locale, slug } }) {
       locale={locale}
       resources={resources}
     >
-      {/* <Head>
+      <Head>
         <link rel="canonical" href={canonicalUrl} />
-      </Head> */}
+      </Head>
       <main>
         <div className="bg-light-300">
           <NavigationWrapper locale={locale} />
