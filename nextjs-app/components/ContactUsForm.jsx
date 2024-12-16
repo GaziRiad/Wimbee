@@ -45,10 +45,21 @@ function ContactUsForm({ data }) {
             />
           ) : (
             <textarea
-              name={item.name}
-              className="min-h-[200px] flex-1 resize-none bg-light-200 text-lg font-medium text-[#222] placeholder:absolute placeholder:bottom-0 placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
-              required={item.required}
-              placeholder={item.placeHolder}
+              name={item.label}
+              className={`min-h-[200px] flex-1 resize-none bg-light-200 text-lg font-medium placeholder:absolute placeholder:bottom-0 focus:outline-none lg:text-xl lg:placeholder:text-2xl ${
+                errors[item.label]
+                  ? "placeholder:text-[#FF0000]"
+                  : "text-[#222] placeholder:text-gray-400"
+              }`}
+              placeholder={
+                errors[item.label]
+                  ? errors[item.label].message
+                  : item.placeHolder
+              }
+              {...register(item.label, {
+                required: `${item.label} ${t("required")}*`,
+              })}
+              aria-invalid={errors[item.label] ? "true" : "false"}
             />
           )}
         </div>

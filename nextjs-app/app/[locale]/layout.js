@@ -67,6 +67,7 @@ export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale} dir={dir(locale)}>
       <body
+        suppressHydrationWarning={true}
         className={`${modernGothic.variable} ${modernGothicMono.variable} bg-light-200 font-main antialiased`}
       >
         {children}
