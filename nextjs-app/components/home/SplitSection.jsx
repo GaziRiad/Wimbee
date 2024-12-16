@@ -129,19 +129,19 @@ function SplitSection({
         >
           <div className="w-full text-primary-800 2xl:w-[720px]">
             {content.items.map((post, index) => (
-              <Link
-                href={`/${type}/${post.slug.current}` || "/"}
+              <div
                 key={index}
                 className={`inline-block border-b py-4 ${variant === "primary" ? "!border-primary-[#97CAFE]" : "border-primary-800"}`}
                 onMouseEnter={() => !isInitialLoad && setHoveredIndex(index)}
                 onMouseLeave={() => !isInitialLoad && setHoveredIndex(null)}
               >
                 <div className="flex w-full items-center justify-between gap-1 font-medium">
-                  <p
+                  <Link
+                    href={`/${type}/${post.slug.current}` || "/"}
                     className={`text-left text-2xl lg:text-[28px] ${variant === "primary" && "text-light-200"}`}
                   >
                     {post.title}
-                  </p>
+                  </Link>
                   {post?.categories?.map((category, i) => (
                     <span
                       key={i}
@@ -166,7 +166,7 @@ function SplitSection({
                     </p>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           <Image
