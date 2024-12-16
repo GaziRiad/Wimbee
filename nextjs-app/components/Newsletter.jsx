@@ -1,7 +1,7 @@
 import { sanityFetch } from "@/sanity/client";
 import { newsletterquery } from "@/sanity/groq";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import NewsletterForm from "./NewsletterForm";
 
 async function Newsletter({ locale = "en" }) {
   const data = await sanityFetch({
@@ -27,28 +27,7 @@ async function Newsletter({ locale = "en" }) {
             </li>
           ))}
         </ul>
-        <form className="lg:max-w-[720px]">
-          <h2 className="mb-6 max-w-lg text-lg font-medium text-primary-800 lg:text-3xl">
-            {data.title}
-          </h2>
-          <div className="flex flex-col bg-light-300 p-2 text-[#76848F]">
-            <label className="mb-6 text-xs uppercase lg:text-base">
-              {data.labelText}
-            </label>
-            <div className="flex flex-wrap items-center gap-4">
-              <input
-                type="email"
-                placeholder={data.placeholderText}
-                className="flex-1 bg-light-300 text-lg font-medium text-[#222] placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
-                required
-              />
-
-              <Button className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:p-1 lg:text-lg">
-                {data.buttonText}
-              </Button>
-            </div>
-          </div>
-        </form>
+        <NewsletterForm data={data} />
       </div>
     </section>
   );

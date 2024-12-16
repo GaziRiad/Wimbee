@@ -37,7 +37,7 @@ export async function generateMetadata({ params: { locale } }) {
 
 export const revalidate = 2592000; // 30 days in seconds
 
-const i18nNamespaces = ["home"];
+const i18nNamespaces = ["home", "errors"];
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);

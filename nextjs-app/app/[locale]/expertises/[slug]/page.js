@@ -55,7 +55,7 @@ export async function generateStaticParams() {
   );
 }
 
-const i18nNamespaces = ["expertise"];
+const i18nNamespaces = ["expertise", "errors"];
 
 async function page({ params: { locale, slug } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);

@@ -9,8 +9,8 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import initTranslations from "@/app/i18n";
 import { groq } from "next-sanity";
-import { Button } from "@/components/ui/button";
 import Head from "next/head";
+import ContactUsForm from "@/components/ContactUsForm";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params: { locale } }) {
 
 export const revalidate = 2592000; // 30 days in seconds
 
-const i18nNamespaces = ["contactUs"];
+const i18nNamespaces = ["errors"];
 
 async function page({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
@@ -70,36 +70,7 @@ async function page({ params: { locale } }) {
               {data?.title}
             </h1>
 
-            <form className="mx-auto flex max-w-2xl flex-col gap-4">
-              {data?.inputs.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col gap-6 bg-light-200 p-2"
-                >
-                  <label className="mb-6 font-mono text-xs uppercase text-primary-700 lg:text-base">
-                    {item.label}
-                  </label>
-                  {item.type !== "textarea" ? (
-                    <input
-                      type={item.type}
-                      placeholder={item.placeHolder}
-                      className="flex-1 bg-light-200 text-lg font-medium text-[#222] placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
-                      required={item.required}
-                    />
-                  ) : (
-                    <textarea
-                      name={item.name}
-                      className="min-h-[200px] flex-1 resize-none bg-light-200 text-lg font-medium text-[#222] placeholder:absolute placeholder:bottom-0 placeholder:text-gray-400 focus:outline-none lg:text-xl lg:placeholder:text-2xl"
-                      required={item.required}
-                      placeholder={item.placeHolder}
-                    />
-                  )}
-                </div>
-              ))}
-              <Button className="ml-auto h-auto w-fit rounded-custom bg-primary-800 px-2 py-1 text-lg text-primary-400 hover:bg-primary-800/95">
-                {data?.submitBtnText}
-              </Button>
-            </form>
+            <ContactUsForm data={data} />
           </div>
         </section>
         <Newsletter locale={locale} />
