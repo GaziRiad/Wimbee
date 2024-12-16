@@ -45,7 +45,9 @@ hero {
     "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
       title,
       slug,
-      categories[]->,
+      categories[]-> {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      },
       summary
     }
   },
@@ -61,7 +63,9 @@ hero {
     "items": *[_type == "post" && language == $locale] | order(publishedAt desc) {
       title,
       slug,
-      categories[]->,
+      categories[]-> {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      },
       summary,
     }
   },
@@ -93,7 +97,9 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
   "items": *[_type == "post" && language == $locale] | order(publishedAt desc) {
     title,
     slug,
-    categories[]->,
+    categories[]-> {
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+    },
     summary
   }
 }`;
@@ -229,7 +235,9 @@ export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0
       "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
           title,
           slug,
-          categories[]->,
+          categories[]-> {
+            "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+          },
           summary
         }
     }`;
@@ -239,8 +247,8 @@ export const singlearticlequery = groq`*[_type == "post" && slug.current == $slu
         title,
         slug,
         publishedAt,
-        categories[]->{
-          title
+        categories[]-> {
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         },
         body,
         "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
@@ -256,9 +264,8 @@ export const singleCasestudyQuery = groq`*[_type == "case-study" && slug.current
         title,
         slug,
         publishedAt,
-        categories[]->{
-          title,
-          slug
+        categories[]-> {
+          "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         },
         body,
         "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{

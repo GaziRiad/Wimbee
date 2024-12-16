@@ -89,7 +89,6 @@
 // }
 
 // export default SplitSection;
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -143,11 +142,14 @@ function SplitSection({
                   >
                     {post.title}
                   </p>
-                  <span
-                    className={`rounded-custom p-2 font-mono text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out ${hoveredIndex === index ? "bg-primary-400" : ""} lg:text-sm 2xl:text-lg ${variant === "primary" && "!text-[#0F6FFF]"}`}
-                  >
-                    retail
-                  </span>
+                  {post?.categories?.map((category, i) => (
+                    <span
+                      key={i}
+                      className={`w-fit whitespace-nowrap rounded-custom p-2 font-mono text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out ${hoveredIndex === index ? "bg-primary-400" : ""} lg:text-sm 2xl:text-lg ${variant === "primary" && "!text-[#0F6FFF]"}`}
+                    >
+                      {category.title}
+                    </span>
+                  ))}
                 </div>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
