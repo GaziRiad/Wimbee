@@ -27,6 +27,10 @@ export const structure = (S) =>
         .id('blog')
         .child(S.document().schemaType('blog').documentId('blog')),
       S.listItem()
+        .title('Case studies')
+        .id('case-studies-page')
+        .child(S.document().schemaType('case-studies-page').documentId('case-studies-page')),
+      S.listItem()
         .title('Careers')
         .id('careers')
         .child(S.document().schemaType('careers').documentId('careers')),
@@ -67,6 +71,10 @@ export const structure = (S) =>
                     .schemaType('case-studies-section')
                     .documentId('case-studies-section'),
                 ),
+              S.listItem()
+                .title('Blog section')
+                .id('blog-section')
+                .child(S.document().schemaType('blog-section').documentId('blog-section')),
             ]),
         ),
 

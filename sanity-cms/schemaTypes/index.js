@@ -17,6 +17,8 @@ import careers from './careers'
 import ecosystems from './ecosystems'
 import contact from './contact'
 import contactPage from './contact-page'
+import caseStudiesPage from './case-studies-page'
+import blogSection from './blog-section'
 
 export const schemaTypes = [
   settings,
@@ -24,10 +26,12 @@ export const schemaTypes = [
   boosters,
   about,
   blog,
+  caseStudiesPage,
   careers,
   ecosystems,
   contactPage,
   caseStudiesSection,
+  blogSection,
   contact,
   newsletter,
   footer,
