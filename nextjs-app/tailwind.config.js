@@ -3,6 +3,7 @@ module.exports = {
   safelist: [
     "max-w-4xl",
     "max-w-[1520px]",
+    "aspect-auto",
     // Add other classes that might be getting purged
   ],
   darkMode: ["class"],

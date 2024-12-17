@@ -12,7 +12,6 @@ import { sanityFetch } from "@/sanity/client";
 import {
   allPostsQuery,
   BlogSectionQuery,
-  caseStudiesSectionQuery,
   singlearticlequery,
 } from "@/sanity/groq";
 import { groq } from "next-sanity";
@@ -100,7 +99,7 @@ async function page({ params: { locale, slug } }) {
       </Head>
       <main>
         <div className="bg-light-300">
-          <NavigationWrapper />
+          <NavigationWrapper locale={locale} />
           <Article content={post} />
         </div>
         <SplitSection content={blogSection} type="blog" variant="primary" />

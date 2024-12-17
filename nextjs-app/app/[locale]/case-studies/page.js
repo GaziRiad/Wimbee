@@ -6,11 +6,7 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { sanityFetch } from "@/sanity/client";
-import {
-  blogPageQuery,
-  casestudiesPageQuery,
-  caseStudiesSectionQuery,
-} from "@/sanity/groq";
+import { casestudiesPageQuery } from "@/sanity/groq";
 import { groq } from "next-sanity";
 import Head from "next/head";
 

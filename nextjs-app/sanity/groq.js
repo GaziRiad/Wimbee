@@ -108,7 +108,7 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
 export const casestudiesPageQuery = groq`*[_type == "case-studies-page"][0]{
   "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
   "imageUrl": image.asset->url,
-  "items": *[_type == "case-study" && language == $locale] [0...7] | order(publishedAt desc) {
+  "items": *[_type == "post" && language == $locale] [0...7] | order(publishedAt desc) {
     title,
     slug,
     categories[]-> {

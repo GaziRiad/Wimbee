@@ -13,13 +13,22 @@ export const myPortableTextComponents = {
   types: {
     image: ({ value }) => {
       return (
-        <Image
-          src={urlFor(value).url()}
-          alt="Image"
-          width={1100}
-          height={1100}
-          className="mb-8 aspect-square rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
-        />
+        <>
+          <Image
+            src={urlFor(value).url()}
+            alt="Image"
+            width={800}
+            height={800}
+            className="mb-8 aspect-square w-full rounded-custom object-cover object-center lg:hidden"
+          />
+          <Image
+            src={urlFor(value).url()}
+            alt="Image"
+            width={800}
+            height={800}
+            className="mb-10 hidden h-[620px] w-full rounded-custom object-cover object-center lg:block 2xl:mb-20"
+          />
+        </>
       );
     },
   },
