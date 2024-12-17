@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 export const homequery = groq`*[_type == "home"][0]{
 hero {
     "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
-    "backgroundImageUrl": backgroundImage.asset->url
+    "backgroundVideoUrl": backgroundVideo.asset->url
   },
   partners {
     logos[] {

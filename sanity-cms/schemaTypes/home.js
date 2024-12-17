@@ -17,11 +17,11 @@ export default defineType({
           initialValue: 'Pioneering Digital Transformation and AI Excellence',
         }),
         defineField({
-          name: 'backgroundImage',
-          title: 'Background Image',
-          type: 'image',
+          name: 'backgroundVideo',
+          title: 'Background Video',
+          type: 'file',
           options: {
-            hotspot: true,
+            accept: 'video/*',
           },
         }),
       ],

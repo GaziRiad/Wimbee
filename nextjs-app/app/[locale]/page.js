@@ -62,12 +62,16 @@ export default async function Home({ params: { locale } }) {
         <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
-        <div
-          className={`hero-section h-screen bg-cover bg-center`}
-          style={{ backgroundImage: `url(${data.hero.backgroundImageUrl})` }}
-        >
+        <div className={`hero-section h-screen bg-cover bg-center`}>
+          <video
+            className="absolute left-0 top-0 h-full w-full object-cover"
+            src={data.hero.backgroundVideoUrl}
+            autoPlay
+            loop
+            muted
+          />
           <NavigationWrapper locale={locale} />
-          <section className="mx-auto flex h-full max-w-[1568px] items-center px-4">
+          <section className="relative mx-auto flex h-full max-w-[1568px] items-center px-4">
             <h1 className="max-w-xl text-titleSmall text-light-200 lg:text-titleMedium 2xl:max-w-5xl 2xl:text-titleLarge">
               {data?.hero.title}
             </h1>
