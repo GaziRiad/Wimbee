@@ -17,14 +17,14 @@ import Head from "next/head";
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
   const data = await sanityFetch({
-    query: groq`*[_type == "blog"][0]{
+    query: groq`*[_type == "case-studies-page"][0]{
       seo {
         "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
         "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value)
       }
     }`,
     qParams: { locale },
-    tags: ["blog", "post"],
+    tags: ["case-studies-page"],
   });
 
   return {
