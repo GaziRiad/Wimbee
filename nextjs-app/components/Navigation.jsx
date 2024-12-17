@@ -106,7 +106,7 @@ function Navigation({ menu, content }) {
               height={600}
               src={content?.imageUrl}
               alt="Wimbee logo"
-              className="h-8 w-fit"
+              className="max-w-20 lg:max-w-32"
             />
           </Link>
           <ul className="hidden h-[34px] items-center rounded-[4px] bg-white lg:flex">
