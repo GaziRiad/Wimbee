@@ -16,9 +16,9 @@ export const myPortableTextComponents = {
         <Image
           src={urlFor(value).url()}
           alt="Image"
-          width={1200}
-          height={1200}
-          className="mb-8 aspect-square h-24 rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
+          width={1100}
+          height={1100}
+          className="mb-8 aspect-square rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
         />
       );
     },

@@ -177,8 +177,16 @@ export default defineType({
                   type: 'internationalizedArrayString',
                 }),
                 defineField({
-                  name: 'image',
-                  title: 'Hub Image',
+                  name: 'staticImage',
+                  title: 'Static Hub Image',
+                  type: 'image',
+                  options: {
+                    hotspot: true,
+                  },
+                }),
+                defineField({
+                  name: 'hoverImage',
+                  title: 'Hover Hub Image',
                   type: 'image',
                   options: {
                     hotspot: true,
