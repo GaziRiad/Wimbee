@@ -15,6 +15,7 @@ import SplitSection from "@/components/home/SplitSection";
 import NavigationWrapper from "@/components/NavigationWrapper";
 import { groq } from "next-sanity";
 import Head from "next/head";
+import Hero from "@/components/home/Hero";
 
 // Dynamic metadata
 export async function generateMetadata({ params: { locale } }) {
@@ -62,21 +63,11 @@ export default async function Home({ params: { locale } }) {
         <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
-        <div className={`hero-section h-screen bg-cover bg-center`}>
-          <video
-            className="absolute left-0 top-0 h-full w-full object-cover"
-            src={data.hero.backgroundVideoUrl}
-            autoPlay
-            loop
-            muted
-          />
-          <NavigationWrapper locale={locale} />
-          <section className="relative mx-auto flex h-full max-w-[1568px] items-center px-4">
-            <h1 className="max-w-xl text-titleSmall text-light-200 lg:text-titleMedium 2xl:max-w-5xl 2xl:text-titleLarge">
-              {data?.hero.title}
-            </h1>
-          </section>
-        </div>
+        <Hero
+          title={data?.hero?.title}
+          video={data?.hero?.backgroundVideoUrl}
+          locale={locale}
+        />
         <LogoCarousel logos={data?.partners?.logos} />
         <IntroductionSection content={data?.introduction} />
         <SectorsSection content={data?.sectors} />
