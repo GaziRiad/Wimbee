@@ -45,7 +45,7 @@ export default async function Home({ params: { locale } }) {
   const data = await sanityFetch({
     query: homequery,
     qParams: { locale },
-    tags: ["home", "sector", "post", "case-study"],
+    tags: ["home", "sector", "post", "blog-section", "blog", "case-study"],
   });
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";

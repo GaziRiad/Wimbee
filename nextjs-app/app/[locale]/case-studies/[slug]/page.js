@@ -37,7 +37,7 @@ export const revalidate = 2592000; // 30 days in seconds
 export async function generateStaticParams() {
   const cases = await sanityFetch({
     query: allCasestudiesquery,
-    tags: ["case-study"],
+    tags: ["case-study", "case-studies-page", "case-studies-section"],
   });
 
   return cases.flatMap((post) =>
@@ -62,7 +62,7 @@ async function page({ params: { locale, slug } }) {
   });
 
   const localesWithSlugsMap = mapSlugsWithLocales(
-    caseStudy._translations ?? [], // Sanity translations array
+    caseStudy?._translations ?? [], // Sanity translations array
     { currentLocalization: { [locale]: slug } }, // Current slug and locale
   );
 

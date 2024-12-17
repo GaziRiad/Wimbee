@@ -11,6 +11,7 @@ import mapSlugsWithLocales from "@/lib/mapSlugsWithLocales";
 import { sanityFetch } from "@/sanity/client";
 import {
   allPostsQuery,
+  BlogSectionQuery,
   caseStudiesSectionQuery,
   singlearticlequery,
 } from "@/sanity/groq";
@@ -28,7 +29,7 @@ export async function generateMetadata({ params: { locale, slug } }) {
       summary
     }`,
     qParams: { slug, locale },
-    tags: ["sector"],
+    tags: ["post"],
   });
 
   return {
@@ -42,7 +43,7 @@ export const revalidate = 2592000; // 30 days in seconds
 export async function generateStaticParams() {
   const posts = await sanityFetch({
     query: allPostsQuery,
-    tags: ["post"],
+    tags: ["post", "blog-section", "blog"],
   });
 
   return posts.flatMap((post) =>
@@ -63,13 +64,13 @@ async function page({ params: { locale, slug } }) {
   const post = await sanityFetch({
     query: singlearticlequery,
     qParams: { slug, locale },
-    tags: ["post"],
+    tags: ["post", "blog-section", "blog"],
   });
 
-  const caseStudiesSection = await sanityFetch({
-    query: caseStudiesSectionQuery,
+  const blogSection = await sanityFetch({
+    query: BlogSectionQuery,
     qParams: { slug, locale },
-    tags: ["case-studies-section", "case-study"],
+    tags: ["post", "blog", "blog-section"],
   });
 
   const localesWithSlugsMap = mapSlugsWithLocales(
@@ -102,11 +103,7 @@ async function page({ params: { locale, slug } }) {
           <NavigationWrapper />
           <Article content={post} />
         </div>
-        <SplitSection
-          content={caseStudiesSection}
-          type="case-studies"
-          variant="primary"
-        />
+        <SplitSection content={blogSection} type="blog" variant="primary" />
         <Newsletter locale={locale} />
         <InfoSection locale={locale} />
         <Footer locale={locale} />

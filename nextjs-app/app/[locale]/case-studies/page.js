@@ -6,7 +6,11 @@ import NavigationWrapper from "@/components/NavigationWrapper";
 import Newsletter from "@/components/Newsletter";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { sanityFetch } from "@/sanity/client";
-import { blogPageQuery } from "@/sanity/groq";
+import {
+  blogPageQuery,
+  casestudiesPageQuery,
+  caseStudiesSectionQuery,
+} from "@/sanity/groq";
 import { groq } from "next-sanity";
 import Head from "next/head";
 
@@ -20,7 +24,7 @@ export async function generateMetadata({ params: { locale } }) {
       }
     }`,
     qParams: { locale },
-    tags: ["blog", "post", "blog-section"],
+    tags: ["blog", "post"],
   });
 
   return {
@@ -37,13 +41,13 @@ async function page({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
   const data = await sanityFetch({
-    query: blogPageQuery,
+    query: casestudiesPageQuery,
     qParams: { locale },
-    tags: ["post", "blog", "blog-section"],
+    tags: ["case-studies-section", "case-studies-page", "case-study"],
   });
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wimbeetech.com/";
-  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}blog`;
+  const canonicalUrl = `${baseUrl}/${locale === "en" ? "" : `${locale}/`}case-studies`;
 
   if (!data) return null;
 
@@ -59,7 +63,7 @@ async function page({ params: { locale } }) {
       <main>
         <div className="pt-16">
           <NavigationWrapper locale={locale} />
-          <SplitSection type="blog" content={data} flipped variant="light" />
+          <SplitSection content={data} type="case-studies" variant="light" />
         </div>
         <Newsletter locale={locale} />
         <InfoSection locale={locale} />
