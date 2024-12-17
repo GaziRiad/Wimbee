@@ -22,7 +22,7 @@ function DataTable({ content, name = "", type = "" }) {
   return (
     <div className="top-4 w-full self-start lg:sticky lg:w-fit">
       <div className="rounded-custom bg-primary-700 p-4">
-        <p className="flex justify-between font-mono uppercase text-light-300 lg:mb-6">
+        <p className="flex items-center justify-between font-mono uppercase text-light-300 lg:mb-6">
           <span className="pl-2">{name}</span>
           <button
             onClick={() => setIsOpen((state) => !state)}

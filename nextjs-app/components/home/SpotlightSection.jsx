@@ -18,12 +18,12 @@ async function SpotlightSection({ content }) {
             </p>
           </div>
         </div>
-        <div className="relative h-[720px]">
+        <div className="relative h-96 overflow-hidden rounded-custom lg:h-[720px]">
           <Image
             src={content.imageUrl}
             fill
             alt="Spotlight image from wimbee"
-            className="object-cover"
+            className="aspect-square object-cover object-left"
           />
         </div>
       </div>

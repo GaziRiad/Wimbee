@@ -81,7 +81,7 @@ async function page({ params: { locale } }) {
               width={2000}
               height={2000}
               alt="Wimbee careers image"
-              className="mb-12 h-96 w-full object-cover lg:mb-14 lg:h-[720px] 2xl:mb-28"
+              className="mb-12 h-96 w-full rounded-custom object-cover lg:mb-14 lg:h-[720px] 2xl:mb-28"
             />
             <div className="flex flex-col items-start justify-between gap-8 md:flex-row lg:gap-16">
               <div className="flex max-w-96 flex-col gap-8 text-lg text-primary-500">
@@ -149,7 +149,7 @@ async function page({ params: { locale } }) {
             width={2000}
             height={2000}
             alt="Wimbee careers image"
-            className="mb-4 h-96 w-full object-cover lg:mb-14 lg:h-[720px]"
+            className="mb-4 h-96 w-full rounded-custom object-cover lg:mb-14 lg:h-[720px]"
           />
         </section>
 

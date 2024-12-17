@@ -81,7 +81,7 @@ async function page({ params: { locale } }) {
                 width={600}
                 height={600}
                 alt="Wimbee about us image"
-                className="h-96 w-full lg:h-[620px] lg:max-w-2xl"
+                className="h-96 w-full rounded-custom lg:h-[620px] lg:max-w-2xl"
               />
             </div>
           </div>

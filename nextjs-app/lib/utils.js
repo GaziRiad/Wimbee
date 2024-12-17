@@ -18,7 +18,7 @@ export const myPortableTextComponents = {
           alt="Image"
           width={1200}
           height={1200}
-          className="mb-8 h-24 w-full object-cover object-center lg:mb-10 2xl:mb-20"
+          className="mb-8 h-24 w-full rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
         />
       );
     },
@@ -130,7 +130,7 @@ export const MiniPortableText = {
           alt="Image"
           width={1200}
           height={1200}
-          className="mx-auto mb-8 block h-24 w-full object-cover object-center lg:mb-10 2xl:mb-20"
+          className="mx-auto mb-8 block h-24 w-full rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
         />
       );
     },

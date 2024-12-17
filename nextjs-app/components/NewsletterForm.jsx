@@ -16,22 +16,22 @@ function NewsletterForm({ data }) {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <form className="lg:max-w-[720px]" onSubmit={handleSubmit(onSubmit)}>
+    <form className="lg:min-w-[720px]" onSubmit={handleSubmit(onSubmit)}>
       <h2 className="mb-6 max-w-lg text-lg font-medium text-primary-800 lg:text-3xl">
         {data.title}
       </h2>
       <div className="flex flex-col bg-light-300 p-2 text-[#76848F]">
-        <label className="mb-6 text-xs uppercase lg:text-base">
+        <label className="mb-6 font-mono text-xs uppercase lg:text-base">
           {data.labelText}
         </label>
         <div className="flex flex-col">
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center justify-between gap-1 lg:gap-4">
             <input
               type="email"
               placeholder={
                 errors.email ? errors.email.message : data.placeholderText
               }
-              className={`flex-1 bg-light-300 text-lg font-medium ${
+              className={`min-w-20 flex-1 bg-light-300 text-lg font-medium ${
                 errors.email
                   ? "placeholder:text-[#FF0000]"
                   : "text-[#222] placeholder:text-gray-400"
@@ -42,7 +42,7 @@ function NewsletterForm({ data }) {
 
             <Button
               type="submit"
-              className="h-auto rounded-custom bg-[#97CAFE] p-1 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:p-1 lg:text-lg"
+              className="h-auto rounded-custom bg-[#97CAFE] px-1 py-0 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:px-1 lg:text-lg"
             >
               {data.buttonText}
             </Button>

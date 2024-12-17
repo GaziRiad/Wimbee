@@ -37,7 +37,7 @@ async function InfoSection({ locale = "en" }) {
           <div className="grid grid-cols-2 gap-x-6 gap-y-10">
             {data.locations.map((location, index) => (
               <div key={index}>
-                <p className="mb-6 text-base font-medium uppercase text-[#93989C]">
+                <p className="mb-6 font-mono text-base uppercase text-[#93989C]">
                   Wimbee {location.country}
                 </p>
                 <p className="text-xl leading-normal">{location.phone}</p>

@@ -76,7 +76,7 @@ async function page({ params: { locale } }) {
               width={2000}
               height={2000}
               alt="Wimbee careers image"
-              className="mb-12 h-96 w-full object-cover lg:mb-14 lg:h-[720px] 2xl:mb-28"
+              className="mb-12 h-96 w-full rounded-custom object-cover lg:mb-14 lg:h-[720px] 2xl:mb-28"
             />
             <div className="flex flex-col items-start justify-between gap-8 md:flex-row lg:gap-16">
               <div className="flex max-w-96 flex-col gap-8 text-lg text-primary-500">
@@ -102,7 +102,7 @@ async function page({ params: { locale } }) {
               {data?.positionsSection?.positions?.map((position, index) => (
                 <div
                   key={index}
-                  className="flex flex-col border-b border-primary-800 py-4"
+                  className="flex w-fit flex-col border-b border-primary-500 py-4"
                 >
                   <div className="flex items-start gap-5 lg:gap-20">
                     <p className="mb-6 text-2xl text-primary-700 2xl:text-3xl">
@@ -111,7 +111,7 @@ async function page({ params: { locale } }) {
                     <Link
                       href={position?.url || "/"}
                       target="_blank"
-                      className="h-auto rounded-custom bg-[#97CAFE] px-1 py-0.5 text-xs text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:text-lg"
+                      className="h-auto rounded-custom px-1 py-0.5 text-xs font-medium text-primary-700 hover:bg-primary-800 hover:text-primary-400 lg:text-lg"
                     >
                       Apply
                     </Link>

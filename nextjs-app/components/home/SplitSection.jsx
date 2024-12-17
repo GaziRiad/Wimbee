@@ -121,60 +121,70 @@ function SplitSection({
         </div>
 
         <div
-          className={`flex items-center justify-between gap-6 lg:gap-20 ${
+          className={`flex items-start justify-between gap-6 lg:gap-20 ${
             flipped
               ? "flex-col-reverse lg:flex-row-reverse"
               : "flex-col lg:flex-row"
           }`}
         >
           <div className="w-full text-primary-800 2xl:w-[720px]">
-            {content.items.map((post, index) => (
-              <div
-                key={index}
-                className={`inline-block border-b py-4 ${variant === "primary" ? "!border-primary-[#97CAFE]" : "border-primary-800"}`}
-                onMouseEnter={() => !isInitialLoad && setHoveredIndex(index)}
-                onMouseLeave={() => !isInitialLoad && setHoveredIndex(null)}
-              >
-                <div className="flex w-full items-center justify-between gap-1 font-medium">
-                  <Link
-                    href={`/${type}/${post.slug.current}` || "/"}
-                    className={`text-left text-2xl lg:text-[28px] ${variant === "primary" && "text-light-200"}`}
-                  >
-                    {post.title}
-                  </Link>
+            {content.items.map((post, index) => {
+              const categoryStyles =
+                variant === "primary" && hoveredIndex !== index
+                  ? "bg-light-200 !text-[#5D99FC]"
+                  : variant === "primary" && hoveredIndex === index
+                    ? "bg-primary-400 !text-[#0F6FFF]"
+                    : variant !== "primary" && hoveredIndex === index
+                      ? "bg-primary-400"
+                      : "bg-light-200";
+
+              return (
+                <div
+                  key={index}
+                  className={`flex items-start justify-between gap-6 border-b py-4 ${variant === "primary" ? "border-[#97CAFE]" : "border-primary-800"}`}
+                  onMouseEnter={() => !isInitialLoad && setHoveredIndex(index)}
+                  onMouseLeave={() => !isInitialLoad && setHoveredIndex(null)}
+                >
+                  <div className="flex w-full flex-col gap-1 font-medium">
+                    <Link
+                      href={`/${type}/${post.slug.current}` || "/"}
+                      className={`text-left text-2xl lg:text-[28px] ${variant === "primary" && "text-light-200"}`}
+                    >
+                      {post.title}
+                    </Link>
+
+                    <div
+                      className={`flex items-end justify-between overflow-hidden transition-all duration-300 ease-in-out ${
+                        hoveredIndex === index
+                          ? "max-h-96 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p
+                        className={`pt-6 text-lg font-normal text-[#76848F] lg:text-xl ${variant === "primary" && "text-light-300"}`}
+                      >
+                        {post.summary}
+                      </p>
+                    </div>
+                  </div>
                   {post?.categories?.map((category, i) => (
                     <span
                       key={i}
-                      className={`w-fit whitespace-nowrap rounded-custom p-2 font-mono text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out ${hoveredIndex === index ? "bg-primary-400" : ""} lg:text-sm 2xl:text-lg ${variant === "primary" && "!text-[#0F6FFF]"}`}
+                      className={`w-fit whitespace-nowrap rounded-custom p-2 font-mono text-xs uppercase text-primary-700 transition-colors duration-200 ease-in-out lg:text-sm 2xl:text-lg ${categoryStyles}`}
                     >
                       {category.title}
                     </span>
                   ))}
                 </div>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    hoveredIndex === index
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="mt-4 flex items-end justify-between">
-                    <p
-                      className={`pt-6 text-lg font-normal text-[#76848F] lg:text-xl ${variant === "primary" && "text-light-300"}`}
-                    >
-                      {post.summary}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <Image
             src={content.imageUrl}
             width={600}
             height={600}
             alt="Introduction section of wimbee GIF"
-            className="aspect-square lg:max-w-[270px] 2xl:max-w-[580px]"
+            className="aspect-square rounded-custom lg:max-w-[270px] 2xl:max-w-[580px]"
           />
         </div>
       </div>
