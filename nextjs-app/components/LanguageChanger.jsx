@@ -42,7 +42,7 @@ export default function LanguageChanger() {
     <div className="z-20 flex h-[34px] w-fit items-center gap-0.5 rounded-[4px] bg-white p-0.5">
       <button
         onClick={() => handleChange("en")}
-        className={`rounded-[4px] p-1 ${
+        className={`rounded-[4px] p-[6px] ${
           currentLocale === "en" ? "bg-[#97CAFE]" : ""
         }`}
       >
@@ -50,7 +50,7 @@ export default function LanguageChanger() {
       </button>
       <button
         onClick={() => handleChange("fr")}
-        className={`rounded-[4px] p-1 ${
+        className={`rounded-[4px] p-[6px] ${
           currentLocale === "fr" ? "bg-[#97CAFE]" : ""
         }`}
       >

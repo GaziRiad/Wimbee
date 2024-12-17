@@ -116,19 +116,19 @@ export function DesktopMenuItem({ item }) {
                 width={300}
                 height={300}
                 alt="wimbee GIF"
-                className="mt-2 h-48 w-48 object-cover"
+                className="mt-2 h-48 min-w-48 object-cover"
               />
             )}
           </div>
-          <div className="flex flex-col text-primary-800">
+          <div className="flex max-w-md flex-col text-primary-800">
             {item.items.map((subItem, index) => (
               <Link
                 key={index}
                 href={subItem.href}
-                className="group flex w-full items-center justify-between gap-16 border-b border-light-300 py-5 text-xl"
+                className="group flex w-full items-center justify-between gap-10 border-b border-light-300 py-5 text-xl"
               >
                 <span>{subItem.label}</span>
-                <span className="size-4 rounded-full bg-primary-800 opacity-0 transition-all group-hover:visible group-hover:opacity-100" />
+                <span className="size-4 flex-shrink-0 rounded-full bg-primary-800 opacity-0 transition-all group-hover:visible group-hover:opacity-100" />
               </Link>
             ))}
           </div>
