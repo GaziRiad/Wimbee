@@ -18,7 +18,7 @@ export const myPortableTextComponents = {
           alt="Image"
           width={1200}
           height={1200}
-          className="mb-8 h-24 w-full rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
+          className="mb-8 aspect-square h-24 rounded-custom object-cover object-center lg:mb-10 2xl:mb-20"
         />
       );
     },

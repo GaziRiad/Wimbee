@@ -23,7 +23,7 @@ async function SpotlightSection({ content }) {
             src={content.imageUrl}
             fill
             alt="Spotlight image from wimbee"
-            className="aspect-square object-cover object-left"
+            className="aspect-square object-cover object-center"
           />
         </div>
       </div>
