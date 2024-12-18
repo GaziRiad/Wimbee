@@ -4,6 +4,7 @@ module.exports = {
     "max-w-4xl",
     "max-w-[1520px]",
     "aspect-auto",
+    "max-h-[808px]",
     // Add other classes that might be getting purged
   ],
   darkMode: ["class"],
