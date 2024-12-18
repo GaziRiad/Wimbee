@@ -14,7 +14,7 @@ Sanity backend is build seperately as a mono repo.\
 So the main repo contains two folder, first one for nextjs frontend, second is for sanity backend.\
 
 - When hosting The frontend on vercel, make sure to set the Root Directory to the nextjs folder.
-  ![Image for setting the root directoy when deploying on vercel](/vercel1.png)
+  ![Image for setting the root directoy when deploying on vercel](vercel1.png)
 
 - when deploying the project make sure to have the environement variables setup on vercel, following this structure:
   NEXT_PUBLIC_SANITY_PROJECT_ID=(you can get this ID from sanity)\
