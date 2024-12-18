@@ -17,11 +17,12 @@ So the main repo contains two folder, first one for nextjs frontend, second is f
   ![Image for setting the root directoy when deploying on vercel](/nextjs-app/public/images/vercel1.png)
 
 - when deploying the project make sure to have the environement variables setup on vercel, following this structure:
-  NEXT_PUBLIC_SANITY_PROJECT_ID=(you can get this ID from sanity)\
-  NEXT_PUBLIC_SANITY_DATASET="production"\
-  NEXT_PUBLIC_SANITY_HOOK_SECRET=(you can get or set this secret from sanity api web hook)\
-  NEXT_PUBLIC_BASE_URL=(your domain name, such as: "https://wimbee.com")
-  \NEXT_PUBLIC_ENV=(production if it's for production otherwise set it to development).
+
+  - NEXT_PUBLIC_SANITY_PROJECT_ID=(you can get this ID from sanity)\
+  - NEXT_PUBLIC_SANITY_DATASET="production"\
+  - NEXT_PUBLIC_SANITY_HOOK_SECRET=(you can get or set this secret from sanity api web hook)\
+  - NEXT_PUBLIC_BASE_URL=(your domain name, such as: "https://wimbee.com")
+  - NEXT_PUBLIC_ENV=(production if it's for production otherwise set it to development).
 
 ## installation
 
