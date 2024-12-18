@@ -5,6 +5,11 @@ module.exports = {
     "max-w-[1520px]",
     "aspect-auto",
     "max-h-[808px]",
+    "lg:text-4xl",
+    "lg:leading-[52px]",
+    "leading-[32px]",
+    "mb-9",
+    "lg:mb-20",
     // Add other classes that might be getting purged
   ],
   darkMode: ["class"],

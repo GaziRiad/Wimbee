@@ -91,10 +91,8 @@ export const myPortableTextComponents = {
     ),
     blockquote: ({ children }) => {
       return (
-        <blockquote className="mb-20 inline-block p-8 text-4xl text-primary-500 lg:text-2xl">
-          <span className="text-3xl">“</span>
+        <blockquote className="mb-9 text-3xl leading-[32px] text-primary-500 lg:mb-20 lg:text-4xl lg:leading-[52px]">
           {children}
-          <span className="text-3xl">”</span>
         </blockquote>
       );
     },
@@ -205,10 +203,8 @@ export const MiniPortableText = {
     ),
     blockquote: ({ children }) => {
       return (
-        <blockquote className="mx-auto mb-20 inline-block max-w-4xl p-8 text-4xl text-primary-500 lg:text-2xl">
-          <span className="text-3xl">“</span>
+        <blockquote className="mb-9 text-3xl leading-[32px] text-primary-500 lg:mb-20 lg:text-4xl lg:leading-[52px]">
           {children}
-          <span className="text-3xl">”</span>
         </blockquote>
       );
     },
