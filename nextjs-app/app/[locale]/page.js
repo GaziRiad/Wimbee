@@ -12,7 +12,6 @@ import Newsletter from "@/components/Newsletter";
 import InfoSection from "@/components/InfoSection";
 import Footer from "@/components/Footer";
 import SplitSection from "@/components/home/SplitSection";
-import NavigationWrapper from "@/components/NavigationWrapper";
 import { groq } from "next-sanity";
 import Head from "next/head";
 import Hero from "@/components/home/Hero";

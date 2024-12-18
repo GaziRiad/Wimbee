@@ -1,4 +1,4 @@
-import { expertisesquery, navigationQuery, sectorsQuery } from "@/sanity/groq";
+import { navigationQuery } from "@/sanity/groq";
 import { sanityFetch } from "@/sanity/client";
 import Navigation from "./Navigation";
 

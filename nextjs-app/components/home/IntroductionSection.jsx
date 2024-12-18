@@ -28,7 +28,7 @@ function IntroductionSection({ content }) {
               className="group flex items-center justify-between text-3xl transition-all duration-500 lg:text-[40px] 2xl:text-5xl"
             >
               <span>{link.title}</span>
-              <span className="size-7 rounded-full bg-primary-800 opacity-0 transition-all group-hover:opacity-100" />
+              <span className="size-4 rounded-full bg-primary-800 opacity-0 transition-all group-hover:opacity-100 lg:size-6 2xl:size-7" />
             </Link>
           ))}
         </div>
