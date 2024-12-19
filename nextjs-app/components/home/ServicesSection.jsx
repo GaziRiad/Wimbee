@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Tag from "../Tag";
+import Link from "next/link";
 
 function ServicesSection({ content }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -18,13 +19,16 @@ function ServicesSection({ content }) {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {content.hubs.map((service, index) => (
-          <div
+          <Link
+            href={service.url || "/"}
             key={index}
             className="flex h-full flex-col"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="relative mb-4 h-[420px] w-full lg:h-[600px]">
+            <div
+              className="relative mb-4 h-[420px] w-full lg:h-[600px]"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
               <Image
                 src={
                   hoveredIndex === index
@@ -44,7 +48,7 @@ function ServicesSection({ content }) {
                 {service.description}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

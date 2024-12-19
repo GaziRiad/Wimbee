@@ -177,6 +177,11 @@ export default defineType({
                   type: 'internationalizedArrayString',
                 }),
                 defineField({
+                  name: 'url',
+                  title: 'URL',
+                  type: 'string',
+                }),
+                defineField({
                   name: 'staticImage',
                   title: 'Static Hub Image',
                   type: 'image',

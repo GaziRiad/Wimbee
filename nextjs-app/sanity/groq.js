@@ -36,6 +36,7 @@ hero {
     hubs[] {
       "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
       "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
+        url,
       "staticImage": staticImage.asset->url,
       "hoverImage": hoverImage.asset->url
     }
