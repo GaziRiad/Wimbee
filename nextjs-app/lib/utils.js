@@ -110,16 +110,30 @@ export const myPortableTextComponents = {
     // Ex. 1: customizing common list types
     bullet: ({ children }) => (
       <ul
-        style={{ paddingLeft: "2.5rem" }}
-        className="mb-6 flex list-disc flex-col gap-2"
+        style={{
+          paddingLeft: "1.125rem",
+          fontSize: "1.15rem",
+          maxWidth: "56rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem",
+          listStyleType: "disc",
+        }}
       >
         {children}
       </ul>
     ),
     number: ({ children }) => (
       <ol
-        style={{ paddingLeft: "2.5rem" }}
-        className="mb-6 flex list-decimal flex-col gap-2"
+        style={{
+          paddingLeft: "1.125rem",
+          fontSize: "1.15rem",
+          maxWidth: "56rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem",
+          listStyleType: "disc",
+        }}
       >
         {children}
       </ol>
@@ -222,16 +236,30 @@ export const MiniPortableText = {
     // Ex. 1: customizing common list types
     bullet: ({ children }) => (
       <ul
-        style={{ paddingLeft: "2.5rem" }}
-        className="mx-auto mb-6 flex max-w-4xl list-disc flex-col gap-2"
+        style={{
+          paddingLeft: "1.125rem",
+          fontSize: "1.15rem",
+          maxWidth: "56rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem",
+          listStyleType: "disc",
+        }}
       >
         {children}
       </ul>
     ),
     number: ({ children }) => (
       <ol
-        style={{ paddingLeft: "2.5rem" }}
-        className="mx-auto mb-6 flex max-w-4xl list-decimal flex-col gap-2"
+        style={{
+          paddingLeft: "1.125rem",
+          fontSize: "1.15rem",
+          maxWidth: "56rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem",
+          listStyleType: "disc",
+        }}
       >
         {children}
       </ol>
