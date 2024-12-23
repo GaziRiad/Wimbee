@@ -44,7 +44,7 @@ hero {
   caseStudies {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
-    "items": *[_type == "case-study" && language == $locale] [0...7] | order(publishedAt desc) {
+    "items": *[_type == "case-study" && isDisplay == true && language == $locale] | order(publishedAt desc) {
       title,
       slug,
       categories[]-> {
@@ -52,7 +52,7 @@ hero {
       },
       summary
     }
-  },
+  },cd
   spotlight {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
@@ -62,7 +62,7 @@ hero {
   blog {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "imageUrl": image.asset->url,
-    "items": *[_type == "post" && language == $locale] [0...7] | order(publishedAt desc) {
+    "items": *[_type == "post" && isDisplay == true && language == $locale] | order(publishedAt desc) {
       title,
       slug,
       categories[]-> {
@@ -96,7 +96,7 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
 export const blogPageQuery = groq`*[_type == "blog"][0]{
   "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
   "imageUrl": image.asset->url,
-  "items": *[_type == "post" && language == $locale] [0...7] | order(publishedAt desc) {
+  "items": *[_type == "post" && language == $locale]| order(publishedAt desc) {
     title,
     slug,
     categories[]-> {
@@ -109,7 +109,7 @@ export const blogPageQuery = groq`*[_type == "blog"][0]{
 export const casestudiesPageQuery = groq`*[_type == "case-studies-page"][0]{
   "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
   "imageUrl": image.asset->url,
-  "items": *[_type == "case-study" && language == $locale] [0...7] | order(publishedAt desc) {
+  "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
     title,
     slug,
     categories[]-> {
@@ -247,7 +247,7 @@ export const footerquery = groq`*[_type == "footer"][0] {
 export const caseStudiesSectionQuery = groq`*[_type == "case-studies-section"][0]{
       "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
       "imageUrl": image.asset->url,
-      "items": *[_type == "case-study" && language == $locale] [0...7] | order(publishedAt desc) {
+      "items": *[_type == "case-study" && language == $locale] | order(publishedAt desc) {
           title,
           slug,
           categories[]-> {

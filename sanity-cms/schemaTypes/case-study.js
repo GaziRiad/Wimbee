@@ -30,7 +30,11 @@ export default defineType({
       title: 'Published at',
       type: 'datetime',
     }),
-
+    defineField({
+      name: 'isDisplay',
+      title: 'Show on Home',
+      type: 'boolean',
+    }),
     // New Summary Field
     defineField({
       name: 'summary',
