@@ -74,8 +74,8 @@ async function page({ params: { locale } }) {
                   <Image
                     src={product.imageUrl}
                     alt={`Gif image from wimbee`}
-                    width={300}
-                    height={300}
+                    width={1200}
+                    height={1200}
                     className="mb-4 h-[720px] w-full"
                   />
                   <p className="font-mono text-lg uppercase text-[#0F6FFF]">
