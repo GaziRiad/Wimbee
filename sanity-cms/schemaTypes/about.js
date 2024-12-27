@@ -4,6 +4,14 @@ export default defineType({
   name: 'about',
   title: 'About us Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'About Page', // Assuming 'en' is your default language
+        subtitle: 'About Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

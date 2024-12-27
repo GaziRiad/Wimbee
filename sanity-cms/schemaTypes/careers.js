@@ -4,6 +4,14 @@ export default defineType({
   name: 'careers',
   title: 'Careers Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Careers Page', // Assuming 'en' is your default language
+        subtitle: 'Careers Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

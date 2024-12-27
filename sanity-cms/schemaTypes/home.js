@@ -4,6 +4,15 @@ export default defineType({
   name: 'home',
   title: 'Home Page',
   type: 'document',
+  // Add preview configuration to control what's shown in the header
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Home Page', // Assuming 'en' is your default language
+        subtitle: 'Home Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'hero',
@@ -14,7 +23,6 @@ export default defineType({
           name: 'title',
           title: 'Title',
           type: 'internationalizedArrayString',
-          initialValue: 'Pioneering Digital Transformation and AI Excellence',
         }),
         defineField({
           name: 'backgroundVideo',
@@ -67,7 +75,6 @@ export default defineType({
           name: 'tag',
           title: 'Tag',
           type: 'internationalizedArrayString',
-          initialValue: 'WHO WE ARE',
         }),
         defineField({
           name: 'description',
@@ -105,10 +112,6 @@ export default defineType({
               ],
             },
           ],
-          initialValue: [
-            {title: 'Our mission', url: '#mission'},
-            {title: 'Our global expertise', url: '#expertise'},
-          ],
         }),
       ],
     }),
@@ -121,14 +124,11 @@ export default defineType({
           name: 'tag',
           title: 'Tag',
           type: 'internationalizedArrayString',
-          initialValue: 'SECTORS WE SERVE',
         }),
         defineField({
           name: 'title',
           title: 'Title',
           type: 'internationalizedArrayString',
-          initialValue:
-            'We empower industries with tailored AI and data solutions to excel in the digital age.',
         }),
         defineField({
           name: 'image',
@@ -149,14 +149,11 @@ export default defineType({
           name: 'tag',
           title: 'Tag',
           type: 'internationalizedArrayString',
-          initialValue: 'KEY SERVICES ACROSS SECTORS',
         }),
         defineField({
           name: 'description',
           title: 'Description',
           type: 'internationalizedArrayString',
-          initialValue:
-            'We offer tailored solutions to help businesses and individuals thrive with AI, talent development, and digital transformation.',
         }),
         defineField({
           name: 'hubs',
@@ -212,7 +209,6 @@ export default defineType({
           name: 'tag',
           title: 'Tag',
           type: 'internationalizedArrayString',
-          initialValue: 'CASE STUDIES',
         }),
         defineField({
           name: 'image',
@@ -227,14 +223,13 @@ export default defineType({
     defineType({
       name: 'spotlight',
       title: 'Spotlight Section',
-      type: 'document',
+      type: 'object',
       fields: [
         // Tag/Label
         defineField({
           name: 'tag',
           title: 'Tag/Label',
           type: 'internationalizedArrayString',
-          initialValue: 'SPOTLIGHT',
         }),
         // Title
         defineField({
@@ -269,7 +264,6 @@ export default defineType({
           name: 'tag',
           title: 'Tag',
           type: 'internationalizedArrayString',
-          initialValue: "WHAT'S NEW",
         }),
         defineField({
           name: 'image',

@@ -4,6 +4,14 @@ export default defineType({
   name: 'footer',
   title: 'Footer Section Configuration',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Footer section', // Assuming 'en' is your default language
+        subtitle: 'Footer section Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'services',

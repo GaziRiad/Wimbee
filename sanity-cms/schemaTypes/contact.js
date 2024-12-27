@@ -4,6 +4,14 @@ export default defineType({
   name: 'contact',
   title: 'Contact Section Configuration',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Contact informations section', // Assuming 'en' is your default language
+        subtitle: 'Contact informations section Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'title',

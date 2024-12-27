@@ -4,6 +4,14 @@ export default defineType({
   name: 'newsletter',
   title: 'Newsletter Section',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Newsletter section', // Assuming 'en' is your default language
+        subtitle: 'Newsletter section Content',
+      }
+    },
+  },
   fields: [
     // Social Links
     defineField({

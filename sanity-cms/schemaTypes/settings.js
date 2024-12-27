@@ -4,6 +4,14 @@ export default defineType({
   name: 'settings',
   title: 'Site Settings',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Settings', // Assuming 'en' is your default language
+        subtitle: 'Settings Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'favicon',

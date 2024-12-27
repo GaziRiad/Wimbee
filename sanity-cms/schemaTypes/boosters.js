@@ -4,6 +4,14 @@ export default defineType({
   name: 'boosters',
   title: 'Boosters Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Boosters Page', // Assuming 'en' is your default language
+        subtitle: 'Boosters Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

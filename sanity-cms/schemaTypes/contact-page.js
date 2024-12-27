@@ -4,6 +4,14 @@ export default defineType({
   name: 'contact-page',
   title: 'Contact Us Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Contact us Page', // Assuming 'en' is your default language
+        subtitle: 'Contact us Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

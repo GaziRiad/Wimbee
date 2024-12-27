@@ -5,7 +5,7 @@ async function SpotlightSection({ content }) {
   if (!content) return null;
 
   return (
-    <section className="bg-primary-800 px-4 py-8 text-light-200 lg:pb-20 lg:pt-10">
+    <section className="bg-[#1A1A1A] px-4 py-8 text-light-200 lg:pb-20 lg:pt-10">
       <div className="mx-auto max-w-[1568px]">
         <div className="mb-4 flex flex-col items-start justify-between lg:mb-10 lg:flex-row">
           <Tag bg="light">{content.tag}</Tag>

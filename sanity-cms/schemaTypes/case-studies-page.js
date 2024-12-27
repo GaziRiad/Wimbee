@@ -4,6 +4,14 @@ export default defineType({
   name: 'case-studies-page',
   title: 'Case studies Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Case studies Page', // Assuming 'en' is your default language
+        subtitle: 'Case studies Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

@@ -4,6 +4,14 @@ export default defineType({
   name: 'blog-section',
   title: 'Other news section in articles',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'log section', // Assuming 'en' is your default language
+        subtitle: 'Blog section Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',

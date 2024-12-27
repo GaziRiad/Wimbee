@@ -4,6 +4,14 @@ export default defineType({
   name: 'ecosystems',
   title: 'Ecossytems Page',
   type: 'document',
+  preview: {
+    prepare({}) {
+      return {
+        title: 'Ecosystems Page', // Assuming 'en' is your default language
+        subtitle: 'Ecosystems Page Content',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'tag',
