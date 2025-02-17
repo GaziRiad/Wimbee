@@ -52,6 +52,21 @@ export default defineType({
               },
             }),
           ],
+          preview: {
+            select: {
+              title: 'name',
+            },
+            prepare(selection) {
+              const {title} = selection
+              // If the title is an array of objects, join them into a readable string
+              if (Array.isArray(title)) {
+                return {
+                  title: title.map((item) => item.value || '').join(', '),
+                }
+              }
+              return {title: title}
+            },
+          },
         },
       ],
       initialValue: [

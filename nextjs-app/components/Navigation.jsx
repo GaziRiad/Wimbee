@@ -59,39 +59,39 @@ function Navigation({ menu, content }) {
   }, []);
 
   // Effect for hiding/showing the header on scroll
-  useEffect(() => {
-    let lastScrollTop = 0;
-    let headerHeight = 0;
+  // useEffect(() => {
+  //   let lastScrollTop = 0;
+  //   let headerHeight = 0;
 
-    const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+  //   const handleScroll = () => {
+  //     const scrollTop =
+  //       window.pageYOffset || document.documentElement.scrollTop;
 
-      // Check if the screen width is greater than 768px
-      if (window.innerWidth > 768) {
-        if (scrollTop > lastScrollTop) {
-          // Scrolling down
-          if (headerRef.current) {
-            headerHeight = headerRef.current.getBoundingClientRect().height;
-            headerRef.current.style.top = `-${headerHeight}px`;
-          }
-        } else {
-          // Scrolling up
-          if (headerRef.current) {
-            headerRef.current.style.top = `0px`;
-          }
-        }
-      }
+  //     // Check if the screen width is greater than 768px
+  //     if (window.innerWidth > 768) {
+  //       if (scrollTop > lastScrollTop) {
+  //         // Scrolling down
+  //         if (headerRef.current) {
+  //           headerHeight = headerRef.current.getBoundingClientRect().height;
+  //           headerRef.current.style.top = `-${headerHeight}px`;
+  //         }
+  //       } else {
+  //         // Scrolling up
+  //         if (headerRef.current) {
+  //           headerRef.current.style.top = `0px`;
+  //         }
+  //       }
+  //     }
 
-      lastScrollTop = scrollTop;
-    };
+  //     lastScrollTop = scrollTop;
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <header
