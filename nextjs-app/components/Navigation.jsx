@@ -23,7 +23,6 @@ function Navigation({ menu, content }) {
     let stInstance;
 
     if (homeHero) {
-      // If there's a hero section, start with transparent background
       header.classList.add("bg-transparent");
       header.classList.remove("bg-light-300");
 
@@ -44,54 +43,47 @@ function Navigation({ menu, content }) {
           }
         },
       });
-    } else {
-      // If there's no hero section, use light-300 background
-      header.classList.remove("bg-transparent");
-      header.classList.add("bg-light-300");
+
+      // Force refresh for Safari
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500);
     }
 
     return () => {
-      // Cleanup the ScrollTrigger instance
-      if (stInstance) {
-        stInstance.kill();
-      }
+      if (stInstance) stInstance.kill();
     };
   }, []);
 
   // Effect for hiding/showing the header on scroll
-  // useEffect(() => {
-  //   let lastScrollTop = 0;
-  //   let headerHeight = 0;
+  useEffect(() => {
+    let lastScrollTop = 0;
 
-  //   const handleScroll = () => {
-  //     const scrollTop =
-  //       window.pageYOffset || document.documentElement.scrollTop;
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-  //     // Check if the screen width is greater than 768px
-  //     if (window.innerWidth > 768) {
-  //       if (scrollTop > lastScrollTop) {
-  //         // Scrolling down
-  //         if (headerRef.current) {
-  //           headerHeight = headerRef.current.getBoundingClientRect().height;
-  //           headerRef.current.style.top = `-${headerHeight}px`;
-  //         }
-  //       } else {
-  //         // Scrolling up
-  //         if (headerRef.current) {
-  //           headerRef.current.style.top = `0px`;
-  //         }
-  //       }
-  //     }
+      if (window.innerWidth > 768) {
+        if (scrollTop > lastScrollTop) {
+          if (headerRef.current) {
+            headerRef.current.style.transform = "translateY(-100%)";
+          }
+        } else {
+          if (headerRef.current) {
+            headerRef.current.style.transform = "translateY(0)";
+          }
+        }
+      }
 
-  //     lastScrollTop = scrollTop;
-  //   };
+      lastScrollTop = scrollTop;
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <header
