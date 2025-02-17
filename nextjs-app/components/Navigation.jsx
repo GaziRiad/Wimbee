@@ -20,6 +20,7 @@ function Navigation({ menu, content }) {
   useEffect(() => {
     const header = headerRef.current;
     const homeHero = document.querySelector(".hero-section");
+
     let stInstance;
 
     if (homeHero) {
@@ -44,7 +45,7 @@ function Navigation({ menu, content }) {
         },
       });
 
-      // Force refresh for Safari
+      // Fix Safari issues
       setTimeout(() => {
         ScrollTrigger.refresh();
       }, 500);
@@ -60,15 +61,16 @@ function Navigation({ menu, content }) {
     let lastScrollTop = 0;
 
     const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop = document.documentElement.scrollTop;
 
       if (window.innerWidth > 768) {
         if (scrollTop > lastScrollTop) {
+          // Hide header
           if (headerRef.current) {
             headerRef.current.style.transform = "translateY(-100%)";
           }
         } else {
+          // Show header
           if (headerRef.current) {
             headerRef.current.style.transform = "translateY(0)";
           }
@@ -78,7 +80,7 @@ function Navigation({ menu, content }) {
       lastScrollTop = scrollTop;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
