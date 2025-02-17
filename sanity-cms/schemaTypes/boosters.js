@@ -41,7 +41,12 @@ export default defineType({
             defineField({
               name: 'description',
               title: 'Product Description',
-              type: 'internationalizedArrayString',
+              type: 'internationalizedArrayText',
+            }),
+            defineField({
+              name: 'url',
+              title: 'URL',
+              type: 'string',
             }),
             defineField({
               name: 'image',

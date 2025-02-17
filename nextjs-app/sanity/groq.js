@@ -88,7 +88,7 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
   "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
   products[] {
     "name": coalesce(name[_key == $locale][0].value, name[_key == "en"][0].value),
-    "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
+    "description": coalesce(description[$locale], description["en"]),
     "imageUrl": image.asset->url
   }
 }`;
