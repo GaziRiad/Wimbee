@@ -15,10 +15,12 @@ hero {
   introduction {
     "tag": coalesce(tag[_key == $locale][0].value, tag[_key == "en"][0].value),
     "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
-    "imageUrl": image.asset->url,
-    links[] {
+    blocks[] {
       "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
-      url
+      "description": coalesce(description[_key == $locale][0].value, description[_key == "en"][0].value),
+        url,
+      "staticImage": staticImage.asset->url,
+      "hoverImage": hoverImage.asset->url
     }
   },
   sectors {
@@ -89,7 +91,8 @@ export const boostersquery = groq`*[_type == "boosters"][0] {
   products[] {
     "name": coalesce(name[_key == $locale][0].value, name[_key == "en"][0].value),
     "description": coalesce(description[$locale], description["en"]),
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    url
   }
 }`;
 
@@ -305,19 +308,33 @@ export const singleCasestudyQuery = groq`*[_type == "case-study" && slug.current
 `;
 
 // Single Expertise
-export const singleExpertiseQuery = groq`*[_type == "expertise" && slug.current == $slug][0]  {
+export const singleExpertiseQuery = groq`
+*[_type == "expertise" && slug.current == $slug][0] {
   title,
   "slug": slug.current,
   body,
-  "allLinks": *[_type == "expertise" && language == $locale] | order(publishedAt asc)  {
+  "allLinks": *[_type == "expertise" && language == $locale] | order(publishedAt asc) {
     title,
     "slug": slug.current
   },
-  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+  casesSection {
+    tag,
+    "imageUrl": image.asset->url,
+    items[]->{
       title,
-      slug,
-      language
-    },
+      "slug": slug.current,
+      language,
+      categories[]-> {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      },
+      summary
+    }
+  },
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    title,
+    slug,
+    language
+  }
 }`;
 
 // Single Sector
@@ -329,11 +346,24 @@ export const singleSectorQuery = groq`*[_type == "sector" && slug.current == $sl
     title,
     "slug": slug.current
   },
-   "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+  casesSection {
+    tag,
+    "imageUrl": image.asset->url,
+    items[]->{
       title,
-      slug,
-      language
-    },
+      "slug": slug.current,
+      language,
+      categories[]-> {
+        "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      },
+      summary
+    }
+  },
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    title,
+    slug,
+    language
+  }
 }`;
 
 export const settingsQuery = groq`*[_type == "settings"][0] {

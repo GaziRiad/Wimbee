@@ -20,7 +20,6 @@ async function NavigationWrapper({ locale = "en" }) {
         })) || [],
       dropDown: {
         title: nav?.navigation?.expertisesLink?.dropdownTitle,
-        image: nav?.navigation?.expertisesLink?.imageUrl,
       },
     },
     {

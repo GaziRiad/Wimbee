@@ -23,10 +23,10 @@ function Navigation({ menu, content }) {
 
     let stInstance;
 
-    if (homeHero) {
-      header.classList.add("bg-transparent");
-      header.classList.remove("bg-light-300");
+    header.classList.add("bg-transparent");
+    header.classList.remove("bg-light-300");
 
+    if (homeHero) {
       stInstance = ScrollTrigger.create({
         trigger: homeHero,
         start: "bottom top",
@@ -49,6 +49,10 @@ function Navigation({ menu, content }) {
       setTimeout(() => {
         ScrollTrigger.refresh();
       }, 500);
+    } else {
+      // Apply bg-light-300 on all other pages
+      header.classList.remove("bg-transparent");
+      header.classList.add("bg-light-300");
     }
 
     return () => {
@@ -57,35 +61,35 @@ function Navigation({ menu, content }) {
   }, []);
 
   // Effect for hiding/showing the header on scroll
-  useEffect(() => {
-    let lastScrollTop = 0;
+  // useEffect(() => {
+  //   let lastScrollTop = 0;
 
-    const handleScroll = () => {
-      const scrollTop = document.documentElement.scrollTop;
+  //   const handleScroll = () => {
+  //     const scrollTop = document.documentElement.scrollTop;
 
-      if (window.innerWidth > 768) {
-        if (scrollTop > lastScrollTop) {
-          // Hide header
-          if (headerRef.current) {
-            headerRef.current.style.transform = "translateY(-100%)";
-          }
-        } else {
-          // Show header
-          if (headerRef.current) {
-            headerRef.current.style.transform = "translateY(0)";
-          }
-        }
-      }
+  //     if (window.innerWidth > 768) {
+  //       if (scrollTop > lastScrollTop) {
+  //         // Hide header
+  //         if (headerRef.current) {
+  //           headerRef.current.style.transform = "translateY(-100%)";
+  //         }
+  //       } else {
+  //         // Show header
+  //         if (headerRef.current) {
+  //           headerRef.current.style.transform = "translateY(0)";
+  //         }
+  //       }
+  //     }
 
-      lastScrollTop = scrollTop;
-    };
+  //     lastScrollTop = scrollTop;
+  //   };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <header
