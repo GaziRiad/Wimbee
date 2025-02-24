@@ -393,8 +393,10 @@ export const navigationQuery = groq`*[_type == "settings"][0] {
       "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
       "dropdownTitle": coalesce(dropdownTitle[_key == $locale][0].value, dropdownTitle[_key == "en"][0].value),
     },
-    "boostersLink": coalesce(boostersLink[_key == $locale][0].value, boostersLink[_key == "en"][0].value),
-    "aboutLink": coalesce(aboutLink[_key == $locale][0].value, aboutLink[_key == "en"][0].value)
+    links[] {
+      "title": coalesce(title[_key == $locale][0].value, title[_key == "en"][0].value),
+      href
+    }
   }
 }`;
 
